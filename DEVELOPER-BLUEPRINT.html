@@ -6,249 +6,239 @@
     <title>Developer Tracking Blueprint | ComCreate B2B Sales Funnel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ComCreate Official Brand Colors (from VisualBranding_LogoDesign.pdf) */
             --tech-blue: #1873FA;
             --black: #1D1D1B;
-            --neon-violet: #A153F2;
-            --digital-sky: #3FDAF9;
             --white: #FFFFFF;
-
-            /* Official Gradient */
-            --brand-gradient: linear-gradient(135deg, #A153F2 0%, #3FDAF9 100%);
-
-            /* Derived colors for the document */
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-code: #0d0d12;
-            --border: rgba(161, 83, 242, 0.2);
-            --text-muted: rgba(255, 255, 255, 0.7);
-
-            /* Status colors */
-            --success: #22c55e;
-            --warning: #facc15;
-            --error: #ef4444;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --success: #16a34a;
+            --warning: #ca8a04;
+            --error: #dc2626;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-dark);
-            color: var(--white);
+            background: var(--white);
+            color: var(--gray-800);
             line-height: 1.6;
         }
 
         /* Top Navigation Bar */
         .top-bar {
-            background: var(--bg-dark);
+            background: var(--white);
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--gray-200);
         }
 
         .top-bar-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
-        .top-bar-logo img {
+        .logo-icon {
+            width: 32px;
             height: 32px;
-            width: auto;
+            background: var(--black);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--white);
         }
 
         .top-bar-logo span {
             font-size: 18px;
             font-weight: 700;
-            color: var(--white);
+            color: var(--black);
         }
 
         .back-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--digital-sky);
+            color: var(--tech-blue);
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.2s;
         }
 
         .back-link:hover {
-            background: rgba(63, 218, 249, 0.1);
+            text-decoration: underline;
         }
 
         /* Header */
         .header {
-            background: var(--brand-gradient);
-            padding: 80px 40px;
-            text-align: center;
+            background: var(--gray-50);
+            padding: 48px 40px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .header-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 700;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
+            letter-spacing: 1px;
+            color: var(--gray-500);
+            margin-bottom: 16px;
         }
 
         .header h1 {
-            font-size: 52px;
-            font-weight: 900;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--black);
         }
 
         .header p {
-            font-size: 20px;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto 32px;
-            font-weight: 500;
+            font-size: 16px;
+            color: var(--gray-600);
+            max-width: 600px;
         }
 
         .tech-stack {
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .tech-badge {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 14px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: var(--gray-600);
         }
 
         /* Navigation */
         .nav {
-            background: var(--bg-card);
-            border-bottom: 1px solid var(--border);
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
             position: sticky;
             top: 0;
             z-index: 100;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
         .nav ul {
             display: flex;
             list-style: none;
-            gap: 8px;
+            gap: 4px;
             overflow-x: auto;
-            padding: 16px 0;
-            max-width: 1200px;
+            padding: 12px 0;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .nav a {
-            color: var(--text-muted);
+            color: var(--gray-600);
             text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 13px;
             white-space: nowrap;
-            transition: all 0.2s;
+            transition: all 0.15s;
         }
 
         .nav a:hover {
-            background: rgba(24, 115, 250, 0.2);
-            color: var(--white);
+            background: var(--gray-100);
+            color: var(--black);
         }
 
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
         /* Sections */
         section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 48px 0;
+            border-bottom: 1px solid var(--gray-200);
         }
 
         h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        h2 .icon {
-            width: 56px;
-            height: 56px;
-            background: var(--brand-gradient);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--black);
         }
 
         h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 48px 0 24px;
-            color: var(--tech-blue);
-        }
-
-        h4 {
             font-size: 18px;
             font-weight: 700;
             margin: 32px 0 16px;
-            color: var(--neon-violet);
+            color: var(--black);
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 24px 0 12px;
+            color: var(--gray-700);
         }
 
         p {
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            font-size: 16px;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+            font-size: 14px;
         }
 
         /* Callout Boxes */
         .callout {
-            background: linear-gradient(135deg, rgba(161, 83, 242, 0.15), rgba(63, 218, 249, 0.15));
-            border-left: 4px solid var(--tech-blue);
-            padding: 24px;
-            border-radius: 0 16px 16px 0;
-            margin: 32px 0;
+            background: var(--gray-50);
+            border-left: 3px solid var(--tech-blue);
+            padding: 16px 20px;
+            border-radius: 0 6px 6px 0;
+            margin: 20px 0;
         }
 
         .callout-title {
-            font-weight: 800;
-            color: var(--tech-blue);
-            margin-bottom: 12px;
-            font-size: 14px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 8px;
+            font-size: 13px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .callout p { margin: 0; }
 
         .callout.critical {
             border-left-color: var(--error);
+            background: #fef2f2;
         }
 
         .callout.critical .callout-title {
@@ -257,6 +247,7 @@
 
         .callout.success {
             border-left-color: var(--success);
+            background: #f0fdf4;
         }
 
         .callout.success .callout-title {
@@ -265,237 +256,231 @@
 
         /* Code Blocks */
         .code-title {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-bottom: none;
-            border-radius: 12px 12px 0 0;
-            padding: 14px 24px;
-            font-weight: 700;
-            font-size: 14px;
+            background: var(--gray-800);
+            border-radius: 6px 6px 0 0;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--gray-300);
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-top: 24px;
+            gap: 8px;
+            margin-top: 16px;
         }
 
         .code-title .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
         }
 
         .code-title .html { background: #e34c26; }
         .code-title .js { background: #f7df1e; }
-        .code-title .json { background: var(--neon-violet); }
+        .code-title .json { background: #8b5cf6; }
         .code-title .gtm { background: var(--tech-blue); }
 
         pre {
-            background: var(--bg-code);
-            border: 1px solid var(--border);
-            border-radius: 0 0 12px 12px;
-            padding: 24px;
+            background: var(--gray-800);
+            border-radius: 0 0 6px 6px;
+            padding: 16px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
+            font-size: 12px;
             overflow-x: auto;
-            margin: 0 0 24px 0;
+            margin: 0 0 16px 0;
             color: #e5e7eb;
-            line-height: 1.7;
-        }
-
-        .code-title + pre {
-            border-radius: 0 0 12px 12px;
-            margin-top: 0;
+            line-height: 1.6;
         }
 
         code {
             font-family: 'JetBrains Mono', monospace;
-            background: rgba(24, 115, 250, 0.2);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            color: var(--digital-sky);
+            background: var(--gray-100);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: var(--gray-700);
         }
 
         /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 14px;
+            margin: 16px 0;
+            font-size: 13px;
         }
 
         th, td {
-            padding: 16px 20px;
+            padding: 12px 16px;
             text-align: left;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--gray-200);
         }
 
         th {
-            background: var(--bg-card);
-            color: var(--tech-blue);
-            font-weight: 700;
-            font-size: 12px;
+            background: var(--gray-50);
+            color: var(--gray-600);
+            font-weight: 600;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         tr:hover {
-            background: rgba(24, 115, 250, 0.05);
+            background: var(--gray-50);
         }
 
         td strong {
-            color: var(--white);
+            color: var(--black);
         }
 
         /* Cards */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
         }
 
         .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 20px;
         }
 
         .card.highlight {
             border-color: var(--tech-blue);
-            background: linear-gradient(135deg, rgba(24, 115, 250, 0.1), rgba(161, 83, 242, 0.1));
         }
 
         .card h4 {
             margin-top: 0;
-            color: var(--white);
+            color: var(--black);
         }
 
         .card-value {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 24px;
+            font-weight: 700;
             color: var(--tech-blue);
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .card-label {
-            font-size: 14px;
-            color: var(--text-muted);
+            font-size: 12px;
+            color: var(--gray-500);
         }
 
         /* Steps */
         .step {
             display: flex;
-            gap: 24px;
-            margin: 28px 0;
-            padding: 28px;
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid var(--border);
+            gap: 16px;
+            margin: 16px 0;
+            padding: 20px;
+            background: var(--gray-50);
+            border-radius: 8px;
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: var(--brand-gradient);
+            width: 36px;
+            height: 36px;
+            background: var(--tech-blue);
             color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 20px;
+            font-weight: 700;
+            font-size: 14px;
             flex-shrink: 0;
         }
 
         .step-content h4 {
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         /* Checklist */
         .checklist {
             list-style: none;
-            margin: 24px 0;
+            margin: 16px 0;
         }
 
         .checklist li {
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
             display: flex;
             align-items: center;
-            gap: 16px;
-            font-size: 15px;
+            gap: 12px;
+            font-size: 14px;
         }
 
         .checklist input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             accent-color: var(--tech-blue);
             cursor: pointer;
         }
 
         /* Data Flow Diagram */
         .flow-diagram {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px;
-            margin: 32px 0;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
         }
 
         .flow-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 12px 0;
         }
 
         .flow-box {
-            background: var(--bg-dark);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 20px 28px;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            padding: 12px 20px;
             text-align: center;
-            min-width: 140px;
+            min-width: 120px;
         }
 
         .flow-box.primary {
             border-color: var(--tech-blue);
-            background: rgba(24, 115, 250, 0.1);
         }
 
         .flow-box.conversion {
             border-color: var(--success);
-            background: rgba(34, 197, 94, 0.1);
         }
 
         .flow-box h5 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 2px;
         }
 
         .flow-box span {
-            font-size: 12px;
-            color: var(--text-muted);
+            font-size: 11px;
+            color: var(--gray-500);
         }
 
         .flow-arrow {
-            font-size: 24px;
-            color: var(--neon-violet);
+            font-size: 18px;
+            color: var(--gray-400);
         }
 
         /* Footer */
         footer {
-            background: var(--bg-card);
-            padding: 60px 40px;
+            background: var(--gray-50);
+            padding: 40px 24px;
             text-align: center;
-            color: var(--text-muted);
+            color: var(--gray-500);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        footer p {
+            color: var(--gray-500);
         }
 
         footer a {
@@ -509,11 +494,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .header { padding: 60px 20px; }
-            .header h1 { font-size: 36px; }
-            .container { padding: 0 20px; }
-            section { padding: 60px 0; }
-            h2 { font-size: 28px; }
+            .header { padding: 32px 20px; }
+            .header h1 { font-size: 24px; }
+            .container { padding: 0 16px; }
+            section { padding: 32px 0; }
+            h2 { font-size: 20px; }
             .step { flex-direction: column; }
             .flow-row { flex-direction: column; }
             .flow-arrow { transform: rotate(90deg); }
@@ -525,24 +510,26 @@
 <!-- Top Navigation Bar -->
 <div class="top-bar">
     <a href="https://comcreate.org" class="top-bar-logo" target="_blank">
-        <img src="https://www.comcreate.org/logo.png" alt="ComCreate">
+        <div class="logo-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8c2.76 0 5.19-1.4 6.63-3.53l-1.73-1c-1.07 1.6-2.9 2.63-4.9 2.63-3.31 0-6-2.69-6-6s2.69-6 6-6c2 0 3.83 1.03 4.9 2.63l1.73-1C15.19 5.4 12.76 4 12 4z"/></svg>
+        </div>
         <span>ComCreate</span>
     </a>
-    <a href="index.html" class="back-link">
-        ← Back to Blueprints
-    </a>
+    <a href="index.html" class="back-link">Back to Blueprints</a>
 </div>
 
 <header class="header">
-    <div class="header-badge">Developer Implementation Guide</div>
-    <h1>Tracking Blueprint</h1>
-    <p>Complete Google Analytics & Conversion Tracking for ComCreate's B2B Sales Landing Page</p>
-    <div class="tech-stack">
-        <span class="tech-badge">📊 GA4</span>
-        <span class="tech-badge">🏷️ GTM</span>
-        <span class="tech-badge">🎯 Google Ads</span>
-        <span class="tech-badge">📈 Enhanced Conversions</span>
-        <span class="tech-badge">📅 Cal.com</span>
+    <div class="header-inner">
+        <div class="header-badge">Developer Implementation Guide</div>
+        <h1>Tracking Blueprint</h1>
+        <p>Complete Google Analytics and Conversion Tracking for ComCreate's B2B Sales Landing Page</p>
+        <div class="tech-stack">
+            <span class="tech-badge">GA4</span>
+            <span class="tech-badge">GTM</span>
+            <span class="tech-badge">Google Ads</span>
+            <span class="tech-badge">Enhanced Conversions</span>
+            <span class="tech-badge">Cal.com</span>
+        </div>
     </div>
 </header>
 
@@ -563,15 +550,12 @@
 
 <main class="container">
 
-<!-- ============================================
-     SECTION 1: OVERVIEW
-     ============================================ -->
 <section id="overview">
-    <h2><span class="icon">🎯</span> What We're Tracking</h2>
+    <h2>What We're Tracking</h2>
 
     <div class="callout">
         <div class="callout-title">Purpose of This Document</div>
-        <p>This guide covers tracking implementation for <strong>ComCreate's B2B sales landing page</strong> — where local service business owners (plumbers, HVAC, electricians, roofers, dentists, lawyers) land from Google Ads to learn about and purchase ComCreate's marketing packages ($749/$1,099/$1,499/month).</p>
+        <p>This guide covers tracking implementation for <strong>ComCreate's B2B sales landing page</strong> - where local service business owners (plumbers, HVAC, electricians, roofers, dentists, lawyers) land from Google Ads to learn about and purchase ComCreate's marketing packages ($749/$1,099/$1,499/month).</p>
     </div>
 
     <h3>Primary Conversion Events</h3>
@@ -585,20 +569,20 @@
         <tr>
             <td><strong>Discovery Call Booked</strong></td>
             <td>Primary Conversion</td>
-            <td>$150 (avg. close rate × LTV)</td>
-            <td>🔴 Critical</td>
+            <td>$150 (avg. close rate x LTV)</td>
+            <td>Critical</td>
         </tr>
         <tr>
             <td><strong>Quote Request Submitted</strong></td>
             <td>Primary Conversion</td>
             <td>$100</td>
-            <td>🔴 Critical</td>
+            <td>Critical</td>
         </tr>
         <tr>
             <td><strong>Package Selected (Form Step 2)</strong></td>
             <td>Micro-conversion</td>
             <td>$25</td>
-            <td>🟡 Important</td>
+            <td>Important</td>
         </tr>
         <tr>
             <td><strong>Form Started</strong></td>
@@ -625,12 +609,12 @@
         <div class="card">
             <h4>Starter Package Interest</h4>
             <div class="card-value">$749/mo</div>
-            <div class="card-label">Lead Value: $75 (10% close rate × 1 month)</div>
+            <div class="card-label">Lead Value: $75 (10% close rate x 1 month)</div>
         </div>
         <div class="card highlight">
             <h4>Growth Package Interest</h4>
             <div class="card-value">$1,099/mo</div>
-            <div class="card-label">Lead Value: $110 — Most common selection</div>
+            <div class="card-label">Lead Value: $110 - Most common selection</div>
         </div>
         <div class="card">
             <h4>Scale Package Interest</h4>
@@ -640,11 +624,8 @@
     </div>
 </section>
 
-<!-- ============================================
-     SECTION 2: ARCHITECTURE
-     ============================================ -->
 <section id="architecture">
-    <h2><span class="icon">🏗️</span> Tracking Architecture</h2>
+    <h2>Tracking Architecture</h2>
 
     <h3>Data Flow Overview</h3>
     <div class="flow-diagram">
@@ -653,12 +634,12 @@
                 <h5>Google Ads</h5>
                 <span>Traffic Source</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box">
                 <h5>Landing Page</h5>
                 <span>comcreate.org/grow</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box">
                 <h5>GTM Container</h5>
                 <span>Event Capture</span>
@@ -669,12 +650,12 @@
                 <h5>Data Layer</h5>
                 <span>Event Data</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box primary">
                 <h5>GA4</h5>
                 <span>Analytics</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box conversion">
                 <h5>Google Ads</h5>
                 <span>Conversions</span>
@@ -685,12 +666,12 @@
                 <h5>Cal.com Webhook</h5>
                 <span>Booking Data</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box">
                 <h5>N8N Workflow</h5>
                 <span>Processing</span>
             </div>
-            <span class="flow-arrow">→</span>
+            <span class="flow-arrow">-></span>
             <div class="flow-box conversion">
                 <h5>CRM</h5>
                 <span>Lead Storage</span>
@@ -738,15 +719,12 @@
     </table>
 </section>
 
-<!-- ============================================
-     SECTION 3: GTM SETUP
-     ============================================ -->
 <section id="gtm">
-    <h2><span class="icon">🏷️</span> Google Tag Manager Setup</h2>
+    <h2>Google Tag Manager Setup</h2>
 
     <h3>Step 1: Install GTM Container</h3>
 
-    <div class="code-title"><span class="dot html"></span> Add to &lt;head&gt; (as high as possible, after &lt;meta&gt; tags)</div>
+    <div class="code-title"><span class="dot html"></span> Add to &lt;head&gt; (as high as possible)</div>
     <pre>&lt;!-- Google Tag Manager --&gt;
 &lt;script&gt;
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -764,7 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&l
 &lt;!-- End Google Tag Manager (noscript) --&gt;</pre>
 
     <div class="callout critical">
-        <div class="callout-title">⚠️ Replace GTM-XXXXXXX</div>
+        <div class="callout-title">Replace GTM-XXXXXXX</div>
         <p>Replace <code>GTM-XXXXXXX</code> with your actual GTM Container ID from <a href="https://tagmanager.google.com" target="_blank">tagmanager.google.com</a></p>
     </div>
 
@@ -872,22 +850,17 @@ height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&l
     </table>
 </section>
 
-<!-- ============================================
-     SECTION 4: DATA LAYER
-     ============================================ -->
 <section id="datalayer">
-    <h2><span class="icon">📦</span> Data Layer Implementation</h2>
+    <h2>Data Layer Implementation</h2>
 
     <div class="callout critical">
         <div class="callout-title">Critical Requirement</div>
         <p>The Data Layer MUST be initialized <strong>BEFORE</strong> the GTM container code loads. Place this script at the very top of your &lt;head&gt; section.</p>
     </div>
 
-    <div class="code-title"><span class="dot js"></span> data-layer-init.js — Place BEFORE GTM script in &lt;head&gt;</div>
-    <pre>// ============================================
-// ComCreate B2B Landing Page - Data Layer Initialization
+    <div class="code-title"><span class="dot js"></span> data-layer-init.js - Place BEFORE GTM script</div>
+    <pre>// ComCreate B2B Landing Page - Data Layer Initialization
 // Must load BEFORE Google Tag Manager
-// ============================================
 
 window.dataLayer = window.dataLayer || [];
 
@@ -967,17 +940,15 @@ console.log('[ComCreate] Data layer initialized');</pre>
 
     <h3>Lead Value Configuration</h3>
     <div class="code-title"><span class="dot js"></span> lead-value-config.js</div>
-    <pre>// ============================================
-// Dynamic Lead Value Calculator
+    <pre>// Dynamic Lead Value Calculator
 // Based on package selection and business type
-// ============================================
 
 const ComCreateLeadValues = {
   // Base values by package tier
   packages: {
-    'starter': 75,    // $749/mo × 10% close rate
-    'growth': 110,    // $1,099/mo × 10% close rate (most common)
-    'scale': 150      // $1,499/mo × 10% close rate
+    'starter': 75,    // $749/mo x 10% close rate
+    'growth': 110,    // $1,099/mo x 10% close rate (most common)
+    'scale': 150      // $1,499/mo x 10% close rate
   },
 
   // Multipliers by business type (based on average deal size)
@@ -1019,19 +990,16 @@ function generateTransactionId() {
 }</pre>
 </section>
 
-<!-- ============================================
-     SECTION 5: CONVERSIONS
-     ============================================ -->
 <section id="conversions">
-    <h2><span class="icon">🎯</span> Google Ads Conversion Setup</h2>
+    <h2>Google Ads Conversion Setup</h2>
 
     <h3>Step 1: Create Conversion Actions in Google Ads</h3>
-    <p>Go to Google Ads → Tools & Settings → Measurement → Conversions → + New conversion action → Website</p>
+    <p>Go to Google Ads -> Tools & Settings -> Measurement -> Conversions -> + New conversion action -> Website</p>
 
     <div class="card-grid">
         <div class="card highlight">
             <h4>Discovery Call Booked</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">
+            <p style="font-size: 13px; color: var(--gray-500);">
                 <strong>Category:</strong> Book appointment<br>
                 <strong>Value:</strong> Use different values for each conversion<br>
                 <strong>Default:</strong> $150<br>
@@ -1042,7 +1010,7 @@ function generateTransactionId() {
         </div>
         <div class="card highlight">
             <h4>Quote Request Submitted</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">
+            <p style="font-size: 13px; color: var(--gray-500);">
                 <strong>Category:</strong> Submit lead form<br>
                 <strong>Value:</strong> Use different values for each conversion<br>
                 <strong>Default:</strong> $100<br>
@@ -1053,7 +1021,7 @@ function generateTransactionId() {
         </div>
         <div class="card">
             <h4>Package Selected (Micro)</h4>
-            <p style="font-size: 14px; color: var(--text-muted);">
+            <p style="font-size: 13px; color: var(--gray-500);">
                 <strong>Category:</strong> Other<br>
                 <strong>Value:</strong> $25<br>
                 <strong>Count:</strong> One per click<br>
@@ -1068,7 +1036,7 @@ function generateTransactionId() {
     <h4>Tag 1: Conversion Linker (REQUIRED)</h4>
     <table>
         <tr><td style="width: 200px;"><strong>Tag Type</strong></td><td>Conversion Linker</td></tr>
-        <tr><td><strong>Enable linking on all page URLs</strong></td><td>✓ Checked</td></tr>
+        <tr><td><strong>Enable linking on all page URLs</strong></td><td>Checked</td></tr>
         <tr><td><strong>Trigger</strong></td><td>All Pages</td></tr>
         <tr><td><strong>Tag Priority</strong></td><td>100 (fires before other tags)</td></tr>
     </table>
@@ -1119,11 +1087,8 @@ function generateTransactionId() {
     </table>
 </section>
 
-<!-- ============================================
-     SECTION 6: MULTI-STEP FORMS
-     ============================================ -->
 <section id="forms">
-    <h2><span class="icon">📝</span> Multi-Step Form Tracking</h2>
+    <h2>Multi-Step Form Tracking</h2>
 
     <div class="callout success">
         <div class="callout-title">Why Multi-Step?</div>
@@ -1159,10 +1124,8 @@ function generateTransactionId() {
     </table>
 
     <div class="code-title"><span class="dot js"></span> multi-step-form-tracking.js</div>
-    <pre>// ============================================
-// ComCreate Multi-Step Form Tracking
+    <pre>// ComCreate Multi-Step Form Tracking
 // Tracks progression through the lead capture form
-// ============================================
 
 const FormTracker = {
   formData: {},
@@ -1316,9 +1279,6 @@ const FormTracker = {
         // Show success state
         this.form.style.display = 'none';
         document.querySelector('#form-success')?.classList.add('visible');
-
-        // Optionally redirect to calendar booking
-        // window.location.href = '/book-call?txn=' + transactionId;
       }
     })
     .catch(error => {
@@ -1331,11 +1291,8 @@ const FormTracker = {
 document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
 </section>
 
-<!-- ============================================
-     SECTION 7: CALENDAR BOOKING
-     ============================================ -->
 <section id="calendar">
-    <h2><span class="icon">📅</span> Cal.com Booking Integration</h2>
+    <h2>Cal.com Booking Integration</h2>
 
     <div class="callout">
         <div class="callout-title">Why Calendar Integration Matters</div>
@@ -1344,10 +1301,8 @@ document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
 
     <h3>Cal.com Embed Tracking</h3>
     <div class="code-title"><span class="dot js"></span> cal-booking-tracking.js</div>
-    <pre>// ============================================
-// Cal.com Booking Event Tracking
+    <pre>// Cal.com Booking Event Tracking
 // Listens for Cal.com postMessage events
-// ============================================
 
 (function() {
   // Store form data from previous steps for attribution
@@ -1448,7 +1403,7 @@ document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
 
     <h3>N8N Webhook Handler</h3>
     <p>Your N8N workflow should:</p>
-    <ol style="color: var(--text-muted); margin-left: 24px; line-height: 2;">
+    <ol style="color: var(--gray-600); margin-left: 24px; line-height: 2;">
         <li>Receive the Cal.com webhook</li>
         <li>Extract lead data and UTM parameters</li>
         <li>Create/update contact in CRM (HubSpot, Airtable, etc.)</li>
@@ -1458,11 +1413,8 @@ document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
     </ol>
 </section>
 
-<!-- ============================================
-     SECTION 8: ENHANCED CONVERSIONS
-     ============================================ -->
 <section id="enhanced">
-    <h2><span class="icon">🔐</span> Enhanced Conversions Setup</h2>
+    <h2>Enhanced Conversions Setup</h2>
 
     <div class="callout">
         <div class="callout-title">Why Enhanced Conversions?</div>
@@ -1474,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
         <div class="step-number">1</div>
         <div class="step-content">
             <h4>Enable Enhanced Conversions in Google Ads</h4>
-            <p>Go to Google Ads → Tools & Settings → Conversions → Select your conversion → Enhanced conversions → Turn on</p>
+            <p>Go to Google Ads -> Tools & Settings -> Conversions -> Select your conversion -> Enhanced conversions -> Turn on</p>
         </div>
     </div>
     <div class="step">
@@ -1530,18 +1482,15 @@ dataLayer.push({
     </div>
 </section>
 
-<!-- ============================================
-     SECTION 9: TESTING
-     ============================================ -->
 <section id="testing">
-    <h2><span class="icon">🧪</span> Testing & Validation</h2>
+    <h2>Testing & Validation</h2>
 
     <h3>GTM Preview Mode Testing</h3>
     <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
             <h4>Open GTM Preview</h4>
-            <p>In GTM, click "Preview" → Enter your landing page URL → Click "Connect"</p>
+            <p>In GTM, click "Preview" -> Enter your landing page URL -> Click "Connect"</p>
         </div>
     </div>
     <div class="step">
@@ -1549,8 +1498,8 @@ dataLayer.push({
         <div class="step-content">
             <h4>Verify Page Load Tags</h4>
             <p>Check "Tags Fired" panel. Confirm these fire on page load:<br>
-            ✓ GA4 Configuration<br>
-            ✓ Conversion Linker</p>
+            - GA4 Configuration<br>
+            - Conversion Linker</p>
         </div>
     </div>
     <div class="step">
@@ -1558,9 +1507,9 @@ dataLayer.push({
         <div class="step-content">
             <h4>Test Form Progression</h4>
             <p>Fill out the multi-step form and verify each event:<br>
-            ✓ <code>form_start</code> fires on first field focus<br>
-            ✓ <code>package_selected</code> fires when moving to step 3<br>
-            ✓ <code>quote_request</code> fires on submit</p>
+            - <code>form_start</code> fires on first field focus<br>
+            - <code>package_selected</code> fires when moving to step 3<br>
+            - <code>quote_request</code> fires on submit</p>
         </div>
     </div>
     <div class="step">
@@ -1568,9 +1517,9 @@ dataLayer.push({
         <div class="step-content">
             <h4>Verify Data Layer Values</h4>
             <p>Click on each event in Preview and check the "Data Layer" tab. Confirm:<br>
-            ✓ <code>lead_value</code> is calculated correctly<br>
-            ✓ <code>transaction_id</code> is unique<br>
-            ✓ <code>user_data</code> is populated</p>
+            - <code>lead_value</code> is calculated correctly<br>
+            - <code>transaction_id</code> is unique<br>
+            - <code>user_data</code> is populated</p>
         </div>
     </div>
 
@@ -1589,16 +1538,13 @@ if (new URLSearchParams(location.search).has('debug')) {
     return originalPush(...args);
   };
 
-  console.log(
-    '%c[ComCreate Debug Mode Enabled]',
-    'color: #A153F2; font-weight: bold; font-size: 16px;'
-  );
+  console.log('%c[ComCreate Debug Mode Enabled]', 'color: #1873FA; font-weight: bold;');
   console.log('Current dataLayer:', dataLayer);
 }</pre>
 
     <h3>GA4 Real-Time Verification</h3>
-    <p>Go to GA4 → Reports → Realtime while testing. You should see:</p>
-    <ul style="color: var(--text-muted); margin-left: 24px; line-height: 2;">
+    <p>Go to GA4 -> Reports -> Realtime while testing. You should see:</p>
+    <ul style="color: var(--gray-600); margin-left: 24px; line-height: 2;">
         <li><code>page_view</code> events as you navigate</li>
         <li><code>form_start</code> when interacting with form</li>
         <li><code>generate_lead</code> on form submission</li>
@@ -1606,19 +1552,16 @@ if (new URLSearchParams(location.search).has('debug')) {
     </ul>
 
     <h3>Google Ads Conversion Verification</h3>
-    <ol style="color: var(--text-muted); margin-left: 24px; line-height: 2;">
+    <ol style="color: var(--gray-600); margin-left: 24px; line-height: 2;">
         <li>Add <code>?gclid=test_click_123</code> to your landing page URL</li>
         <li>Complete a test conversion (form submission or booking)</li>
         <li>Wait 24-48 hours</li>
-        <li>Check Google Ads → Tools → Conversions → Status should show "Recording conversions"</li>
+        <li>Check Google Ads -> Tools -> Conversions -> Status should show "Recording conversions"</li>
     </ol>
 </section>
 
-<!-- ============================================
-     SECTION 10: CHECKLIST
-     ============================================ -->
 <section id="checklist">
-    <h2><span class="icon">✅</span> Implementation Checklist</h2>
+    <h2>Implementation Checklist</h2>
 
     <h3>GTM Container Setup</h3>
     <ul class="checklist">
@@ -1689,11 +1632,11 @@ if (new URLSearchParams(location.search).has('debug')) {
 </main>
 
 <footer>
-    <p style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">ComCreate Developer Tracking Blueprint</p>
+    <p style="font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--black);">ComCreate Developer Tracking Blueprint</p>
     <p>B2B Sales Landing Page Implementation Guide</p>
-    <p style="margin-top: 24px; font-size: 14px;">
-        <a href="https://comcreate.org">comcreate.org</a> ·
-        <a href="https://tagmanager.google.com" target="_blank">Google Tag Manager</a> ·
+    <p style="margin-top: 16px; font-size: 13px;">
+        <a href="https://comcreate.org">comcreate.org</a> |
+        <a href="https://tagmanager.google.com" target="_blank">Google Tag Manager</a> |
         <a href="https://analytics.google.com" target="_blank">Google Analytics</a>
     </p>
 </footer>
@@ -1732,10 +1675,10 @@ window.addEventListener('scroll', () => {
 
     navLinks.forEach(link => {
         link.style.background = link.getAttribute('href') === '#' + current
-            ? 'rgba(24, 115, 250, 0.2)'
+            ? 'var(--gray-100)'
             : 'transparent';
         link.style.color = link.getAttribute('href') === '#' + current
-            ? '#ffffff'
+            ? 'var(--black)'
             : '';
     });
 });
