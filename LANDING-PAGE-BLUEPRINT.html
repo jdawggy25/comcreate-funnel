@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Blueprint | ComCreate</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-purple: #8b5cf6;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --border-color: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            overflow-x: auto;
+            padding: 0 24px;
+        }
+
+        nav a {
+            display: block;
+            padding: 16px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-purple);
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        section h2 .icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 32px 0 16px;
+            color: var(--accent-purple);
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            margin: 24px 0 12px;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .card h4 {
+            margin-top: 0;
+            color: var(--text-primary);
+        }
+
+        .card.highlight {
+            border-color: var(--accent-purple);
+            background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(59,130,246,0.1));
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--bg-secondary);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: rgba(139,92,246,0.05);
+        }
+
+        /* Code blocks */
+        pre, code {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+        }
+
+        pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        code {
+            background: var(--bg-secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-green);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--accent-green);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab:hover, .tab.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-purple);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Wireframe */
+        .wireframe {
+            background: var(--bg-secondary);
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            line-height: 1.4;
+            color: var(--text-secondary);
+        }
+
+        /* Specs */
+        .spec-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin: 4px;
+            font-size: 0.875rem;
+        }
+
+        .spec-box .label {
+            color: var(--text-secondary);
+        }
+
+        .spec-box .value {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        /* Alert boxes */
+        .alert {
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+            border-left: 4px solid;
+        }
+
+        .alert.info {
+            background: rgba(59,130,246,0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .alert.warning {
+            background: rgba(249,115,22,0.1);
+            border-color: var(--accent-orange);
+        }
+
+        .alert.success {
+            background: rgba(34,197,94,0.1);
+            border-color: var(--accent-green);
+        }
+
+        .alert.danger {
+            background: rgba(239,68,68,0.1);
+            border-color: var(--accent-red);
+        }
+
+        .alert strong {
+            color: var(--text-primary);
+        }
+
+        /* Two columns */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-purple);
+        }
+
+        /* Print styles */
+        @media print {
+            nav, header {
+                display: none;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Landing Page Blueprint</h1>
+            <p>Complete guide for designing and building high-converting landing pages for local service businesses</p>
+            <div class="badge-row">
+                <span class="badge">Designer Guide</span>
+                <span class="badge">Developer Guide</span>
+                <span class="badge">Google Ads Tracking</span>
+                <span class="badge">Conversion Optimization</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#benchmarks">Benchmarks</a></li>
+                <li><a href="#designer">Designer Specs</a></li>
+                <li><a href="#copy">Copy Templates</a></li>
+                <li><a href="#tracking">Tracking Setup</a></li>
+                <li><a href="#checklist">Checklist</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- OVERVIEW SECTION -->
+    <section id="overview">
+        <div class="container">
+            <h2><span class="icon">1</span> Overview</h2>
+
+            <p>This blueprint provides everything needed to create high-converting landing pages for local service businesses (HVAC, plumbing, electrical, roofing). Use this as a reference for designers and developers.</p>
+
+            <div class="card-grid">
+                <div class="card highlight">
+                    <h4>Target Conversion Rate</h4>
+                    <p style="font-size: 2.5rem; color: var(--accent-green); margin: 16px 0;">12-15%</p>
+                    <p>Top performers achieve 15%+ for emergency services</p>
+                </div>
+                <div class="card highlight">
+                    <h4>Mobile Traffic</h4>
+                    <p style="font-size: 2.5rem; color: var(--accent-blue); margin: 16px 0;">83%</p>
+                    <p>Design mobile-first, desktop second</p>
+                </div>
+                <div class="card highlight">
+                    <h4>Page Speed Target</h4>
+                    <p style="font-size: 2.5rem; color: var(--accent-orange); margin: 16px 0;">&lt;2.5s</p>
+                    <p>LCP under 2.5 seconds for Core Web Vitals</p>
+                </div>
+            </div>
+
+            <h3>What's In This Blueprint</h3>
+            <div class="two-col">
+                <div>
+                    <h4>For Designers</h4>
+                    <ul>
+                        <li>Wireframes for desktop and mobile</li>
+                        <li>Element sizing specifications</li>
+                        <li>Color and typography guidelines</li>
+                        <li>CTA button design specs</li>
+                        <li>Form layout best practices</li>
+                        <li>Trust signal placement</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>For Developers</h4>
+                    <ul>
+                        <li>Google Tag Manager setup</li>
+                        <li>GA4 configuration</li>
+                        <li>Google Ads conversion tracking</li>
+                        <li>Phone call tracking code</li>
+                        <li>Form submission tracking</li>
+                        <li>Remarketing tags</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENCHMARKS SECTION -->
+    <section id="benchmarks">
+        <div class="container">
+            <h2><span class="icon">2</span> Industry Benchmarks</h2>
+
+            <h3>Conversion Rates by Service Type</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service Type</th>
+                        <th>Average CVR</th>
+                        <th>Top Performer</th>
+                        <th>Target</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Emergency Plumbing</td>
+                        <td>12-15%</td>
+                        <td>18%+</td>
+                        <td style="color: var(--accent-green);">15%</td>
+                    </tr>
+                    <tr>
+                        <td>HVAC Repair</td>
+                        <td>8-12%</td>
+                        <td>15%+</td>
+                        <td style="color: var(--accent-green);">12%</td>
+                    </tr>
+                    <tr>
+                        <td>Electrical Services</td>
+                        <td>7-8%</td>
+                        <td>12%+</td>
+                        <td style="color: var(--accent-green);">10%</td>
+                    </tr>
+                    <tr>
+                        <td>Roofing</td>
+                        <td>3.7%</td>
+                        <td>8%+</td>
+                        <td style="color: var(--accent-green);">8%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Core Web Vitals Targets</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Good</th>
+                        <th>Needs Improvement</th>
+                        <th>Poor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>LCP</strong> (Largest Contentful Paint)</td>
+                        <td style="color: var(--accent-green);">&le;2.5s</td>
+                        <td style="color: var(--accent-orange);">2.5s - 4.0s</td>
+                        <td style="color: var(--accent-red);">&gt;4.0s</td>
+                    </tr>
+                    <tr>
+                        <td><strong>INP</strong> (Interaction to Next Paint)</td>
+                        <td style="color: var(--accent-green);">&le;200ms</td>
+                        <td style="color: var(--accent-orange);">200ms - 500ms</td>
+                        <td style="color: var(--accent-red);">&gt;500ms</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CLS</strong> (Cumulative Layout Shift)</td>
+                        <td style="color: var(--accent-green);">&le;0.1</td>
+                        <td style="color: var(--accent-orange);">0.1 - 0.25</td>
+                        <td style="color: var(--accent-red);">&gt;0.25</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert info">
+                <strong>Note:</strong> Only 47% of websites pass Core Web Vitals. Passing gives you a competitive advantage in both SEO rankings and Google Ads Quality Score.
+            </div>
+        </div>
+    </section>
+
+    <!-- DESIGNER SPECS SECTION -->
+    <section id="designer">
+        <div class="container">
+            <h2><span class="icon">3</span> Designer Specifications</h2>
+
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('desktop')">Desktop Layout</button>
+                <button class="tab" onclick="showTab('mobile')">Mobile Layout</button>
+                <button class="tab" onclick="showTab('elements')">Element Specs</button>
+            </div>
+
+            <div id="desktop" class="tab-content active">
+                <h3>Desktop Wireframe (1440px viewport)</h3>
+                <div class="wireframe">
++---------------------------------------------------------------------------------+
+|  HEADER - Height: 80px | Padding: 0 120px | Position: Sticky                    |
+|  +-----------------------------------------------------------------------------+|
+|  | [LOGO]                 [NAV - optional]           [PHONE: (555) 123-4567]   ||
+|  | 180px max              14px text                  18px, bold, clickable     ||
+|  +-----------------------------------------------------------------------------+|
++----------------------------------------------------------------------------------+
+|  HERO SECTION - Min-height: 600px | Padding: 80px 120px                         |
+|  +-----------------------------------------------------------------------------+|
+|  |                                                                             ||
+|  |  LEFT COLUMN (55%)                |  RIGHT COLUMN (45%)                     ||
+|  |                                   |                                         ||
+|  |  [H1 HEADLINE]                    |  +-----------------------------------+  ||
+|  |  48-56px, Line-height: 1.2        |  |  LEAD CAPTURE FORM                |  ||
+|  |  Max-width: 600px                 |  |  Padding: 32px                    |  ||
+|  |                                   |  |  Background: White                |  ||
+|  |  [Subheadline]                    |  |  Border-radius: 12px              |  ||
+|  |  20-24px, opacity: 0.8            |  |                                   |  ||
+|  |  Margin-top: 16px                 |  |  [Form Title - 24px bold]         |  ||
+|  |                                   |  |                                   |  ||
+|  |  [Star Rating] 4.9 (150+ reviews) |  |  [Name Field]        <- 16px gap  |  ||
+|  |  16px, margin-top: 24px           |  |  [Phone Field]       <- 16px gap  |  ||
+|  |                                   |  |  [Service Dropdown]               |  ||
+|  |  +----------------------------+   |  |                                   |  ||
+|  |  | Licensed | Insured | 24/7  |   |  |  [  PRIMARY CTA BUTTON  ]         |  ||
+|  |  +----------------------------+   |  |  Height: 56px, full-width         |  ||
+|  |  14px badges, margin-top: 32px    |  |                                   |  ||
+|  |                                   |  |  [Lock] Your info is safe         |  ||
+|  |                                   |  +-----------------------------------+  ||
+|  +-----------------------------------------------------------------------------+|
++----------------------------------------------------------------------------------+
+|  TRUST BAR - Height: 100px | Background: Light gray                             |
+|  +-----------------------------------------------------------------------------+|
+|  |  [Logo] [Logo] [Logo] [BBB Badge] [Google Reviews]                          ||
+|  |  Logo height: 40px | Gap: 48px | Opacity: 0.7                               ||
+|  +-----------------------------------------------------------------------------+|
++----------------------------------------------------------------------------------+
+                </div>
+
+                <h4>Desktop Specifications</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;">
+                    <div class="spec-box"><span class="label">Container Max:</span><span class="value">1200px</span></div>
+                    <div class="spec-box"><span class="label">Page Margin:</span><span class="value">120px</span></div>
+                    <div class="spec-box"><span class="label">Hero Height:</span><span class="value">min 600px</span></div>
+                    <div class="spec-box"><span class="label">H1 Size:</span><span class="value">48-56px</span></div>
+                    <div class="spec-box"><span class="label">Body Text:</span><span class="value">16-18px</span></div>
+                    <div class="spec-box"><span class="label">CTA Height:</span><span class="value">56px</span></div>
+                </div>
+            </div>
+
+            <div id="mobile" class="tab-content">
+                <h3>Mobile Wireframe (375px viewport)</h3>
+                <div class="wireframe">
++-----------------------------------+
+|  STICKY HEADER - Height: 64px     |
+|  +-------------------------------+|
+|  | [LOGO]       [TAP TO CALL]    ||
+|  | 120px        44x44px button   ||
+|  +-------------------------------+|
++-----------------------------------+
+|  HERO - Padding: 24px 16px        |
+|  +-------------------------------+|
+|  |                               ||
+|  |  [H1 HEADLINE]                ||
+|  |  32-36px, centered            ||
+|  |  Line-height: 1.2             ||
+|  |                               ||
+|  |  [Subheadline - 18px]         ||
+|  |  Margin-top: 12px             ||
+|  |                               ||
+|  |  [Star Rating] 4.9 (150+)     ||
+|  |  16px, margin-top: 16px       ||
+|  |                               ||
+|  |  [ TAP TO CALL (555) 123-4567]||
+|  |  FULL WIDTH | Height: 56px    ||
+|  |  Margin-top: 24px             ||
+|  |                               ||
+|  |  [    GET FREE QUOTE    ]     ||
+|  |  FULL WIDTH | Height: 56px    ||
+|  |  Margin-top: 12px             ||
+|  |                               ||
+|  |  Licensed | Insured | 24/7    ||
+|  |  14px, centered row           ||
+|  +-------------------------------+|
++-----------------------------------+
+|  FORM SECTION - Padding: 32px 16px|
+|  +-------------------------------+|
+|  |  [Form Title - 24px]          ||
+|  |  Margin-bottom: 24px          ||
+|  |                               ||
+|  |  [Name*]       <- 48px height ||
+|  |  [________________]           ||
+|  |  Gap: 16px                    ||
+|  |                               ||
+|  |  [Phone*]      <- 48px height ||
+|  |  [________________]           ||
+|  |                               ||
+|  |  [Service Needed]             ||
+|  |  [________________]           ||
+|  |                               ||
+|  |  [  GET MY FREE QUOTE  ]      ||
+|  |  FULL WIDTH | 56px height     ||
+|  +-------------------------------+|
++-----------------------------------+
+|  STICKY FOOTER CTA                |
+|  +-------------------------------+|
+|  |  [ CALL NOW ] [ GET QUOTE ]   ||
+|  |  50% width each | 56px height ||
+|  +-------------------------------+|
++-----------------------------------+
+                </div>
+
+                <h4>Mobile Specifications</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0;">
+                    <div class="spec-box"><span class="label">Touch Target Min:</span><span class="value">48x48px</span></div>
+                    <div class="spec-box"><span class="label">Page Margin:</span><span class="value">16px</span></div>
+                    <div class="spec-box"><span class="label">H1 Size:</span><span class="value">32-36px</span></div>
+                    <div class="spec-box"><span class="label">Body Text:</span><span class="value">16px min</span></div>
+                    <div class="spec-box"><span class="label">Input Height:</span><span class="value">48px min</span></div>
+                    <div class="spec-box"><span class="label">CTA Height:</span><span class="value">56px</span></div>
+                </div>
+
+                <div class="alert warning">
+                    <strong>Critical:</strong> Input fields must be 16px font size minimum to prevent iOS zoom on focus.
+                </div>
+            </div>
+
+            <div id="elements" class="tab-content">
+                <h3>CTA Button Specifications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Desktop</th>
+                            <th>Mobile</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Min Height</td><td>48px</td><td>56px</td></tr>
+                        <tr><td>Min Width</td><td>200px</td><td>Full width</td></tr>
+                        <tr><td>Padding</td><td>16px 32px</td><td>16px 24px</td></tr>
+                        <tr><td>Font Size</td><td>18px</td><td>18px</td></tr>
+                        <tr><td>Font Weight</td><td>600-700</td><td>600-700</td></tr>
+                        <tr><td>Border Radius</td><td>8px</td><td>8px</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Recommended CTA Colors</h4>
+                <div class="card-grid">
+                    <div class="card">
+                        <div style="width: 100%; height: 60px; background: #FF6B35; border-radius: 8px; margin-bottom: 12px;"></div>
+                        <strong>Orange #FF6B35</strong>
+                        <p>Primary CTA - Energy, action</p>
+                    </div>
+                    <div class="card">
+                        <div style="width: 100%; height: 60px; background: #E53935; border-radius: 8px; margin-bottom: 12px;"></div>
+                        <strong>Red #E53935</strong>
+                        <p>Emergency services - Urgency</p>
+                    </div>
+                    <div class="card">
+                        <div style="width: 100%; height: 60px; background: #43A047; border-radius: 8px; margin-bottom: 12px;"></div>
+                        <strong>Green #43A047</strong>
+                        <p>Confirmation, eco-friendly</p>
+                    </div>
+                    <div class="card">
+                        <div style="width: 100%; height: 60px; background: #1976D2; border-radius: 8px; margin-bottom: 12px;"></div>
+                        <strong>Blue #1976D2</strong>
+                        <p>Professional, trustworthy</p>
+                    </div>
+                </div>
+
+                <h3>Form Field Specifications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Field Height</td><td>48px minimum</td></tr>
+                        <tr><td>Font Size</td><td>16px (prevents iOS zoom)</td></tr>
+                        <tr><td>Padding</td><td>12-16px internal</td></tr>
+                        <tr><td>Border</td><td>1px solid #ccc</td></tr>
+                        <tr><td>Border Radius</td><td>4-8px</td></tr>
+                        <tr><td>Field Gap</td><td>16px between fields</td></tr>
+                        <tr><td>Error Border</td><td>2px solid #DC3545</td></tr>
+                        <tr><td>Success Border</td><td>2px solid #28A745</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Recommended Form Fields</h3>
+                <div class="alert success">
+                    <strong>Optimal:</strong> 3-4 fields maximum. Reducing from 11 to 4 fields can increase conversions by 120%.
+                </div>
+                <ol>
+                    <li><strong>Name</strong> (required) - First name only acceptable</li>
+                    <li><strong>Phone</strong> (required) - Add helper text: "We'll call to confirm"</li>
+                    <li><strong>Service Needed</strong> (required) - Dropdown</li>
+                    <li><strong>Email</strong> (optional) - Mark clearly as optional</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- COPY TEMPLATES SECTION -->
+    <section id="copy">
+        <div class="container">
+            <h2><span class="icon">4</span> Copy Templates</h2>
+
+            <h3>Headline Formula</h3>
+            <div class="card highlight">
+                <code style="font-size: 1.25rem; background: none; padding: 0;">[Service Type] + [Location] + [Unique Value/Urgency]</code>
+            </div>
+
+            <h4>Headline Examples by Industry</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Industry</th>
+                        <th>Emergency Headline</th>
+                        <th>Scheduled Headline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HVAC</td>
+                        <td>"AC Stopped Working? Same-Day Repair in [City] - Call Now"</td>
+                        <td>"[City]'s Most Trusted AC Installation Since 2005"</td>
+                    </tr>
+                    <tr>
+                        <td>Plumbing</td>
+                        <td>"Burst Pipe? [City] Emergency Plumbers Here in 30 Minutes"</td>
+                        <td>"Never Worry About Plumbing Again - 5-Star Rated"</td>
+                    </tr>
+                    <tr>
+                        <td>Electrical</td>
+                        <td>"Flickering Lights? Licensed [City] Electricians Available 24/7"</td>
+                        <td>"Safe, Up-to-Code Electrical Work - [City]'s Experts"</td>
+                    </tr>
+                    <tr>
+                        <td>Roofing</td>
+                        <td>"Roof Leaking? [City] Emergency Roof Repair - We Stop Leaks Fast"</td>
+                        <td>"A Roof That Lasts 30+ Years - Premier Contractor"</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>CTA Button Copy</h3>
+            <div class="alert info">
+                <strong>First-person CTAs convert better:</strong> "Get MY Free Quote" outperforms "Get YOUR Free Quote"
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Weak</th>
+                        <th>Better</th>
+                        <th>Best</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: var(--accent-red);">Submit</td>
+                        <td style="color: var(--accent-orange);">Get Quote</td>
+                        <td style="color: var(--accent-green);">Get My Free Quote</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-red);">Contact Us</td>
+                        <td style="color: var(--accent-orange);">Schedule Service</td>
+                        <td style="color: var(--accent-green);">Schedule My Service Today</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-red);">Call</td>
+                        <td style="color: var(--accent-orange);">Call Now</td>
+                        <td style="color: var(--accent-green);">Tap to Call: (555) 123-4567</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Trust Signals to Display</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Above the Fold</h4>
+                    <ul>
+                        <li>Star rating + review count</li>
+                        <li>Google Verified badge</li>
+                        <li>"Licensed & Insured"</li>
+                        <li>Years in business</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Near Form</h4>
+                    <ul>
+                        <li>Lock icon + "Secure"</li>
+                        <li>"We never share your info"</li>
+                        <li>Response time guarantee</li>
+                        <li>Short testimonial quote</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Trust Bar</h4>
+                    <ul>
+                        <li>BBB Accredited badge</li>
+                        <li>Industry certifications</li>
+                        <li>Partner/manufacturer logos</li>
+                        <li>Satisfaction guarantee</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRACKING SECTION -->
+    <section id="tracking">
+        <div class="container">
+            <h2><span class="icon">5</span> Tracking Implementation</h2>
+
+            <div class="alert warning">
+                <strong>For Developers:</strong> Full implementation code is in <code>google-tracking-implementation-guide.md</code>. This section provides the key setup steps.
+            </div>
+
+            <h3>Tracking Stack Overview</h3>
+            <div class="wireframe">
++---------------------------------------------------------------+
+|                     LANDING PAGE                               |
+|  +-----------------------------------------------------------+|
+|  |                    DATA LAYER                              ||
+|  |  - Page data, user interactions, form data, events         ||
+|  +-----------------------------------------------------------+|
+|                            |                                   |
+|                            v                                   |
+|  +-----------------------------------------------------------+|
+|  |              GOOGLE TAG MANAGER (GTM)                      ||
+|  |  - Container manages all tags                              ||
+|  |  - Triggers fire based on events                           ||
+|  |  - Variables extract data layer values                     ||
+|  +-----------------------------------------------------------+|
+|                            |                                   |
+|              +-------------+-------------+                     |
+|              v             v             v                     |
+|      +----------+   +-----------+   +------------+            |
+|      |   GA4    |   |  Google   |   | Remarketing|            |
+|      |  Events  |   |   Ads     |   |    Tags    |            |
+|      |          |   |Conversions|   |            |            |
+|      +----------+   +-----------+   +------------+            |
++---------------------------------------------------------------+
+            </div>
+
+            <h3>What to Install</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Purpose</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Google Tag Manager</strong></td>
+                        <td>Container for all tracking tags</td>
+                        <td style="color: var(--accent-red);">Required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GA4 Property</strong></td>
+                        <td>Website analytics and events</td>
+                        <td style="color: var(--accent-red);">Required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Ads Conversion Linker</strong></td>
+                        <td>Links clicks to conversions</td>
+                        <td style="color: var(--accent-red);">Required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Form Submission Conversion</strong></td>
+                        <td>Primary conversion tracking</td>
+                        <td style="color: var(--accent-red);">Required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Phone Click Conversion</strong></td>
+                        <td>Track click-to-call</td>
+                        <td style="color: var(--accent-red);">Required</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Forwarding Numbers</strong></td>
+                        <td>Track actual phone calls</td>
+                        <td style="color: var(--accent-orange);">Recommended</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enhanced Conversions</strong></td>
+                        <td>Improved attribution</td>
+                        <td style="color: var(--accent-orange);">Recommended</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Remarketing Tags</strong></td>
+                        <td>Audience building</td>
+                        <td style="color: var(--accent-orange);">Recommended</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scroll Depth Tracking</strong></td>
+                        <td>Engagement signals</td>
+                        <td style="color: var(--accent-green);">Nice to have</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>GTM Container Code</h3>
+            <h4>Add to &lt;head&gt; (after opening tag)</h4>
+            <pre><code>&lt;!-- Google Tag Manager --&gt;
+&lt;script&gt;
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');
+&lt;/script&gt;
+&lt;!-- End Google Tag Manager --&gt;</code></pre>
+
+            <h4>Add to &lt;body&gt; (after opening tag)</h4>
+            <pre><code>&lt;!-- Google Tag Manager (noscript) --&gt;
+&lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+&lt;!-- End Google Tag Manager (noscript) --&gt;</code></pre>
+
+            <h3>Key Data Layer Events</h3>
+            <pre><code>// Form submission event
+dataLayer.push({
+  'event': 'form_submission',
+  'form_id': 'lead-form',
+  'form_name': 'Quote Request',
+  'service_requested': 'emergency_plumbing',
+  'lead_value': 250,
+  'user_data': {
+    'email': 'user@email.com',
+    'phone_number': '+15125551234'
+  }
+});
+
+// Phone click event
+dataLayer.push({
+  'event': 'phone_click',
+  'phone_number': '+15125551234',
+  'click_location': 'header'
+});</code></pre>
+
+            <h3>Conversion Actions to Create in Google Ads</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Conversion Name</th>
+                        <th>Category</th>
+                        <th>Value</th>
+                        <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lead Form Submission</td>
+                        <td>Submit lead form</td>
+                        <td>Dynamic (from data layer)</td>
+                        <td>One per click</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Click</td>
+                        <td>Phone call leads</td>
+                        <td>$50</td>
+                        <td>One per click</td>
+                    </tr>
+                    <tr>
+                        <td>Website Phone Call</td>
+                        <td>Phone calls</td>
+                        <td>$75</td>
+                        <td>One per click (60s min)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert success">
+                <strong>Full code and setup instructions:</strong> See <code>google-tracking-implementation-guide.md</code> for complete GTM tags, triggers, and variables configuration.
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKLIST SECTION -->
+    <section id="checklist">
+        <div class="container">
+            <h2><span class="icon">6</span> Implementation Checklist</h2>
+
+            <h3>Designer Checklist</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> Headline includes location + service + value proposition</li>
+                <li><input type="checkbox"> Phone number prominently displayed (click-to-call on mobile)</li>
+                <li><input type="checkbox"> Primary CTA visible without scrolling</li>
+                <li><input type="checkbox"> CTA button minimum 48px height (56px on mobile)</li>
+                <li><input type="checkbox"> Trust badges above the fold (reviews, license, years)</li>
+                <li><input type="checkbox"> Form has 3-4 fields maximum</li>
+                <li><input type="checkbox"> Form inputs minimum 48px height, 16px font</li>
+                <li><input type="checkbox"> Mobile layout is single column</li>
+                <li><input type="checkbox"> Sticky header with phone on mobile</li>
+                <li><input type="checkbox"> Sticky bottom CTA bar on mobile</li>
+                <li><input type="checkbox"> Touch targets minimum 48x48px with 8px spacing</li>
+                <li><input type="checkbox"> No horizontal scrolling on any device</li>
+                <li><input type="checkbox"> Hero image uses real photos (not stock)</li>
+                <li><input type="checkbox"> Color contrast meets WCAG 4.5:1 for text</li>
+            </ul>
+
+            <h3>Developer Checklist</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> GTM container installed (head + body)</li>
+                <li><input type="checkbox"> Data layer initialized before GTM</li>
+                <li><input type="checkbox"> GA4 configuration tag firing on all pages</li>
+                <li><input type="checkbox"> Conversion Linker tag firing on all pages</li>
+                <li><input type="checkbox"> Form submission conversion tracking working</li>
+                <li><input type="checkbox"> Phone click tracking implemented</li>
+                <li><input type="checkbox"> Enhanced conversions configured (user data)</li>
+                <li><input type="checkbox"> Remarketing tag firing on all pages</li>
+                <li><input type="checkbox"> GCLID stored in cookie for attribution</li>
+                <li><input type="checkbox"> LCP under 2.5 seconds</li>
+                <li><input type="checkbox"> INP under 200ms</li>
+                <li><input type="checkbox"> CLS under 0.1</li>
+                <li><input type="checkbox"> Images optimized (WebP with fallback)</li>
+                <li><input type="checkbox"> Critical CSS inlined</li>
+                <li><input type="checkbox"> HTTPS enabled with valid SSL</li>
+                <li><input type="checkbox"> Schema markup added (LocalBusiness, FAQ)</li>
+            </ul>
+
+            <h3>Pre-Launch Testing</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> GTM Preview Mode - all tags firing correctly</li>
+                <li><input type="checkbox"> GA4 Realtime - events appearing</li>
+                <li><input type="checkbox"> Google Ads - conversions recording</li>
+                <li><input type="checkbox"> Mobile testing on real devices (iOS + Android)</li>
+                <li><input type="checkbox"> PageSpeed Insights score above 90</li>
+                <li><input type="checkbox"> Form submission → data reaches CRM</li>
+                <li><input type="checkbox"> Phone clicks working on all platforms</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>ComCreate Landing Page Blueprint | Generated January 2026</p>
+            <p>Full documentation: <a href="landing-page-designer-guide.md">Designer Guide</a> | <a href="google-tracking-implementation-guide.md">Developer Guide</a> | <a href="local-service-landing-page-copy-guide.md">Copy Guide</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Save checklist state to localStorage
+        document.querySelectorAll('.checklist input').forEach((checkbox, index) => {
+            const key = 'checklist_' + index;
+            checkbox.checked = localStorage.getItem(key) === 'true';
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(key, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>
