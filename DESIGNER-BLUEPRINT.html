@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Blueprint | ComCreate Landing Page Specifications</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>ComCreate Landing Page Designer Blueprint</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ComCreate Brand Colors - Extracted from comcreate.org */
-            --cc-bg-primary: #070410;
-            --cc-bg-secondary: #181626;
-            --cc-bg-tertiary: #14121c;
-            --cc-blue: #3b82f6;
-            --cc-purple: #9333ea;
-            --cc-magenta: #d946ef;
-            --cc-yellow: #facc15;
-            --cc-white: #ffffff;
-            --cc-text-muted: rgba(255,255,255,0.7);
-            --cc-gradient-hero: linear-gradient(90deg, #003cc7, #700f59);
-            --cc-gradient-accent: linear-gradient(to right, #60a5fa, #c084fc);
-            --cc-border: rgba(255,255,255,0.1);
+            /* ComCreate Official Brand Colors (from VisualBranding_LogoDesign.pdf) */
+            --tech-blue: #1873FA;
+            --black: #1D1D1B;
+            --neon-violet: #A153F2;
+            --digital-sky: #3FDAF9;
+            --white: #FFFFFF;
+
+            /* Official Gradient */
+            --brand-gradient: linear-gradient(135deg, #A153F2 0%, #3FDAF9 100%);
+
+            /* UI Colors */
+            --surface: #F8FAFC;
+            --border: #E2E8F0;
+            --text-primary: #1D1D1B;
+            --text-secondary: #64748B;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
         }
 
         * {
@@ -31,1172 +34,1864 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background: var(--cc-bg-primary);
-            color: var(--cc-white);
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--surface);
+            color: var(--text-primary);
             line-height: 1.6;
         }
 
-        /* Header */
-        .header {
-            background: var(--cc-gradient-hero);
-            padding: 60px 40px;
-            text-align: center;
-        }
-
-        .header img {
-            height: 40px;
-            margin-bottom: 24px;
-        }
-
-        .header h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .header p {
-            font-size: 20px;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .badge-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 24px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Navigation */
-        .nav {
-            background: var(--cc-bg-secondary);
-            border-bottom: 1px solid var(--cc-border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 0 40px;
-        }
-
-        .nav ul {
-            display: flex;
-            list-style: none;
-            gap: 8px;
-            overflow-x: auto;
-            padding: 16px 0;
-        }
-
-        .nav a {
-            color: var(--cc-text-muted);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: all 0.2s;
-        }
-
-        .nav a:hover, .nav a.active {
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--cc-white);
-        }
-
-        /* Main Content */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
-        section {
+        /* Document Header */
+        .doc-header {
+            background: var(--black);
+            color: var(--white);
             padding: 60px 0;
-            border-bottom: 1px solid var(--cc-border);
+            text-align: center;
         }
 
-        h2 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        h2 .icon {
-            width: 48px;
-            height: 48px;
-            background: var(--cc-gradient-accent);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        h3 {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 40px 0 20px;
-            color: var(--cc-blue);
-        }
-
-        h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin: 24px 0 12px;
-        }
-
-        p {
-            color: var(--cc-text-muted);
+        .doc-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
             margin-bottom: 16px;
-        }
-
-        /* Spec Cards */
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin: 24px 0;
-        }
-
-        .spec-card {
-            background: var(--cc-bg-secondary);
-            border: 1px solid var(--cc-border);
-            border-radius: 16px;
-            padding: 24px;
-        }
-
-        .spec-card.critical {
-            border-color: var(--cc-magenta);
-            background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(59, 130, 246, 0.1));
-        }
-
-        .spec-card h4 {
-            margin-top: 0;
-            color: var(--cc-white);
-            font-size: 16px;
-        }
-
-        .spec-value {
-            font-size: 32px;
-            font-weight: 700;
-            background: var(--cc-gradient-accent);
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .spec-label {
-            font-size: 14px;
-            color: var(--cc-text-muted);
-            margin-top: 4px;
+        .doc-header p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 14px;
+        .doc-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            flex-wrap: wrap;
         }
 
-        th, td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--cc-border);
+        .doc-meta-item {
+            text-align: center;
         }
 
-        th {
-            background: var(--cc-bg-secondary);
-            color: var(--cc-blue);
-            font-weight: 600;
-            font-size: 12px;
+        .doc-meta-item label {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        tr:hover {
-            background: rgba(59, 130, 246, 0.05);
+        .doc-meta-item span {
+            font-weight: 600;
         }
 
-        /* Code Blocks */
-        .code-block {
-            background: var(--cc-bg-tertiary);
-            border: 1px solid var(--cc-border);
-            border-radius: 12px;
-            padding: 24px;
-            font-family: 'SF Mono', Monaco, monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            white-space: pre;
-            color: var(--cc-text-muted);
-            margin: 16px 0;
+        /* Navigation */
+        .doc-nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* Color Swatches */
+        .doc-nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .doc-nav a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .doc-nav a:hover {
+            background: var(--tech-blue);
+            color: var(--white);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:nth-child(even) {
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-number {
+            display: inline-block;
+            background: var(--brand-gradient);
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--black);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--black);
+        }
+
+        .card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 24px 0 12px;
+            color: var(--tech-blue);
+        }
+
+        /* Brand Colors Display */
         .color-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .color-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         .color-swatch {
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--cc-border);
-        }
-
-        .color-preview {
-            height: 80px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.875rem;
         }
 
         .color-info {
             padding: 16px;
-            background: var(--cc-bg-secondary);
         }
 
-        .color-name {
+        .color-info h4 {
+            font-size: 0.875rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin: 0 0 4px;
+            color: var(--black);
         }
 
-        .color-hex {
-            font-family: monospace;
-            font-size: 14px;
-            color: var(--cc-text-muted);
+        .color-info code {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
-        /* Wireframe Box */
-        .wireframe {
-            background: var(--cc-bg-tertiary);
-            border: 2px dashed var(--cc-border);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-            font-family: monospace;
-            font-size: 12px;
-            line-height: 1.4;
-            white-space: pre;
-            overflow-x: auto;
+        /* Typography Display */
+        .type-example {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
         }
 
-        /* Important Callout */
-        .callout {
-            background: linear-gradient(135deg, rgba(217, 70, 239, 0.15), rgba(59, 130, 246, 0.15));
-            border-left: 4px solid var(--cc-magenta);
-            padding: 20px 24px;
-            border-radius: 0 12px 12px 0;
-            margin: 24px 0;
-        }
-
-        .callout-title {
-            font-weight: 700;
-            color: var(--cc-magenta);
+        .type-example-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
             margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* Checklist */
+        /* Wireframe Containers */
+        .wireframe {
+            background: #F1F5F9;
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .wireframe-section {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .wireframe-label {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: var(--tech-blue);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Tables */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .spec-table th,
+        .spec-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .spec-table th {
+            background: var(--surface);
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .spec-table td {
+            font-size: 0.875rem;
+        }
+
+        /* Status Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-required {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .badge-recommended {
+            background: #DBEAFE;
+            color: #1D4ED8;
+        }
+
+        .badge-optional {
+            background: #E2E8F0;
+            color: #64748B;
+        }
+
+        /* Conversion Stats */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--tech-blue);
+            line-height: 1;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Lists */
         .checklist {
             list-style: none;
-            margin: 24px 0;
         }
 
         .checklist li {
             padding: 12px 0;
-            border-bottom: 1px solid var(--cc-border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            padding-left: 32px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
         }
 
-        .checklist input[type="checkbox"] {
+        .checklist li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
             width: 20px;
             height: 20px;
-            accent-color: var(--cc-blue);
+            border: 2px solid var(--tech-blue);
+            border-radius: 4px;
         }
 
-        /* Measurement Diagram */
-        .measurement-box {
-            background: var(--cc-bg-secondary);
-            border: 2px solid var(--cc-blue);
+        /* Important Notes */
+        .note {
+            background: #FFF7ED;
+            border-left: 4px solid var(--warning);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .note-title {
+            font-weight: 700;
+            color: var(--warning);
+            margin-bottom: 8px;
+        }
+
+        .critical {
+            background: #FEF2F2;
+            border-left-color: var(--error);
+        }
+
+        .critical .note-title {
+            color: var(--error);
+        }
+
+        .success-note {
+            background: #ECFDF5;
+            border-left-color: var(--success);
+        }
+
+        .success-note .note-title {
+            color: var(--success);
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: var(--black);
+            color: #E2E8F0;
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        /* Grid Layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .two-col,
+            .three-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Copy Examples */
+        .copy-example {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0;
+        }
+
+        .copy-example-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--tech-blue);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .copy-example-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1.3;
+        }
+
+        .copy-example-subtext {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* Button Examples */
+        .btn-example {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            margin: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--tech-blue);
+            color: var(--white);
+        }
+
+        .btn-gradient {
+            background: var(--brand-gradient);
+            color: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--tech-blue);
+            border: 2px solid var(--tech-blue);
+        }
+
+        /* Page Flow Diagram */
+        .page-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 40px;
+            background: var(--surface);
+            border-radius: 16px;
+            margin: 40px 0;
+        }
+
+        .flow-section {
+            background: var(--white);
+            border: 2px solid var(--border);
             border-radius: 12px;
             padding: 24px;
             position: relative;
-            margin: 24px 0;
         }
 
-        .measurement-label {
+        .flow-section:not(:last-child):after {
+            content: "";
             position: absolute;
-            background: var(--cc-blue);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 24px;
+            background: var(--tech-blue);
+        }
+
+        .flow-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .flow-section-number {
+            width: 40px;
+            height: 40px;
+            background: var(--tech-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .flow-section-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* Pricing Tier Display */
+        .pricing-wireframe {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin: 30px 0;
+        }
+
+        .pricing-tier {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            position: relative;
+        }
+
+        .pricing-tier.featured {
+            border-color: var(--tech-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-tier.featured:before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--tech-blue);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+
+        .pricing-tier h4 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+
+        .pricing-tier .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--tech-blue);
+        }
+
+        .pricing-tier .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 900px) {
+            .pricing-wireframe {
+                grid-template-columns: 1fr;
+            }
+            .pricing-tier.featured {
+                transform: none;
+            }
+        }
+
+        /* Form Wireframe */
+        .form-wireframe {
+            max-width: 500px;
+            margin: 30px auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .form-step {
+            padding: 20px;
+            background: var(--surface);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .form-field {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
         }
 
         /* Footer */
-        footer {
-            background: var(--cc-bg-secondary);
-            padding: 40px;
+        .doc-footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 0;
             text-align: center;
-            color: var(--cc-text-muted);
         }
 
-        footer a {
-            color: var(--cc-blue);
+        .doc-footer p {
+            opacity: 0.7;
+            font-size: 0.875rem;
         }
     </style>
 </head>
 <body>
+    <!-- Document Header -->
+    <header class="doc-header">
+        <div class="container">
+            <h1>ComCreate Landing Page Designer Blueprint</h1>
+            <p>Complete design specifications for ComCreate's B2B sales landing page. This page sells our marketing packages to local service business owners (plumbers, HVAC, dentists, lawyers, etc.).</p>
 
-<header class="header">
-    <img src="https://www.comcreate.org/wide-logo.png" alt="ComCreate Logo" onerror="this.style.display='none'">
-    <h1>Designer Blueprint</h1>
-    <p>Enterprise-level specifications for building the highest-converting local service landing pages</p>
-    <div class="badge-container">
-        <span class="badge">Target CVR: 12-15%</span>
-        <span class="badge">Mobile-First</span>
-        <span class="badge">Research-Backed</span>
-    </div>
-</header>
-
-<nav class="nav">
-    <ul>
-        <li><a href="#brand">Brand System</a></li>
-        <li><a href="#layout">Page Layout</a></li>
-        <li><a href="#hero">Hero Section</a></li>
-        <li><a href="#typography">Typography</a></li>
-        <li><a href="#cta">CTA Buttons</a></li>
-        <li><a href="#forms">Lead Forms</a></li>
-        <li><a href="#social-proof">Social Proof</a></li>
-        <li><a href="#mobile">Mobile Specs</a></li>
-        <li><a href="#checklist">Checklist</a></li>
-    </ul>
-</nav>
-
-<main class="container">
-
-<!-- BRAND SYSTEM -->
-<section id="brand">
-    <h2><span class="icon">🎨</span> Brand System</h2>
-
-    <h3>Primary Colors</h3>
-    <div class="color-grid">
-        <div class="color-swatch">
-            <div class="color-preview" style="background: #070410;"></div>
-            <div class="color-info">
-                <div class="color-name">Background Primary</div>
-                <div class="color-hex">#070410 | rgb(7, 4, 16)</div>
+            <div class="doc-meta">
+                <div class="doc-meta-item">
+                    <label>Document Type</label>
+                    <span>Designer Blueprint</span>
+                </div>
+                <div class="doc-meta-item">
+                    <label>Version</label>
+                    <span>2.0</span>
+                </div>
+                <div class="doc-meta-item">
+                    <label>Last Updated</label>
+                    <span>January 2026</span>
+                </div>
+                <div class="doc-meta-item">
+                    <label>Target CVR</label>
+                    <span>4-8%</span>
+                </div>
             </div>
         </div>
-        <div class="color-swatch">
-            <div class="color-preview" style="background: #181626;"></div>
-            <div class="color-info">
-                <div class="color-name">Background Secondary</div>
-                <div class="color-hex">#181626 | rgb(24, 22, 38)</div>
-            </div>
-        </div>
-        <div class="color-swatch">
-            <div class="color-preview" style="background: #3b82f6;"></div>
-            <div class="color-info">
-                <div class="color-name">Primary Blue (CTA)</div>
-                <div class="color-hex">#3b82f6 | rgb(59, 130, 246)</div>
-            </div>
-        </div>
-        <div class="color-swatch">
-            <div class="color-preview" style="background: #d946ef;"></div>
-            <div class="color-info">
-                <div class="color-name">Accent Magenta</div>
-                <div class="color-hex">#d946ef | rgb(217, 70, 239)</div>
-            </div>
-        </div>
-        <div class="color-swatch">
-            <div class="color-preview" style="background: #facc15;"></div>
-            <div class="color-info">
-                <div class="color-name">Accent Yellow</div>
-                <div class="color-hex">#facc15 | rgb(250, 204, 21)</div>
-            </div>
-        </div>
-        <div class="color-swatch">
-            <div class="color-preview" style="background: linear-gradient(90deg, #003cc7, #700f59);"></div>
-            <div class="color-info">
-                <div class="color-name">Hero Gradient</div>
-                <div class="color-hex">#003cc7 → #700f59</div>
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <h3>Typography</h3>
-    <div class="spec-grid">
-        <div class="spec-card">
-            <h4>Primary Font</h4>
-            <div class="spec-value">Space Grotesk</div>
-            <div class="spec-label">Google Fonts - sans-serif fallback</div>
-        </div>
-        <div class="spec-card">
-            <h4>Font Weights</h4>
-            <div class="spec-value">400, 500, 600, 700</div>
-            <div class="spec-label">Regular, Medium, SemiBold, Bold</div>
-        </div>
-    </div>
-
-    <h3>Border Radius</h3>
-    <table>
-        <tr>
-            <th>Element</th>
-            <th>Radius</th>
-            <th>Usage</th>
-        </tr>
-        <tr>
-            <td>Buttons</td>
-            <td><strong>12px</strong></td>
-            <td>All CTA buttons</td>
-        </tr>
-        <tr>
-            <td>Cards</td>
-            <td><strong>16px</strong></td>
-            <td>Form containers, service cards</td>
-        </tr>
-        <tr>
-            <td>Inputs</td>
-            <td><strong>8px</strong></td>
-            <td>Form fields</td>
-        </tr>
-        <tr>
-            <td>Badges</td>
-            <td><strong>20px (pill)</strong></td>
-            <td>Trust badges, tags</td>
-        </tr>
-    </table>
-</section>
-
-<!-- PAGE LAYOUT -->
-<section id="layout">
-    <h2><span class="icon">📐</span> Page Layout Structure</h2>
-
-    <div class="callout">
-        <div class="callout-title">⚠️ CRITICAL REQUIREMENT</div>
-        <p style="margin:0">82.9% of landing page traffic is mobile. Design mobile-first, then adapt for desktop.</p>
-    </div>
-
-    <h3>Desktop Wireframe (1440px viewport)</h3>
-    <div class="wireframe">
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│  HEADER BAR - Height: 48px | Background: Semi-transparent                            │
-│  [Logo 120px]                              [Phone: (XXX) XXX-XXXX] [Contact Us btn]  │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  HERO SECTION - Min-height: 600px | Padding: 80px 120px | Background: Hero Gradient  │
-│                                                                                       │
-│  ┌───────────────────────────────────┐  ┌─────────────────────────────────────────┐ │
-│  │  LEFT COLUMN (55%)                │  │  RIGHT COLUMN (45%)                     │ │
-│  │                                   │  │                                         │ │
-│  │  [H1 HEADLINE - 48-72px]          │  │  ┌─────────────────────────────────┐   │ │
-│  │  "24/7 Emergency Plumbing         │  │  │  LEAD CAPTURE FORM              │   │ │
-│  │   in [City] - 30 Min Response"    │  │  │  Background: #181626            │   │ │
-│  │                                   │  │  │  Border-radius: 16px            │   │ │
-│  │  [Subheadline - 20px]             │  │  │  Padding: 32px                  │   │ │
-│  │  "Licensed plumbers ready now"    │  │  │                                 │   │ │
-│  │                                   │  │  │  [Form Title - 24px bold]       │   │ │
-│  │  [Star Rating] ★★★★★ 4.9          │  │  │  "Get Your Free Quote"          │   │ │
-│  │  (247 Reviews)                    │  │  │                                 │   │ │
-│  │                                   │  │  │  [Name Field - 48px height]     │   │ │
-│  │  [Trust Badges Row]               │  │  │  [Phone Field - 48px height]    │   │ │
-│  │  ✓ Licensed  ✓ Insured  ✓ 24/7   │  │  │  [Service Dropdown - 48px]      │   │ │
-│  │                                   │  │  │                                 │   │ │
-│  │  [PRIMARY CTA - Optional]         │  │  │  [SUBMIT BUTTON - 56px]         │   │ │
-│  │  "Call Now: (XXX) XXX-XXXX"       │  │  │  Background: #3b82f6            │   │ │
-│  │                                   │  │  │  "Get My Free Quote"            │   │ │
-│  └───────────────────────────────────┘  │  │                                 │   │ │
-│                                         │  │  [Trust text below button]      │   │ │
-│                                         │  │  "🔒 Your info is secure"       │   │ │
-│                                         │  └─────────────────────────────────┘   │ │
-│                                         └─────────────────────────────────────────┘ │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  SOCIAL PROOF BAR - Height: 80px | Background: #181626                               │
-│  "Trusted by 2,500+ homeowners"  [Google] [BBB A+] [Yelp] [HomeAdvisor]              │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  SERVICES SECTION - Padding: 80px 120px                                              │
-│  [Section Title: "Our Services"]                                                     │
-│  [3-4 Service Cards in Grid - 300px min-width each]                                  │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  TESTIMONIALS SECTION - Padding: 80px 120px                                          │
-│  [3 Testimonial Cards with Photos, Names, Star Ratings]                              │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  HOW IT WORKS - 3 Steps with Icons                                                   │
-│  [1. Call/Book] → [2. We Arrive] → [3. Problem Solved]                               │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  FAQ SECTION - Accordion Style                                                        │
-│  [5-7 Common Questions]                                                              │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  FINAL CTA SECTION - Background: Gradient | Padding: 60px                            │
-│  [Strong headline + Form or Phone CTA]                                               │
-│                                                                                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│  FOOTER - Background: #070410                                                        │
-│  [Logo] [Contact Info] [Service Areas] [Certifications] [Copyright]                  │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-    </div>
-
-    <h3>Spacing System</h3>
-    <table>
-        <tr>
-            <th>Token</th>
-            <th>Value</th>
-            <th>Usage</th>
-        </tr>
-        <tr><td>space-xs</td><td>4px</td><td>Tight gaps, icon padding</td></tr>
-        <tr><td>space-sm</td><td>8px</td><td>Form field gaps, inline spacing</td></tr>
-        <tr><td>space-md</td><td>16px</td><td>Card padding, element margins</td></tr>
-        <tr><td>space-lg</td><td>24px</td><td>Section content gaps</td></tr>
-        <tr><td>space-xl</td><td>32px</td><td>Form container padding</td></tr>
-        <tr><td>space-2xl</td><td>48px</td><td>Between major sections</td></tr>
-        <tr><td>space-3xl</td><td>80px</td><td>Section vertical padding</td></tr>
-    </table>
-</section>
-
-<!-- HERO SECTION -->
-<section id="hero">
-    <h2><span class="icon">🎯</span> Hero Section Specifications</h2>
-
-    <div class="callout">
-        <div class="callout-title">⚠️ ABOVE THE FOLD RULE</div>
-        <p style="margin:0">57% of users spend most time viewing above-the-fold content. You have 3 seconds to capture attention.</p>
-    </div>
-
-    <h3>Required Elements (Priority Order)</h3>
-    <table>
-        <tr>
-            <th>Priority</th>
-            <th>Element</th>
-            <th>Specification</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td><strong>Headline</strong></td>
-            <td>48-72px, font-weight: 700, includes [Location] + [Service] + [Value]</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><strong>Subheadline</strong></td>
-            <td>18-20px, font-weight: 400, addresses primary pain point</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td><strong>Lead Form OR Phone CTA</strong></td>
-            <td>Form: 3-4 fields max. Phone: 24px+ clickable</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td><strong>Trust Indicators</strong></td>
-            <td>Star rating + review count + key badges</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td><strong>Visual Element</strong></td>
-            <td>Real technician photo or completed work (NO stock photos)</td>
-        </tr>
-    </table>
-
-    <h3>Hero Background Options</h3>
-    <div class="spec-grid">
-        <div class="spec-card">
-            <h4>Option A: Gradient</h4>
-            <div class="code-block">background: linear-gradient(90deg, #003cc7, #700f59);</div>
-            <p>Best for: Clean, professional look. Fast loading.</p>
-        </div>
-        <div class="spec-card">
-            <h4>Option B: Image + Overlay</h4>
-            <div class="code-block">background: linear-gradient(rgba(7,4,16,0.85), rgba(7,4,16,0.9)), url('hero.webp');
-background-size: cover;</div>
-            <p>Best for: Showing actual work. Image must be &lt;100KB WebP.</p>
-        </div>
-    </div>
-</section>
-
-<!-- TYPOGRAPHY -->
-<section id="typography">
-    <h2><span class="icon">Aa</span> Typography Scale</h2>
-
-    <table>
-        <tr>
-            <th>Element</th>
-            <th>Desktop</th>
-            <th>Mobile</th>
-            <th>Weight</th>
-            <th>Line Height</th>
-        </tr>
-        <tr>
-            <td>H1 (Hero)</td>
-            <td>72px</td>
-            <td>36px</td>
-            <td>700</td>
-            <td>1.1</td>
-        </tr>
-        <tr>
-            <td>H2 (Section)</td>
-            <td>48px</td>
-            <td>28px</td>
-            <td>700</td>
-            <td>1.2</td>
-        </tr>
-        <tr>
-            <td>H3 (Subsection)</td>
-            <td>32px</td>
-            <td>24px</td>
-            <td>600</td>
-            <td>1.3</td>
-        </tr>
-        <tr>
-            <td>H4 (Card Title)</td>
-            <td>20px</td>
-            <td>18px</td>
-            <td>600</td>
-            <td>1.4</td>
-        </tr>
-        <tr>
-            <td>Body</td>
-            <td>16px</td>
-            <td>16px</td>
-            <td>400</td>
-            <td>1.6</td>
-        </tr>
-        <tr>
-            <td>Body Large</td>
-            <td>18px</td>
-            <td>16px</td>
-            <td>400</td>
-            <td>1.6</td>
-        </tr>
-        <tr>
-            <td>Caption</td>
-            <td>14px</td>
-            <td>14px</td>
-            <td>400</td>
-            <td>1.5</td>
-        </tr>
-        <tr>
-            <td>Button Text</td>
-            <td>16px</td>
-            <td>16px</td>
-            <td>600</td>
-            <td>1.0</td>
-        </tr>
-    </table>
-
-    <h3>Headline Formula</h3>
-    <div class="code-block">[Service Type] + [Location] + [Unique Value/Urgency]
-
-Examples:
-"24/7 Emergency Plumbing in Austin - 30-Minute Response"
-"Phoenix's #1 Rated HVAC Repair - Same Day Service"
-"Licensed Electricians in Dallas - Available Now"</div>
-</section>
-
-<!-- CTA BUTTONS -->
-<section id="cta">
-    <h2><span class="icon">👆</span> CTA Button Specifications</h2>
-
-    <div class="callout">
-        <div class="callout-title">⚠️ CONVERSION IMPACT</div>
-        <p style="margin:0">Well-designed CTAs can increase conversions by 42%+. First-person language ("Get MY Quote") outperforms second-person.</p>
-    </div>
-
-    <h3>Primary CTA Button</h3>
-    <div class="spec-grid">
-        <div class="spec-card critical">
-            <h4>Desktop Dimensions</h4>
-            <div class="spec-value">56px height</div>
-            <div class="spec-label">Min-width: 200px | Padding: 16px 32px</div>
-        </div>
-        <div class="spec-card critical">
-            <h4>Mobile Dimensions</h4>
-            <div class="spec-value">56px height</div>
-            <div class="spec-label">Full-width with 16px margin | Thumb-friendly</div>
-        </div>
-        <div class="spec-card">
-            <h4>Background Color</h4>
-            <div class="spec-value">#3b82f6</div>
-            <div class="spec-label">Primary Blue - High contrast on dark</div>
-        </div>
-        <div class="spec-card">
-            <h4>Border Radius</h4>
-            <div class="spec-value">12px</div>
-            <div class="spec-label">Matches ComCreate brand style</div>
-        </div>
-    </div>
-
-    <h3>Button States</h3>
-    <table>
-        <tr>
-            <th>State</th>
-            <th>Background</th>
-            <th>Text Color</th>
-            <th>Other</th>
-        </tr>
-        <tr>
-            <td>Default</td>
-            <td>#3b82f6</td>
-            <td>#ffffff</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td>Hover</td>
-            <td>#2563eb</td>
-            <td>#ffffff</td>
-            <td>transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4)</td>
-        </tr>
-        <tr>
-            <td>Active</td>
-            <td>#1d4ed8</td>
-            <td>#ffffff</td>
-            <td>transform: translateY(0)</td>
-        </tr>
-        <tr>
-            <td>Disabled</td>
-            <td>#374151</td>
-            <td>#9ca3af</td>
-            <td>cursor: not-allowed; opacity: 0.6</td>
-        </tr>
-    </table>
-
-    <h3>CTA Copy That Converts</h3>
-    <table>
-        <tr>
-            <th>❌ Weak</th>
-            <th>✅ Strong</th>
-            <th>Why It Works</th>
-        </tr>
-        <tr>
-            <td>Submit</td>
-            <td>Get My Free Quote</td>
-            <td>First-person, specific outcome</td>
-        </tr>
-        <tr>
-            <td>Contact Us</td>
-            <td>Schedule My Service</td>
-            <td>Action-oriented, ownership</td>
-        </tr>
-        <tr>
-            <td>Learn More</td>
-            <td>Fix My [Problem] Today</td>
-            <td>Urgent, problem-solving</td>
-        </tr>
-        <tr>
-            <td>Get Started</td>
-            <td>Get Emergency Help Now</td>
-            <td>Urgency + specific action</td>
-        </tr>
-    </table>
-
-    <h3>CTA Placement Rule</h3>
-    <p><strong>Include primary CTA at least 3 times on page:</strong></p>
-    <ol style="color: var(--cc-text-muted); margin-left: 24px;">
-        <li>Above the fold (in hero or form)</li>
-        <li>After testimonials/social proof</li>
-        <li>Final section before footer</li>
-    </ol>
-</section>
-
-<!-- LEAD FORMS -->
-<section id="forms">
-    <h2><span class="icon">📝</span> Lead Form Specifications</h2>
-
-    <div class="callout">
-        <div class="callout-title">⚠️ CRITICAL STAT</div>
-        <p style="margin:0">Reducing from 11 to 4 fields produced a 120% increase in conversions. Every extra field costs you leads.</p>
-    </div>
-
-    <h3>Optimal Field Count</h3>
-    <table>
-        <tr>
-            <th>Service Type</th>
-            <th>Fields</th>
-            <th>Recommended Fields</th>
-        </tr>
-        <tr>
-            <td>Emergency Services</td>
-            <td><strong>2-3</strong></td>
-            <td>Name, Phone, (Optional: Issue)</td>
-        </tr>
-        <tr>
-            <td>Quote Requests</td>
-            <td><strong>3-4</strong></td>
-            <td>Name, Phone, Service Type, (Optional: Email)</td>
-        </tr>
-        <tr>
-            <td>Appointment Booking</td>
-            <td><strong>4-5</strong></td>
-            <td>Name, Phone, Email, Service, Preferred Time</td>
-        </tr>
-    </table>
-
-    <h3>Form Field Specifications</h3>
-    <div class="spec-grid">
-        <div class="spec-card critical">
-            <h4>Field Height</h4>
-            <div class="spec-value">48px min</div>
-            <div class="spec-label">Prevents iOS zoom, thumb-friendly</div>
-        </div>
-        <div class="spec-card critical">
-            <h4>Font Size</h4>
-            <div class="spec-value">16px min</div>
-            <div class="spec-label">Required to prevent mobile zoom</div>
-        </div>
-        <div class="spec-card">
-            <h4>Border Radius</h4>
-            <div class="spec-value">8px</div>
-            <div class="spec-label">Softer than buttons</div>
-        </div>
-        <div class="spec-card">
-            <h4>Padding</h4>
-            <div class="spec-value">14px 16px</div>
-            <div class="spec-label">Comfortable touch target</td>
-        </div>
-    </div>
-
-    <h3>Form Container Design</h3>
-    <div class="code-block">.lead-form-container {
-    background: #181626;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 32px;
-    max-width: 400px;
-}
-
-.form-field {
-    height: 48px;
-    font-size: 16px;
-    padding: 14px 16px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    color: #ffffff;
-    width: 100%;
-    margin-bottom: 16px;
-}
-
-.form-field:focus {
-    border-color: #3b82f6;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
-}</div>
-
-    <h3>Trust Elements Near Form</h3>
-    <p>Add these directly below the submit button:</p>
-    <ul class="checklist">
-        <li><input type="checkbox" checked disabled> "🔒 Your information is secure and never shared"</li>
-        <li><input type="checkbox" checked disabled> "⚡ Response within 15 minutes"</li>
-        <li><input type="checkbox" checked disabled> "✓ No obligation - Free estimate"</li>
-    </ul>
-</section>
-
-<!-- SOCIAL PROOF -->
-<section id="social-proof">
-    <h2><span class="icon">⭐</span> Social Proof Specifications</h2>
-
-    <div class="callout">
-        <div class="callout-title">⚠️ CONVERSION IMPACT</div>
-        <p style="margin:0">Displaying 5+ reviews can boost conversion rates by up to 270%. Trust badges near forms increase conversions by 42%.</p>
-    </div>
-
-    <h3>Review Display Format</h3>
-    <div class="code-block">┌─────────────────────────────────────────────────────────┐
-│  ★★★★★                                                   │
-│                                                          │
-│  "Our AC died on the hottest day of the year. Mike       │
-│  arrived in 25 minutes and had us cool within an hour.   │
-│  Fair price, no upselling."                              │
-│                                                          │
-│  — Jennifer M., North Austin                             │
-│  [Emergency AC Repair]                                   │
-└─────────────────────────────────────────────────────────┘</div>
-
-    <h3>Placement Priority</h3>
-    <table>
-        <tr>
-            <th>Location</th>
-            <th>What to Show</th>
-            <th>Conversion Lift</th>
-        </tr>
-        <tr>
-            <td>Near primary CTA</td>
-            <td>1 strong testimonial quote</td>
-            <td><strong>+15-25%</strong></td>
-        </tr>
-        <tr>
-            <td>Above the fold</td>
-            <td>Star rating + review count</td>
-            <td><strong>+10-20%</strong></td>
-        </tr>
-        <tr>
-            <td>Near form fields</td>
-            <td>Trust badges (Licensed, Insured)</td>
-            <td><strong>+42%</strong></td>
-        </tr>
-        <tr>
-            <td>Mid-page</td>
-            <td>Google Reviews carousel</td>
-            <td><strong>+8-12%</strong></td>
-        </tr>
-    </table>
-
-    <h3>Trust Badge Requirements</h3>
-    <div class="spec-grid">
-        <div class="spec-card">
-            <h4>Tier 1 - Always Show</h4>
-            <ul style="color: var(--cc-text-muted); margin-left: 16px; font-size: 14px;">
-                <li>Google Verified badge</li>
-                <li>Star rating with count</li>
-                <li>"Licensed & Insured"</li>
-                <li>Years in business</li>
+    <!-- Navigation -->
+    <nav class="doc-nav">
+        <div class="container">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#brand">Brand Guidelines</a></li>
+                <li><a href="#research">Research Insights</a></li>
+                <li><a href="#structure">Page Structure</a></li>
+                <li><a href="#hero">Hero Section</a></li>
+                <li><a href="#sections">All Sections</a></li>
+                <li><a href="#forms">Forms & CTAs</a></li>
+                <li><a href="#mobile">Mobile Design</a></li>
+                <li><a href="#copy">Copy Templates</a></li>
+                <li><a href="#checklist">Checklist</a></li>
             </ul>
         </div>
-        <div class="spec-card">
-            <h4>Tier 2 - Credentials Section</h4>
-            <ul style="color: var(--cc-text-muted); margin-left: 16px; font-size: 14px;">
-                <li>BBB A+ Rating</li>
-                <li>Industry certifications (NATE, EPA)</li>
-                <li>Manufacturer authorizations</li>
-                <li>Background check verified</li>
-            </ul>
+    </nav>
+
+    <!-- Overview Section -->
+    <section id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 1</span>
+                <h2>Project Overview</h2>
+                <p>What we're building and why it matters</p>
+            </div>
+
+            <div class="card">
+                <h3>The Mission</h3>
+                <p>Create the highest-converting landing page possible for ComCreate's marketing packages. This page is where local service business owners land after clicking our ads. Our goal: convert skeptical, time-poor business owners into qualified leads.</p>
+
+                <div class="note critical" style="margin-top: 24px;">
+                    <div class="note-title">CRITICAL: This is NOT a page for local businesses to use</div>
+                    <p>This landing page is for ComCreate to SELL TO local service businesses. Business owners land here to BUY our marketing packages. We are selling B2B marketing services, not creating templates for consumer lead generation.</p>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>Target Audience</h3>
+                    <p><strong>Who lands on this page:</strong></p>
+                    <ul style="margin-top: 16px; margin-left: 20px;">
+                        <li style="margin-bottom: 8px;"><strong>Plumbers & HVAC companies</strong> - Need consistent lead flow</li>
+                        <li style="margin-bottom: 8px;"><strong>Electricians & Roofers</strong> - Project-based, need steady work</li>
+                        <li style="margin-bottom: 8px;"><strong>Dentists</strong> - Compete with corporate chains</li>
+                        <li style="margin-bottom: 8px;"><strong>Lawyers</strong> - Need authority positioning</li>
+                        <li style="margin-bottom: 8px;"><strong>Other local service pros</strong> - Want more customers</li>
+                    </ul>
+
+                    <h4>Audience Psychology</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Time-poor and skeptical</li>
+                        <li>Many have been burned by agencies before</li>
+                        <li>Want results, not marketing jargon</li>
+                        <li>Make decisions quickly when trust is established</li>
+                        <li>68% complete buying journey on desktop</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>What We're Selling</h3>
+
+                    <div style="margin-top: 16px;">
+                        <p><strong>Starter Package</strong></p>
+                        <p style="font-size: 2rem; font-weight: 800; color: var(--tech-blue);">$749<span style="font-size: 1rem; color: var(--text-secondary);">/month</span></p>
+                        <p style="color: var(--text-secondary);">Best for: New businesses getting started</p>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <p><strong>Growth Package</strong> <span class="badge badge-recommended">Most Popular</span></p>
+                        <p style="font-size: 2rem; font-weight: 800; color: var(--tech-blue);">$1,099<span style="font-size: 1rem; color: var(--text-secondary);">/month</span></p>
+                        <p style="color: var(--text-secondary);">Best for: Growing businesses wanting consistent leads</p>
+                    </div>
+
+                    <div style="margin-top: 24px;">
+                        <p><strong>Scale Package</strong></p>
+                        <p style="font-size: 2rem; font-weight: 800; color: var(--tech-blue);">$1,499<span style="font-size: 1rem; color: var(--text-secondary);">/month</span></p>
+                        <p style="color: var(--text-secondary);">Best for: Established businesses dominating their market</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- MOBILE SPECS -->
-<section id="mobile">
-    <h2><span class="icon">📱</span> Mobile Specifications</h2>
+    <!-- Brand Guidelines -->
+    <section id="brand">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 2</span>
+                <h2>Brand Guidelines</h2>
+                <p>Official ComCreate visual identity from VisualBranding_LogoDesign.pdf - use these EXACTLY</p>
+            </div>
 
-    <div class="callout">
-        <div class="callout-title">⚠️ CRITICAL REQUIREMENT</div>
-        <p style="margin:0">82.9% of landing page traffic is mobile. These specs are non-negotiable.</p>
-    </div>
+            <div class="card">
+                <h3>Brand Colors</h3>
+                <p>These colors are from ComCreate's official brand guidelines PDF. Use them as specified.</p>
 
-    <h3>Touch Target Requirements</h3>
-    <div class="spec-grid">
-        <div class="spec-card critical">
-            <h4>Minimum Touch Target</h4>
-            <div class="spec-value">48 × 48px</div>
-            <div class="spec-label">Apple & Google accessibility standard</div>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #1873FA;">TECH BLUE</div>
+                        <div class="color-info">
+                            <h4>Tech Blue (Primary)</h4>
+                            <code>#1873FA</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Primary buttons, links, accents, CTAs</p>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #1D1D1B;">BLACK</div>
+                        <div class="color-info">
+                            <h4>Black</h4>
+                            <code>#1D1D1B</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Headlines, body text, dark backgrounds</p>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #A153F2 0%, #3FDAF9 100%);">GRADIENT</div>
+                        <div class="color-info">
+                            <h4>Neon Violet to Digital Sky</h4>
+                            <code>#A153F2 -> #3FDAF9</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Accent gradients, special emphasis elements</p>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #A153F2;">NEON VIOLET</div>
+                        <div class="color-info">
+                            <h4>Neon Violet (Accent)</h4>
+                            <code>#A153F2</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Secondary accents, gradient start point</p>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #3FDAF9; color: #1D1D1B;">DIGITAL SKY</div>
+                        <div class="color-info">
+                            <h4>Digital Sky (Accent)</h4>
+                            <code>#3FDAF9</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Highlights, gradient end point</p>
+                        </div>
+                    </div>
+
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #FFFFFF; color: #1D1D1B; border: 1px solid #E2E8F0;">WHITE</div>
+                        <div class="color-info">
+                            <h4>White</h4>
+                            <code>#FFFFFF</code>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 4px;">Backgrounds, text on dark surfaces</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Typography - Montserrat</h3>
+                <p>Use <strong>Montserrat</strong> exclusively. It's a Google Font, free to use. Available weights: Regular (400), Medium (500), SemiBold (600), Bold (700), ExtraBold (800), Black (900).</p>
+
+                <div class="code-block">/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* Font Family */
+font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;</div>
+
+                <h4>Type Scale</h4>
+
+                <div class="type-example">
+                    <div class="type-example-label">H1 - Hero Headline</div>
+                    <p style="font-size: 3rem; font-weight: 800; line-height: 1.1;">Get 15+ New Customers Every Month</p>
+                    <code>48px / 3rem, Font-weight: 800 (ExtraBold), Line-height: 1.1</code>
+                </div>
+
+                <div class="type-example">
+                    <div class="type-example-label">H2 - Section Headlines</div>
+                    <p style="font-size: 2rem; font-weight: 700; line-height: 1.2;">Here's How It Works</p>
+                    <code>32px / 2rem, Font-weight: 700 (Bold), Line-height: 1.2</code>
+                </div>
+
+                <div class="type-example">
+                    <div class="type-example-label">H3 - Subsection Headlines</div>
+                    <p style="font-size: 1.5rem; font-weight: 600; line-height: 1.3;">Transparent Pricing, No Surprises</p>
+                    <code>24px / 1.5rem, Font-weight: 600 (SemiBold), Line-height: 1.3</code>
+                </div>
+
+                <div class="type-example">
+                    <div class="type-example-label">Body Text</div>
+                    <p style="font-size: 1.125rem; font-weight: 400; line-height: 1.6;">We handle your entire online presence so you can focus on running your business. No long-term contracts, no confusing reports.</p>
+                    <code>18px / 1.125rem, Font-weight: 400 (Regular), Line-height: 1.6</code>
+                </div>
+
+                <div class="type-example">
+                    <div class="type-example-label">Small/Caption Text</div>
+                    <p style="font-size: 0.875rem; font-weight: 400; line-height: 1.5; color: var(--text-secondary);">No credit card required. Cancel anytime.</p>
+                    <code>14px / 0.875rem, Font-weight: 400, Color: #64748B</code>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Logo Usage</h3>
+                <p>ComCreate logo features a "C" with a star inside. Available in stacked (COM/CREATE) or horizontal (COMCREATE) versions.</p>
+
+                <div class="two-col" style="margin-top: 20px;">
+                    <div style="background: var(--black); padding: 40px; border-radius: 12px; text-align: center;">
+                        <p style="color: var(--white); font-weight: 700; margin-bottom: 8px;">Logo on Dark Background</p>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem;">Use white/light version of logo</p>
+                    </div>
+                    <div style="background: var(--white); padding: 40px; border-radius: 12px; text-align: center; border: 1px solid var(--border);">
+                        <p style="color: var(--black); font-weight: 700; margin-bottom: 8px;">Logo on Light Background</p>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem;">Use dark/colored version of logo</p>
+                    </div>
+                </div>
+
+                <div class="note" style="margin-top: 20px;">
+                    <div class="note-title">Official Tagline</div>
+                    <p><strong>"Your All in One Digital Partner"</strong> - Use this tagline in appropriate contexts, particularly in the hero or footer sections.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Button Styles</h3>
+
+                <div style="margin: 30px 0; text-align: center;">
+                    <a href="#" class="btn-example btn-primary">Get Your Free Marketing Audit</a>
+                    <a href="#" class="btn-example btn-gradient">Book a Strategy Call</a>
+                    <a href="#" class="btn-example btn-outline">See Pricing</a>
+                </div>
+
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Button Type</th>
+                            <th>Background</th>
+                            <th>Text Color</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primary</td>
+                            <td><code>#1873FA</code> (Tech Blue)</td>
+                            <td><code>#FFFFFF</code></td>
+                            <td>Main CTA - "Get Free Audit"</td>
+                        </tr>
+                        <tr>
+                            <td>Gradient</td>
+                            <td>Violet to Sky gradient</td>
+                            <td><code>#FFFFFF</code></td>
+                            <td>Special emphasis CTAs</td>
+                        </tr>
+                        <tr>
+                            <td>Outline</td>
+                            <td>Transparent</td>
+                            <td><code>#1873FA</code></td>
+                            <td>Secondary actions - "See Pricing"</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Button Specifications</h4>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Padding:</strong> 16px 32px (vertical/horizontal)</li>
+                    <li><strong>Border Radius:</strong> 8px</li>
+                    <li><strong>Font Weight:</strong> 700 (Bold)</li>
+                    <li><strong>Font Size:</strong> 16px / 1rem</li>
+                    <li><strong>Min Width:</strong> 200px on desktop</li>
+                    <li><strong>Hover State:</strong> Darken 10% or add subtle shadow</li>
+                </ul>
+            </div>
         </div>
-        <div class="spec-card critical">
-            <h4>CTA Button Height</h4>
-            <div class="spec-value">56px</div>
-            <div class="spec-label">Full-width on mobile</div>
+    </section>
+
+    <!-- Research Insights -->
+    <section id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 3</span>
+                <h2>Research-Backed Design Decisions</h2>
+                <p>Data-driven insights that inform every design choice</p>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">4-8%</div>
+                    <div class="stat-label">Target Conversion Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">743%</div>
+                    <div class="stat-label">Multi-step form improvement</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">66.7%</div>
+                    <div class="stat-label">Form + calendar book rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">86%</div>
+                    <div class="stat-label">Video testimonial lift</div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>What Research Tells Us</h3>
+
+                    <h4>Form Fields</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>5 or fewer fields = <strong>120% better conversion</strong></li>
+                        <li>Each additional field = 20-30% penalty</li>
+                        <li>Multi-step forms convert up to <strong>743% better</strong></li>
+                        <li>Form + instant scheduling = 66.7% book meetings</li>
+                    </ul>
+
+                    <h4>Social Proof</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Video testimonials are <strong>80-86% more effective</strong> than text</li>
+                        <li>Industry-specific case studies perform <strong>5x better</strong></li>
+                        <li>Client logos can increase conversions by <strong>400%</strong></li>
+                        <li>89% of B2B buyers consider reviews essential</li>
+                    </ul>
+
+                    <h4>Pricing Display</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>70% of competitors hide pricing</strong> - opportunity!</li>
+                        <li>Transparent pricing builds trust with skeptical buyers</li>
+                        <li>Pre-qualifies leads who can afford services</li>
+                        <li>Middle tier should be highlighted as "Most Popular"</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Critical Design Rules</h3>
+
+                    <div class="note critical">
+                        <div class="note-title">DO NOT Include Navigation Menu</div>
+                        <p>"Having a navigation menu provides visitors with too many options" - visitors click away instead of converting. Remove top nav completely from landing page.</p>
+                    </div>
+
+                    <div class="note success-note">
+                        <div class="note-title">DO Show Pricing Transparently</div>
+                        <p>Our audience is time-poor business owners who want to know costs upfront. Don't make them guess or fill out forms just to see prices.</p>
+                    </div>
+
+                    <div class="note">
+                        <div class="note-title">MUST Load Under 3 Seconds</div>
+                        <p>53% abandon pages taking over 3 seconds. Compress all images, use lazy loading below fold, minimize JavaScript.</p>
+                    </div>
+
+                    <h4>Reading Level</h4>
+                    <p>All copy should be at <strong>5th-7th grade reading level</strong>. Pages at this level convert at 11.1% vs 5.3% for college-level copy.</p>
+
+                    <h4>Above the Fold Must Include</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Clear headline with value proposition</li>
+                        <li>Subheadline expanding on benefit</li>
+                        <li>Primary CTA button (high contrast)</li>
+                        <li>One trust signal (logo bar or stat)</li>
+                        <li>Hero visual (results dashboard or video thumbnail)</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="spec-card critical">
-            <h4>Spacing Between Targets</h4>
-            <div class="spec-value">8px min</div>
-            <div class="spec-label">Prevents mis-taps</div>
+    </section>
+
+    <!-- Page Structure -->
+    <section id="structure">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 4</span>
+                <h2>Complete Page Structure</h2>
+                <p>The exact order and purpose of every section</p>
+            </div>
+
+            <div class="page-flow">
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">1</div>
+                        <div class="flow-section-title">Hero Section (Above the Fold)</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Capture attention in 5 seconds, communicate value, enable immediate conversion</p>
+                    <p><strong>Height:</strong> Full viewport (100vh)</p>
+                    <p><strong>Elements:</strong> Headline, subheadline, primary CTA, trust logos, hero visual</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">2</div>
+                        <div class="flow-section-title">Problem Agitation</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Connect with visitor's pain points, show you understand their situation</p>
+                    <p><strong>Elements:</strong> 3-4 specific pain points, "burned by agencies" acknowledgment</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">3</div>
+                        <div class="flow-section-title">Solution Introduction</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Position ComCreate as the answer to their problems</p>
+                    <p><strong>Elements:</strong> Brief overview, 3 key differentiators with icons</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">4</div>
+                        <div class="flow-section-title">How It Works (3 Steps)</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Reduce uncertainty, show simplicity of getting started</p>
+                    <p><strong>Elements:</strong> 3 numbered steps with icons/illustrations</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">5</div>
+                        <div class="flow-section-title">Social Proof Section</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Build trust through real customer proof</p>
+                    <p><strong>Elements:</strong> Video testimonials (priority), written testimonials with metrics, case study snippets</p>
+                    <p><strong>CTA:</strong> Yes - place CTA after testimonials</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">6</div>
+                        <div class="flow-section-title">Pricing & Packages</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Help qualified buyers self-select, demonstrate transparency</p>
+                    <p><strong>Elements:</strong> 3 pricing tiers, feature comparison, "Most Popular" badge on $1,099</p>
+                    <p><strong>CTA:</strong> Yes - one CTA per tier</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">7</div>
+                        <div class="flow-section-title">FAQ / Objection Handling</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Address remaining concerns before they become barriers</p>
+                    <p><strong>Elements:</strong> 5-7 expandable FAQ items addressing common objections</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">8</div>
+                        <div class="flow-section-title">Final CTA Section</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Last chance conversion with strong value recap</p>
+                    <p><strong>Elements:</strong> Benefit recap, primary CTA, guarantee messaging, phone number</p>
+                </div>
+
+                <div class="flow-section">
+                    <div class="flow-section-header">
+                        <div class="flow-section-number">9</div>
+                        <div class="flow-section-title">Minimal Footer</div>
+                    </div>
+                    <p><strong>Purpose:</strong> Legal requirements, contact info only</p>
+                    <p><strong>Elements:</strong> Contact info, privacy policy, terms - keep minimal to avoid distraction</p>
+                </div>
+            </div>
         </div>
-        <div class="spec-card critical">
-            <h4>Form Field Height</h4>
-            <div class="spec-value">48px min</div>
-            <div class="spec-label">Font-size: 16px to prevent zoom</div>
+    </section>
+
+    <!-- Hero Section Details -->
+    <section id="hero">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 5</span>
+                <h2>Hero Section Detailed Specs</h2>
+                <p>The most critical section - where 80% of user attention is focused</p>
+            </div>
+
+            <div class="wireframe">
+                <h3 style="text-align: center; margin-bottom: 24px;">Hero Section Wireframe (Desktop)</h3>
+
+                <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; min-height: 500px;">
+                    <!-- Left Side -->
+                    <div>
+                        <div class="wireframe-section">
+                            <span class="wireframe-label">Headline</span>
+                            <p style="font-size: 2.5rem; font-weight: 800; line-height: 1.1; margin-top: 20px;">Get 15+ New Customers Every Month</p>
+                            <p style="font-size: 1rem; color: var(--text-secondary); margin-top: 8px;">(Or We Work Free Until You Do)</p>
+                        </div>
+
+                        <div class="wireframe-section">
+                            <span class="wireframe-label">Subheadline</span>
+                            <p style="font-size: 1.125rem; color: var(--text-secondary); margin-top: 16px;">Done-for-you marketing for local service businesses. No contracts. No BS. Just results you can measure.</p>
+                        </div>
+
+                        <div class="wireframe-section">
+                            <span class="wireframe-label">CTA Buttons</span>
+                            <div style="margin-top: 20px;">
+                                <a href="#" class="btn-example btn-primary">Get Your Free Marketing Audit</a>
+                                <a href="#" class="btn-example btn-outline">See Pricing</a>
+                            </div>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 12px;">No credit card required. Takes 2 minutes.</p>
+                        </div>
+
+                        <div class="wireframe-section">
+                            <span class="wireframe-label">Trust Bar</span>
+                            <div style="margin-top: 16px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+                                <p style="font-weight: 600;">Trusted by 500+ Local Businesses</p>
+                                <div style="display: flex; gap: 16px;">
+                                    <div style="width: 80px; height: 30px; background: var(--border); border-radius: 4px;"></div>
+                                    <div style="width: 80px; height: 30px; background: var(--border); border-radius: 4px;"></div>
+                                    <div style="width: 80px; height: 30px; background: var(--border); border-radius: 4px;"></div>
+                                    <div style="width: 80px; height: 30px; background: var(--border); border-radius: 4px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side -->
+                    <div>
+                        <div class="wireframe-section" style="height: 100%;">
+                            <span class="wireframe-label">Hero Visual</span>
+                            <div style="height: 100%; min-height: 400px; background: linear-gradient(135deg, rgba(161,83,242,0.1) 0%, rgba(63,218,249,0.1) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-top: 16px;">
+                                <div style="text-align: center;">
+                                    <p style="font-weight: 600; margin-bottom: 8px;">Option A: Dashboard Screenshot</p>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">Showing real client results/metrics</p>
+                                    <p style="margin: 16px 0; font-weight: 600;">- OR -</p>
+                                    <p style="font-weight: 600; margin-bottom: 8px;">Option B: Video Thumbnail</p>
+                                    <p style="font-size: 0.875rem; color: var(--text-secondary);">With play button overlay</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Hero Copy Options (A/B Test These)</h3>
+
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline Option A (Outcome-Focused)</div>
+                    <div class="copy-example-text">Get 15+ New Customers Every Month (Guaranteed)</div>
+                    <div class="copy-example-subtext">Done-for-you marketing for local service businesses. No contracts. No BS.</div>
+                </div>
+
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline Option B (Pain-Focused)</div>
+                    <div class="copy-example-text">Finally, Marketing That Actually Works</div>
+                    <div class="copy-example-subtext">Tired of agencies that promise the moon and deliver excuses? We get it. Here's what's different.</div>
+                </div>
+
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline Option C (Social Proof)</div>
+                    <div class="copy-example-text">Join 500+ Contractors Who Never Worry About Finding Work</div>
+                    <div class="copy-example-subtext">The same marketing system that fills their calendars can fill yours too.</div>
+                </div>
+
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline Option D (Direct Benefit)</div>
+                    <div class="copy-example-text">More Jobs. Less Stress. Guaranteed Results.</div>
+                    <div class="copy-example-subtext">One partner handles everything - website, SEO, ads, reputation - so you can focus on your business.</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Hero Section Specifications</h3>
+
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Specification</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Section Height</td>
+                            <td>100vh (full viewport) minimum</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Background</td>
+                            <td>White or very light gray (#F8FAFC)</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Layout</td>
+                            <td>Split screen: 60% left (copy), 40% right (visual)</td>
+                            <td><span class="badge badge-recommended">Recommended</span></td>
+                        </tr>
+                        <tr>
+                            <td>Headline Font</td>
+                            <td>Montserrat, 48-64px, weight 800</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Primary CTA</td>
+                            <td>Tech Blue (#1873FA), full padding, high contrast</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Trust Bar</td>
+                            <td>Logo bar OR stat ("Trusted by 500+") - one trust element</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Navigation</td>
+                            <td>NONE - remove completely from landing page</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Video Thumbnail</td>
+                            <td>If using video, show thumbnail with play button overlay</td>
+                            <td><span class="badge badge-recommended">Recommended</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <h3>Mobile Wireframe (375px viewport)</h3>
-    <div class="wireframe">
-┌─────────────────────────────────┐
-│  HEADER - Height: 56px          │
-│  [Logo]     [📞 Call Now btn]   │
-├─────────────────────────────────┤
-│                                 │
-│  HERO - Padding: 24px           │
-│                                 │
-│  [H1 - 36px, 2-3 lines max]     │
-│  "24/7 Emergency Plumbing       │
-│   in Austin"                    │
-│                                 │
-│  [Subhead - 16px]               │
-│  "30-minute response guaranteed"│
-│                                 │
-│  [★★★★★ 4.9 (247 reviews)]      │
-│                                 │
-│  ┌─────────────────────────┐    │
-│  │  FORM CONTAINER         │    │
-│  │  [Name - 48px]          │    │
-│  │  [Phone - 48px]         │    │
-│  │  [Service - 48px]       │    │
-│  │                         │    │
-│  │  [CTA BUTTON - 56px]    │    │
-│  │  "Get My Free Quote"    │    │
-│  │                         │    │
-│  │  🔒 Your info is secure │    │
-│  └─────────────────────────┘    │
-│                                 │
-├─────────────────────────────────┤
-│  TRUST BAR                      │
-│  ✓ Licensed ✓ Insured ✓ 24/7   │
-├─────────────────────────────────┤
-│                                 │
-│  [Services - Stacked cards]     │
-│  [Testimonials - Carousel]      │
-│  [How It Works - Vertical]      │
-│  [FAQ - Accordion]              │
-│  [Final CTA]                    │
-│  [Footer]                       │
-│                                 │
-├─────────────────────────────────┤
-│  STICKY BOTTOM CTA - 64px       │
-│  [📞 Call]  [📝 Get Quote]      │
-│  Full-width, fixed position     │
-└─────────────────────────────────┘</div>
+    <!-- All Sections Detailed -->
+    <section id="sections">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 6</span>
+                <h2>All Section Wireframes</h2>
+                <p>Detailed specifications for every section of the landing page</p>
+            </div>
 
-    <h3>Sticky Bottom CTA Bar</h3>
-    <div class="code-block">.sticky-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 64px;
-    background: #181626;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    gap: 8px;
-    padding: 8px 16px;
-    z-index: 1000;
-}
+            <!-- Problem Section -->
+            <div class="card">
+                <h3>Section 2: Problem Agitation</h3>
+                <p>Purpose: Show you understand their pain before pitching the solution</p>
 
-.sticky-cta button {
-    flex: 1;
-    height: 48px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-}
+                <div class="wireframe" style="max-width: 800px; margin: 30px auto;">
+                    <div style="text-align: center;">
+                        <h4 style="font-size: 1.75rem; font-weight: 700; margin-bottom: 24px;">You Didn't Start a Business to Become a Full-Time Marketer</h4>
+                        <p style="font-size: 1.125rem; color: var(--text-secondary); margin-bottom: 32px;">But here you are: watching competitors take jobs that should be yours while you waste time on marketing that doesn't work.</p>
+                    </div>
 
-/* Conversion impact: +6-18% on mobile */</div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <div style="background: var(--white); padding: 24px; border-radius: 12px; border-left: 4px solid var(--error);">
+                            <p style="font-weight: 600;">Inconsistent Lead Flow</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">Feast or famine makes it hard to plan</p>
+                        </div>
+                        <div style="background: var(--white); padding: 24px; border-radius: 12px; border-left: 4px solid var(--error);">
+                            <p style="font-weight: 600;">Burned by Agencies</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">Paid for promises, got excuses instead</p>
+                        </div>
+                        <div style="background: var(--white); padding: 24px; border-radius: 12px; border-left: 4px solid var(--error);">
+                            <p style="font-weight: 600;">No Time to Figure It Out</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">You're too busy running your business</p>
+                        </div>
+                        <div style="background: var(--white); padding: 24px; border-radius: 12px; border-left: 4px solid var(--error);">
+                            <p style="font-weight: 600;">Competitors Winning</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">They're getting jobs that should be yours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>Click-to-Call Implementation</h3>
-    <div class="code-block">&lt;a href="tel:+15125551234"
-   class="phone-cta"
-   data-track="phone-click"
-   data-location="header"&gt;
-  📞 (512) 555-1234
-&lt;/a&gt;
+            <!-- How It Works Section -->
+            <div class="card">
+                <h3>Section 4: How It Works (3 Steps)</h3>
+                <p>Purpose: Reduce uncertainty, show simplicity of getting started</p>
 
-/* Requirements:
-   - Must use tel: protocol
-   - Include visible phone icon
-   - "Tap to Call" label on mobile
-   - Minimum 48x48px touch target
-*/</div>
-</section>
+                <div class="wireframe" style="max-width: 900px; margin: 30px auto;">
+                    <div style="text-align: center; margin-bottom: 40px;">
+                        <h4 style="font-size: 1.75rem; font-weight: 700;">Getting Started is Simple</h4>
+                    </div>
 
-<!-- CHECKLIST -->
-<section id="checklist">
-    <h2><span class="icon">✅</span> Designer Checklist</h2>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+                        <div style="text-align: center;">
+                            <div style="width: 60px; height: 60px; background: var(--tech-blue); color: white; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800;">1</div>
+                            <p style="font-weight: 700; font-size: 1.125rem; margin-bottom: 8px;">Tell Us About Your Business</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">Quick 15-minute call to understand your goals and market</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 60px; height: 60px; background: var(--tech-blue); color: white; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800;">2</div>
+                            <p style="font-weight: 700; font-size: 1.125rem; margin-bottom: 8px;">We Build Your Marketing Machine</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">We handle the strategy, setup, and execution. You approve.</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 60px; height: 60px; background: var(--tech-blue); color: white; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800;">3</div>
+                            <p style="font-weight: 700; font-size: 1.125rem; margin-bottom: 8px;">Watch Your Phone Ring</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary);">New customers come to you. Track everything in your dashboard.</p>
+                        </div>
+                    </div>
 
-    <h3>Above the Fold</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> Headline includes location + service + value prop</li>
-        <li><input type="checkbox"> Phone number prominently displayed (click-to-call on mobile)</li>
-        <li><input type="checkbox"> Primary CTA visible without scrolling</li>
-        <li><input type="checkbox"> Trust indicators visible (rating, badges, years)</li>
-        <li><input type="checkbox"> Form OR phone CTA above fold</li>
-    </ul>
+                    <div style="text-align: center; margin-top: 40px;">
+                        <a href="#" class="btn-example btn-primary">Get Started Today</a>
+                    </div>
+                </div>
+            </div>
 
-    <h3>CTA Design</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> Primary CTA is #3b82f6 (high contrast)</li>
-        <li><input type="checkbox"> Button height: 56px</li>
-        <li><input type="checkbox"> First-person copy ("Get My Quote")</li>
-        <li><input type="checkbox"> CTA appears 3+ times on page</li>
-        <li><input type="checkbox"> Sticky mobile CTA implemented</li>
-    </ul>
+            <!-- Pricing Section -->
+            <div class="card">
+                <h3>Section 6: Pricing & Packages</h3>
+                <p>Purpose: Transparent pricing builds trust - 70% of competitors hide it (our competitive advantage)</p>
 
-    <h3>Form Design</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> 3-4 fields maximum</li>
-        <li><input type="checkbox"> Field height: 48px minimum</li>
-        <li><input type="checkbox"> Font size: 16px minimum (prevents iOS zoom)</li>
-        <li><input type="checkbox"> Trust elements near form</li>
-        <li><input type="checkbox"> Clear submit button with action text</li>
-    </ul>
+                <div class="pricing-wireframe">
+                    <div class="pricing-tier">
+                        <h4>Starter</h4>
+                        <div class="price">$749<span>/mo</span></div>
+                        <p style="color: var(--text-secondary); margin: 16px 0;">Best for new businesses getting started</p>
+                        <ul style="text-align: left; font-size: 0.875rem; margin: 24px 0; list-style: none;">
+                            <li style="margin-bottom: 8px;">&#10003; Professional Website</li>
+                            <li style="margin-bottom: 8px;">&#10003; Google Business Optimization</li>
+                            <li style="margin-bottom: 8px;">&#10003; Basic SEO Setup</li>
+                            <li style="margin-bottom: 8px;">&#10003; Monthly Reporting</li>
+                            <li style="margin-bottom: 8px;">&#10003; Email Support</li>
+                        </ul>
+                        <a href="#" class="btn-example btn-outline" style="width: 100%; margin: 0; display: block; text-align: center;">Get Started</a>
+                    </div>
 
-    <h3>Mobile Requirements</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> Touch targets: 48x48px minimum</li>
-        <li><input type="checkbox"> Single column layout</li>
-        <li><input type="checkbox"> No horizontal scrolling</li>
-        <li><input type="checkbox"> Sticky bottom CTA bar</li>
-        <li><input type="checkbox"> Click-to-call works</li>
-    </ul>
+                    <div class="pricing-tier featured">
+                        <h4>Growth</h4>
+                        <div class="price">$1,099<span>/mo</span></div>
+                        <p style="color: var(--text-secondary); margin: 16px 0;">Best for growing businesses wanting consistent leads</p>
+                        <ul style="text-align: left; font-size: 0.875rem; margin: 24px 0; list-style: none;">
+                            <li style="margin-bottom: 8px;">&#10003; Everything in Starter</li>
+                            <li style="margin-bottom: 8px;">&#10003; Google Ads Management</li>
+                            <li style="margin-bottom: 8px;">&#10003; Facebook/Instagram Ads</li>
+                            <li style="margin-bottom: 8px;">&#10003; Review Management</li>
+                            <li style="margin-bottom: 8px;">&#10003; Dedicated Account Manager</li>
+                            <li style="margin-bottom: 8px;">&#10003; Phone & Email Support</li>
+                        </ul>
+                        <a href="#" class="btn-example btn-primary" style="width: 100%; margin: 0; display: block; text-align: center;">Get Started</a>
+                    </div>
 
-    <h3>Social Proof</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> Star rating with review count above fold</li>
-        <li><input type="checkbox"> 3+ testimonials with real names</li>
-        <li><input type="checkbox"> Trust badges near form</li>
-        <li><input type="checkbox"> Google/BBB badges visible</li>
-    </ul>
+                    <div class="pricing-tier">
+                        <h4>Scale</h4>
+                        <div class="price">$1,499<span>/mo</span></div>
+                        <p style="color: var(--text-secondary); margin: 16px 0;">Best for established businesses dominating their market</p>
+                        <ul style="text-align: left; font-size: 0.875rem; margin: 24px 0; list-style: none;">
+                            <li style="margin-bottom: 8px;">&#10003; Everything in Growth</li>
+                            <li style="margin-bottom: 8px;">&#10003; Advanced SEO Campaign</li>
+                            <li style="margin-bottom: 8px;">&#10003; Custom Landing Pages</li>
+                            <li style="margin-bottom: 8px;">&#10003; Video Content Creation</li>
+                            <li style="margin-bottom: 8px;">&#10003; Priority Support</li>
+                            <li style="margin-bottom: 8px;">&#10003; Quarterly Strategy Reviews</li>
+                        </ul>
+                        <a href="#" class="btn-example btn-outline" style="width: 100%; margin: 0; display: block; text-align: center;">Get Started</a>
+                    </div>
+                </div>
 
-    <h3>Performance</h3>
-    <ul class="checklist">
-        <li><input type="checkbox"> Total page weight: &lt;1MB</li>
-        <li><input type="checkbox"> Images: WebP format, &lt;100KB each</li>
-        <li><input type="checkbox"> Hero image has width/height set (prevents CLS)</li>
-        <li><input type="checkbox"> No render-blocking resources above fold</li>
-    </ul>
-</section>
+                <div style="text-align: center; margin-top: 30px; padding: 24px; background: var(--surface); border-radius: 12px;">
+                    <p style="font-weight: 600; margin-bottom: 8px;">No long-term contracts. Cancel anytime.</p>
+                    <p style="color: var(--text-secondary);">Not sure which plan is right? <a href="#" style="color: var(--tech-blue);">Book a free call</a> and we'll help you decide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</main>
+    <!-- Forms & CTAs -->
+    <section id="forms">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 7</span>
+                <h2>Forms & CTA Design</h2>
+                <p>Multi-step forms convert up to 743% better - here's how to implement</p>
+            </div>
 
-<footer>
-    <p>ComCreate Designer Blueprint v1.0 | <a href="https://comcreate.org">comcreate.org</a></p>
-    <p style="margin-top: 8px; font-size: 14px;">Research compiled from conversion optimization studies, industry benchmarks, and platform documentation.</p>
-</footer>
+            <div class="two-col">
+                <div class="card">
+                    <h3>Multi-Step Form Structure</h3>
+                    <p>Research shows multi-step forms convert dramatically better (13.9% vs 4.5%). Here's the recommended structure:</p>
 
-<script>
-// Save checklist state to localStorage
-document.querySelectorAll('.checklist input[type="checkbox"]').forEach((checkbox, index) => {
-    const key = 'designer-checklist-' + index;
-    checkbox.checked = localStorage.getItem(key) === 'true';
-    checkbox.addEventListener('change', () => {
-        localStorage.setItem(key, checkbox.checked);
+                    <div class="form-wireframe" style="margin-top: 24px;">
+                        <div class="form-step">
+                            <p style="font-weight: 700; color: var(--tech-blue); margin-bottom: 12px;">Step 1 of 3: About Your Business</p>
+                            <div class="form-field">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">What type of business do you have?</p>
+                                <p style="font-weight: 500;">[Dropdown: Plumbing, HVAC, Electrical, Roofing, Dental, Legal, Other]</p>
+                            </div>
+                            <div class="form-field">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">What's your biggest marketing challenge?</p>
+                                <p style="font-weight: 500;">[Dropdown: Need more leads, Inconsistent lead flow, Poor online presence, Don't know what works]</p>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <p style="font-weight: 700; color: var(--tech-blue); margin-bottom: 12px;">Step 2 of 3: Contact Info</p>
+                            <div class="form-field">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">Your name</p>
+                            </div>
+                            <div class="form-field">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">Email address</p>
+                            </div>
+                            <div class="form-field">
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">Phone number (optional)</p>
+                            </div>
+                        </div>
+
+                        <div class="form-step">
+                            <p style="font-weight: 700; color: var(--tech-blue); margin-bottom: 12px;">Step 3 of 3: Book Your Call</p>
+                            <div style="background: var(--surface); border-radius: 8px; padding: 24px; text-align: center;">
+                                <p style="font-weight: 600; margin-bottom: 8px;">[Calendly Embed]</p>
+                                <p style="font-size: 0.875rem; color: var(--text-secondary);">Select a time for your free strategy call</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>CTA Button Copy Options</h3>
+
+                    <h4>Primary CTAs (High Intent)</h4>
+                    <div style="margin: 16px 0;">
+                        <a href="#" class="btn-example btn-primary" style="display: block; text-align: center; margin: 8px 0;">Get Your Free Marketing Audit</a>
+                        <a href="#" class="btn-example btn-primary" style="display: block; text-align: center; margin: 8px 0;">Book a Free Strategy Call</a>
+                        <a href="#" class="btn-example btn-primary" style="display: block; text-align: center; margin: 8px 0;">Get My Growth Plan</a>
+                    </div>
+
+                    <h4>Secondary CTAs (Lower Commitment)</h4>
+                    <div style="margin: 16px 0;">
+                        <a href="#" class="btn-example btn-outline" style="display: block; text-align: center; margin: 8px 0;">See Pricing</a>
+                        <a href="#" class="btn-example btn-outline" style="display: block; text-align: center; margin: 8px 0;">See How It Works</a>
+                    </div>
+
+                    <h4>Supporting Copy (Below Buttons)</h4>
+                    <ul style="font-size: 0.875rem; color: var(--text-secondary); margin-left: 20px;">
+                        <li>"No credit card required"</li>
+                        <li>"No commitment, no pressure"</li>
+                        <li>"15-minute call, no sales pitch"</li>
+                        <li>"Cancel anytime, no long contracts"</li>
+                        <li>"Takes 2 minutes"</li>
+                    </ul>
+
+                    <div class="note" style="margin-top: 24px;">
+                        <div class="note-title">CTA Placement Rule</div>
+                        <p>Repeat the same primary CTA throughout the page: Hero, after social proof, after pricing, final section. One goal, many placements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Form Design Specifications</h3>
+
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Specification</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Fields</td>
+                            <td>Maximum 5-6 across all steps</td>
+                            <td>Each additional field = 20-30% conversion penalty</td>
+                        </tr>
+                        <tr>
+                            <td>Layout</td>
+                            <td>Single column</td>
+                            <td>Higher completion rates than multi-column</td>
+                        </tr>
+                        <tr>
+                            <td>Field Type Preference</td>
+                            <td>Dropdowns > Text inputs</td>
+                            <td>15.2% fewer abandonments with dropdowns</td>
+                        </tr>
+                        <tr>
+                            <td>Phone Field</td>
+                            <td>Mark as optional</td>
+                            <td>Increases submission rate</td>
+                        </tr>
+                        <tr>
+                            <td>Progress Indicator</td>
+                            <td>Show "Step X of 3"</td>
+                            <td>Reduces abandonment anxiety</td>
+                        </tr>
+                        <tr>
+                            <td>Submit Button</td>
+                            <td>Full width, high contrast</td>
+                            <td>Use Tech Blue (#1873FA)</td>
+                        </tr>
+                        <tr>
+                            <td>Validation</td>
+                            <td>Real-time, inline errors</td>
+                            <td>Catch errors immediately</td>
+                        </tr>
+                        <tr>
+                            <td>Privacy Link</td>
+                            <td>Near submit button</td>
+                            <td>Builds trust with skeptical users</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Design -->
+    <section id="mobile">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 8</span>
+                <h2>Mobile Design Specifications</h2>
+                <p>82.9% of landing page traffic comes from mobile - critical to get right</p>
+            </div>
+
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-value">82.9%</div>
+                    <div class="stat-label">Traffic from mobile</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">< 3s</div>
+                    <div class="stat-label">Max load time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">44px</div>
+                    <div class="stat-label">Min tap target size</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Max form fields on mobile</div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>Mobile Hero Section</h3>
+
+                    <div style="max-width: 320px; margin: 20px auto; background: var(--surface); border-radius: 24px; padding: 16px; border: 8px solid var(--black);">
+                        <div style="background: var(--white); border-radius: 12px; padding: 24px; min-height: 500px;">
+                            <p style="font-size: 1.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 12px;">Get 15+ New Customers Every Month</p>
+                            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 20px;">Done-for-you marketing. No contracts. No BS.</p>
+                            <a href="#" style="display: block; background: var(--tech-blue); color: white; padding: 16px; border-radius: 8px; text-align: center; font-weight: 700; text-decoration: none; margin-bottom: 12px;">Get Free Audit</a>
+                            <a href="tel:5551234567" style="display: block; border: 2px solid var(--tech-blue); color: var(--tech-blue); padding: 14px; border-radius: 8px; text-align: center; font-weight: 700; text-decoration: none; margin-bottom: 16px;">Call (555) 123-4567</a>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); text-align: center;">Trusted by 500+ local businesses</p>
+                        </div>
+                    </div>
+
+                    <p style="text-align: center; font-size: 0.875rem; color: var(--text-secondary);">Mobile hero wireframe (320px width)</p>
+                </div>
+
+                <div class="card">
+                    <h3>Mobile-Specific Requirements</h3>
+
+                    <h4>Above the Fold (Mobile)</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Headline: Max 2 lines</li>
+                        <li>Subheadline: 1 sentence max</li>
+                        <li>Primary CTA: Full width button</li>
+                        <li>Click-to-Call: Prominent phone button</li>
+                        <li>One trust signal only</li>
+                    </ul>
+
+                    <h4>Touch Targets</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Minimum tap target: 44x44 pixels</li>
+                        <li>Adequate spacing between targets</li>
+                        <li>Buttons in thumb zone (lower third)</li>
+                    </ul>
+
+                    <h4>Performance</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Load time: Under 3 seconds</li>
+                        <li>Images: WebP format, under 500KB each</li>
+                        <li>Lazy load everything below fold</li>
+                        <li>Minimize JavaScript</li>
+                    </ul>
+
+                    <h4>Content Adaptations</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Stack all content vertically</li>
+                        <li>Shorter paragraphs</li>
+                        <li>Collapsible FAQ sections</li>
+                        <li>Swipeable testimonial carousel</li>
+                        <li>Sticky CTA at bottom (optional but effective)</li>
+                    </ul>
+
+                    <div class="note success-note" style="margin-top: 20px;">
+                        <div class="note-title">Click-to-Call is Critical</div>
+                        <p>Local service business owners often prefer calling. Make the phone number tappable and prominent on mobile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Copy Templates -->
+    <section id="copy">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 9</span>
+                <h2>Copy Templates & Guidelines</h2>
+                <p>Ready-to-use copy for the designer to implement</p>
+            </div>
+
+            <div class="card">
+                <h3>Voice & Tone Guidelines</h3>
+
+                <div class="two-col" style="margin-top: 20px;">
+                    <div>
+                        <h4 style="color: var(--success);">Words to Use</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>Results, leads, customers, calls, appointments</li>
+                            <li>Simple, straightforward, transparent</li>
+                            <li>Partner, team, dedicated</li>
+                            <li>Proven, data-driven, measurable</li>
+                            <li>No-nonsense, no-hassle, no surprises</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--error);">Words to Avoid</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>Revolutionary, game-changing, cutting-edge</li>
+                            <li>Synergy, leverage, optimize (jargon)</li>
+                            <li>Best-in-class, world-class (vague superlatives)</li>
+                            <li>Trust us (show, don't tell)</li>
+                            <li>Simple (when describing their problem - condescending)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="note" style="margin-top: 24px;">
+                    <div class="note-title">Reading Level Requirement</div>
+                    <p>All copy must be at 5th-7th grade reading level. Pages at this level convert at 11.1% vs 5.3% for college-level copy. Use short sentences, common words, and direct language.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Section-by-Section Copy</h3>
+
+                <h4>Hero Section</h4>
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline</div>
+                    <div class="copy-example-text">Get 15+ New Customers Every Month (Guaranteed)</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Subheadline</div>
+                    <div class="copy-example-subtext" style="font-size: 1.125rem;">Done-for-you marketing for local service businesses. No contracts. No BS. Just results you can measure.</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Trust Line</div>
+                    <div class="copy-example-subtext">Trusted by 500+ contractors and service professionals</div>
+                </div>
+
+                <h4 style="margin-top: 32px;">Problem Section</h4>
+                <div class="copy-example">
+                    <div class="copy-example-label">Section Headline</div>
+                    <div class="copy-example-text">You Didn't Start a Business to Become a Full-Time Marketer</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Body Copy</div>
+                    <div class="copy-example-subtext">But here you are: watching competitors take jobs that should be yours while you waste time on marketing that doesn't work. Sound familiar?</div>
+                </div>
+
+                <h4 style="margin-top: 32px;">How It Works</h4>
+                <div class="copy-example">
+                    <div class="copy-example-label">Step 1</div>
+                    <div class="copy-example-text" style="font-size: 1.25rem;">Tell Us About Your Business</div>
+                    <div class="copy-example-subtext">Quick 15-minute call to understand your goals and market</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Step 2</div>
+                    <div class="copy-example-text" style="font-size: 1.25rem;">We Build Your Marketing Machine</div>
+                    <div class="copy-example-subtext">We handle the strategy, setup, and execution. You approve.</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Step 3</div>
+                    <div class="copy-example-text" style="font-size: 1.25rem;">Watch Your Phone Ring</div>
+                    <div class="copy-example-subtext">New customers come to you. Track everything in your dashboard.</div>
+                </div>
+
+                <h4 style="margin-top: 32px;">Final CTA Section</h4>
+                <div class="copy-example">
+                    <div class="copy-example-label">Headline</div>
+                    <div class="copy-example-text">Ready to Fill Your Schedule?</div>
+                </div>
+                <div class="copy-example">
+                    <div class="copy-example-label">Body</div>
+                    <div class="copy-example-subtext">Get your free marketing audit and see exactly how we can bring you more customers. No commitment. No credit card. Takes 2 minutes.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checklist -->
+    <section id="checklist">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Section 10</span>
+                <h2>Design Checklist</h2>
+                <p>Verify all requirements before handoff</p>
+            </div>
+
+            <div class="three-col">
+                <div class="card">
+                    <h3>Brand Compliance</h3>
+                    <ul class="checklist">
+                        <li>Using Montserrat font only</li>
+                        <li>Tech Blue (#1873FA) for primary actions</li>
+                        <li>Black (#1D1D1B) for headlines</li>
+                        <li>Brand gradient used appropriately</li>
+                        <li>ComCreate logo placed correctly</li>
+                        <li>No navigation menu present</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Conversion Elements</h3>
+                    <ul class="checklist">
+                        <li>Primary CTA above the fold</li>
+                        <li>CTA repeated 4+ times on page</li>
+                        <li>Social proof near CTAs</li>
+                        <li>Pricing displayed transparently</li>
+                        <li>Multi-step form implemented</li>
+                        <li>Calendar booking integrated</li>
+                        <li>Trust signals visible</li>
+                        <li>FAQ section addresses objections</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Performance & Mobile</h3>
+                    <ul class="checklist">
+                        <li>Page loads under 3 seconds</li>
+                        <li>Images compressed (< 500KB)</li>
+                        <li>Mobile-responsive design</li>
+                        <li>Touch targets 44px minimum</li>
+                        <li>Click-to-call on mobile</li>
+                        <li>Lazy loading below fold</li>
+                        <li>Tested on real devices</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 24px;">
+                <h3>Pre-Launch Validation</h3>
+
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Check</th>
+                            <th>Requirement</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Headline Clarity</td>
+                            <td>Value proposition clear in 5 seconds</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Form Fields</td>
+                            <td>Maximum 5-6 fields total</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Page Speed</td>
+                            <td>Google PageSpeed score > 80</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Test</td>
+                            <td>Tested on iOS and Android</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tracking</td>
+                            <td>All conversion events tracked</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td>Video Testimonials</td>
+                            <td>At least 1 video if available</td>
+                            <td><span class="badge badge-recommended">Recommended</span></td>
+                        </tr>
+                        <tr>
+                            <td>A/B Test Setup</td>
+                            <td>Multiple headlines ready to test</td>
+                            <td><span class="badge badge-recommended">Recommended</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+        <div class="container">
+            <p><strong>ComCreate Landing Page Designer Blueprint v2.0</strong></p>
+            <p>Created January 2026 | Based on research from 50+ sources on B2B conversion optimization</p>
+            <p style="margin-top: 16px;">Target: 4-8% conversion rate | Audience: Local service business owners</p>
+            <p style="margin-top: 8px;">Brand colors from official VisualBranding_LogoDesign.pdf</p>
+        </div>
+    </footer>
+
+    <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.doc-nav a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
-});
-
-// Smooth scroll for nav links
-document.querySelectorAll('.nav a').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-</script>
-
+    </script>
 </body>
 </html>
