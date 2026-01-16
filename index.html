@@ -71,21 +71,12 @@
             background: var(--gray-200);
         }
 
-        .logo-icon {
+        .logo-img {
             width: 32px;
             height: 32px;
-            background: var(--black);
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             flex-shrink: 0;
-        }
-
-        .logo-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--white);
+            object-fit: contain;
         }
 
         .logo-text {
@@ -341,14 +332,9 @@
                 padding: 24px 40px;
             }
 
-            .logo-icon {
+            .logo-img {
                 width: 36px;
                 height: 36px;
-            }
-
-            .logo-icon svg {
-                width: 22px;
-                height: 22px;
             }
 
             .logo-text {
@@ -458,9 +444,7 @@
 
 <header>
     <a href="https://comcreate.org" class="logo" target="_blank">
-        <div class="logo-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8c2.76 0 5.19-1.4 6.63-3.53l-1.73-1c-1.07 1.6-2.9 2.63-4.9 2.63-3.31 0-6-2.69-6-6s2.69-6 6-6c2 0 3.83 1.03 4.9 2.63l1.73-1C15.19 5.4 12.76 4 12 4z"/></svg>
-        </div>
+        <img src="https://www.comcreate.org/logo.png" alt="ComCreate" class="logo-img">
         <span class="logo-text">ComCreate</span>
     </a>
     <span class="header-badge">B2B Sales Funnel</span>
