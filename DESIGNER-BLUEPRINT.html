@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Blueprint | ComCreate Landing Page Specifications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ComCreate Brand Colors - Extracted from comcreate.org */
+            --cc-bg-primary: #070410;
+            --cc-bg-secondary: #181626;
+            --cc-bg-tertiary: #14121c;
+            --cc-blue: #3b82f6;
+            --cc-purple: #9333ea;
+            --cc-magenta: #d946ef;
+            --cc-yellow: #facc15;
+            --cc-white: #ffffff;
+            --cc-text-muted: rgba(255,255,255,0.7);
+            --cc-gradient-hero: linear-gradient(90deg, #003cc7, #700f59);
+            --cc-gradient-accent: linear-gradient(to right, #60a5fa, #c084fc);
+            --cc-border: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--cc-bg-primary);
+            color: var(--cc-white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--cc-gradient-hero);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header img {
+            height: 40px;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--cc-bg-secondary);
+            border-bottom: 1px solid var(--cc-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 40px;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 16px 0;
+        }
+
+        .nav a {
+            color: var(--cc-text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .nav a:hover, .nav a.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--cc-white);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--cc-border);
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        h2 .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--cc-gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 40px 0 20px;
+            color: var(--cc-blue);
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 24px 0 12px;
+        }
+
+        p {
+            color: var(--cc-text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Spec Cards */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .spec-card {
+            background: var(--cc-bg-secondary);
+            border: 1px solid var(--cc-border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .spec-card.critical {
+            border-color: var(--cc-magenta);
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.1), rgba(59, 130, 246, 0.1));
+        }
+
+        .spec-card h4 {
+            margin-top: 0;
+            color: var(--cc-white);
+            font-size: 16px;
+        }
+
+        .spec-value {
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--cc-gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .spec-label {
+            font-size: 14px;
+            color: var(--cc-text-muted);
+            margin-top: 4px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--cc-border);
+        }
+
+        th {
+            background: var(--cc-bg-secondary);
+            color: var(--cc-blue);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: var(--cc-bg-tertiary);
+            border: 1px solid var(--cc-border);
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--cc-text-muted);
+            margin: 16px 0;
+        }
+
+        /* Color Swatches */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .color-swatch {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--cc-border);
+        }
+
+        .color-preview {
+            height: 80px;
+        }
+
+        .color-info {
+            padding: 16px;
+            background: var(--cc-bg-secondary);
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: 14px;
+            color: var(--cc-text-muted);
+        }
+
+        /* Wireframe Box */
+        .wireframe {
+            background: var(--cc-bg-tertiary);
+            border: 2px dashed var(--cc-border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            font-family: monospace;
+            font-size: 12px;
+            line-height: 1.4;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* Important Callout */
+        .callout {
+            background: linear-gradient(135deg, rgba(217, 70, 239, 0.15), rgba(59, 130, 246, 0.15));
+            border-left: 4px solid var(--cc-magenta);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            color: var(--cc-magenta);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .checklist li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--cc-border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--cc-blue);
+        }
+
+        /* Measurement Diagram */
+        .measurement-box {
+            background: var(--cc-bg-secondary);
+            border: 2px solid var(--cc-blue);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            margin: 24px 0;
+        }
+
+        .measurement-label {
+            position: absolute;
+            background: var(--cc-blue);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cc-bg-secondary);
+            padding: 40px;
+            text-align: center;
+            color: var(--cc-text-muted);
+        }
+
+        footer a {
+            color: var(--cc-blue);
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <img src="https://www.comcreate.org/wide-logo.png" alt="ComCreate Logo" onerror="this.style.display='none'">
+    <h1>Designer Blueprint</h1>
+    <p>Enterprise-level specifications for building the highest-converting local service landing pages</p>
+    <div class="badge-container">
+        <span class="badge">Target CVR: 12-15%</span>
+        <span class="badge">Mobile-First</span>
+        <span class="badge">Research-Backed</span>
+    </div>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a href="#brand">Brand System</a></li>
+        <li><a href="#layout">Page Layout</a></li>
+        <li><a href="#hero">Hero Section</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#cta">CTA Buttons</a></li>
+        <li><a href="#forms">Lead Forms</a></li>
+        <li><a href="#social-proof">Social Proof</a></li>
+        <li><a href="#mobile">Mobile Specs</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+
+<!-- BRAND SYSTEM -->
+<section id="brand">
+    <h2><span class="icon">🎨</span> Brand System</h2>
+
+    <h3>Primary Colors</h3>
+    <div class="color-grid">
+        <div class="color-swatch">
+            <div class="color-preview" style="background: #070410;"></div>
+            <div class="color-info">
+                <div class="color-name">Background Primary</div>
+                <div class="color-hex">#070410 | rgb(7, 4, 16)</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview" style="background: #181626;"></div>
+            <div class="color-info">
+                <div class="color-name">Background Secondary</div>
+                <div class="color-hex">#181626 | rgb(24, 22, 38)</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview" style="background: #3b82f6;"></div>
+            <div class="color-info">
+                <div class="color-name">Primary Blue (CTA)</div>
+                <div class="color-hex">#3b82f6 | rgb(59, 130, 246)</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview" style="background: #d946ef;"></div>
+            <div class="color-info">
+                <div class="color-name">Accent Magenta</div>
+                <div class="color-hex">#d946ef | rgb(217, 70, 239)</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview" style="background: #facc15;"></div>
+            <div class="color-info">
+                <div class="color-name">Accent Yellow</div>
+                <div class="color-hex">#facc15 | rgb(250, 204, 21)</div>
+            </div>
+        </div>
+        <div class="color-swatch">
+            <div class="color-preview" style="background: linear-gradient(90deg, #003cc7, #700f59);"></div>
+            <div class="color-info">
+                <div class="color-name">Hero Gradient</div>
+                <div class="color-hex">#003cc7 → #700f59</div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Typography</h3>
+    <div class="spec-grid">
+        <div class="spec-card">
+            <h4>Primary Font</h4>
+            <div class="spec-value">Space Grotesk</div>
+            <div class="spec-label">Google Fonts - sans-serif fallback</div>
+        </div>
+        <div class="spec-card">
+            <h4>Font Weights</h4>
+            <div class="spec-value">400, 500, 600, 700</div>
+            <div class="spec-label">Regular, Medium, SemiBold, Bold</div>
+        </div>
+    </div>
+
+    <h3>Border Radius</h3>
+    <table>
+        <tr>
+            <th>Element</th>
+            <th>Radius</th>
+            <th>Usage</th>
+        </tr>
+        <tr>
+            <td>Buttons</td>
+            <td><strong>12px</strong></td>
+            <td>All CTA buttons</td>
+        </tr>
+        <tr>
+            <td>Cards</td>
+            <td><strong>16px</strong></td>
+            <td>Form containers, service cards</td>
+        </tr>
+        <tr>
+            <td>Inputs</td>
+            <td><strong>8px</strong></td>
+            <td>Form fields</td>
+        </tr>
+        <tr>
+            <td>Badges</td>
+            <td><strong>20px (pill)</strong></td>
+            <td>Trust badges, tags</td>
+        </tr>
+    </table>
+</section>
+
+<!-- PAGE LAYOUT -->
+<section id="layout">
+    <h2><span class="icon">📐</span> Page Layout Structure</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ CRITICAL REQUIREMENT</div>
+        <p style="margin:0">82.9% of landing page traffic is mobile. Design mobile-first, then adapt for desktop.</p>
+    </div>
+
+    <h3>Desktop Wireframe (1440px viewport)</h3>
+    <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│  HEADER BAR - Height: 48px | Background: Semi-transparent                            │
+│  [Logo 120px]                              [Phone: (XXX) XXX-XXXX] [Contact Us btn]  │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  HERO SECTION - Min-height: 600px | Padding: 80px 120px | Background: Hero Gradient  │
+│                                                                                       │
+│  ┌───────────────────────────────────┐  ┌─────────────────────────────────────────┐ │
+│  │  LEFT COLUMN (55%)                │  │  RIGHT COLUMN (45%)                     │ │
+│  │                                   │  │                                         │ │
+│  │  [H1 HEADLINE - 48-72px]          │  │  ┌─────────────────────────────────┐   │ │
+│  │  "24/7 Emergency Plumbing         │  │  │  LEAD CAPTURE FORM              │   │ │
+│  │   in [City] - 30 Min Response"    │  │  │  Background: #181626            │   │ │
+│  │                                   │  │  │  Border-radius: 16px            │   │ │
+│  │  [Subheadline - 20px]             │  │  │  Padding: 32px                  │   │ │
+│  │  "Licensed plumbers ready now"    │  │  │                                 │   │ │
+│  │                                   │  │  │  [Form Title - 24px bold]       │   │ │
+│  │  [Star Rating] ★★★★★ 4.9          │  │  │  "Get Your Free Quote"          │   │ │
+│  │  (247 Reviews)                    │  │  │                                 │   │ │
+│  │                                   │  │  │  [Name Field - 48px height]     │   │ │
+│  │  [Trust Badges Row]               │  │  │  [Phone Field - 48px height]    │   │ │
+│  │  ✓ Licensed  ✓ Insured  ✓ 24/7   │  │  │  [Service Dropdown - 48px]      │   │ │
+│  │                                   │  │  │                                 │   │ │
+│  │  [PRIMARY CTA - Optional]         │  │  │  [SUBMIT BUTTON - 56px]         │   │ │
+│  │  "Call Now: (XXX) XXX-XXXX"       │  │  │  Background: #3b82f6            │   │ │
+│  │                                   │  │  │  "Get My Free Quote"            │   │ │
+│  └───────────────────────────────────┘  │  │                                 │   │ │
+│                                         │  │  [Trust text below button]      │   │ │
+│                                         │  │  "🔒 Your info is secure"       │   │ │
+│                                         │  └─────────────────────────────────┘   │ │
+│                                         └─────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  SOCIAL PROOF BAR - Height: 80px | Background: #181626                               │
+│  "Trusted by 2,500+ homeowners"  [Google] [BBB A+] [Yelp] [HomeAdvisor]              │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  SERVICES SECTION - Padding: 80px 120px                                              │
+│  [Section Title: "Our Services"]                                                     │
+│  [3-4 Service Cards in Grid - 300px min-width each]                                  │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  TESTIMONIALS SECTION - Padding: 80px 120px                                          │
+│  [3 Testimonial Cards with Photos, Names, Star Ratings]                              │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  HOW IT WORKS - 3 Steps with Icons                                                   │
+│  [1. Call/Book] → [2. We Arrive] → [3. Problem Solved]                               │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  FAQ SECTION - Accordion Style                                                        │
+│  [5-7 Common Questions]                                                              │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                       │
+│  FINAL CTA SECTION - Background: Gradient | Padding: 60px                            │
+│  [Strong headline + Form or Phone CTA]                                               │
+│                                                                                       │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│  FOOTER - Background: #070410                                                        │
+│  [Logo] [Contact Info] [Service Areas] [Certifications] [Copyright]                  │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+    </div>
+
+    <h3>Spacing System</h3>
+    <table>
+        <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Usage</th>
+        </tr>
+        <tr><td>space-xs</td><td>4px</td><td>Tight gaps, icon padding</td></tr>
+        <tr><td>space-sm</td><td>8px</td><td>Form field gaps, inline spacing</td></tr>
+        <tr><td>space-md</td><td>16px</td><td>Card padding, element margins</td></tr>
+        <tr><td>space-lg</td><td>24px</td><td>Section content gaps</td></tr>
+        <tr><td>space-xl</td><td>32px</td><td>Form container padding</td></tr>
+        <tr><td>space-2xl</td><td>48px</td><td>Between major sections</td></tr>
+        <tr><td>space-3xl</td><td>80px</td><td>Section vertical padding</td></tr>
+    </table>
+</section>
+
+<!-- HERO SECTION -->
+<section id="hero">
+    <h2><span class="icon">🎯</span> Hero Section Specifications</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ ABOVE THE FOLD RULE</div>
+        <p style="margin:0">57% of users spend most time viewing above-the-fold content. You have 3 seconds to capture attention.</p>
+    </div>
+
+    <h3>Required Elements (Priority Order)</h3>
+    <table>
+        <tr>
+            <th>Priority</th>
+            <th>Element</th>
+            <th>Specification</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><strong>Headline</strong></td>
+            <td>48-72px, font-weight: 700, includes [Location] + [Service] + [Value]</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Subheadline</strong></td>
+            <td>18-20px, font-weight: 400, addresses primary pain point</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Lead Form OR Phone CTA</strong></td>
+            <td>Form: 3-4 fields max. Phone: 24px+ clickable</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Trust Indicators</strong></td>
+            <td>Star rating + review count + key badges</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Visual Element</strong></td>
+            <td>Real technician photo or completed work (NO stock photos)</td>
+        </tr>
+    </table>
+
+    <h3>Hero Background Options</h3>
+    <div class="spec-grid">
+        <div class="spec-card">
+            <h4>Option A: Gradient</h4>
+            <div class="code-block">background: linear-gradient(90deg, #003cc7, #700f59);</div>
+            <p>Best for: Clean, professional look. Fast loading.</p>
+        </div>
+        <div class="spec-card">
+            <h4>Option B: Image + Overlay</h4>
+            <div class="code-block">background: linear-gradient(rgba(7,4,16,0.85), rgba(7,4,16,0.9)), url('hero.webp');
+background-size: cover;</div>
+            <p>Best for: Showing actual work. Image must be &lt;100KB WebP.</p>
+        </div>
+    </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="typography">
+    <h2><span class="icon">Aa</span> Typography Scale</h2>
+
+    <table>
+        <tr>
+            <th>Element</th>
+            <th>Desktop</th>
+            <th>Mobile</th>
+            <th>Weight</th>
+            <th>Line Height</th>
+        </tr>
+        <tr>
+            <td>H1 (Hero)</td>
+            <td>72px</td>
+            <td>36px</td>
+            <td>700</td>
+            <td>1.1</td>
+        </tr>
+        <tr>
+            <td>H2 (Section)</td>
+            <td>48px</td>
+            <td>28px</td>
+            <td>700</td>
+            <td>1.2</td>
+        </tr>
+        <tr>
+            <td>H3 (Subsection)</td>
+            <td>32px</td>
+            <td>24px</td>
+            <td>600</td>
+            <td>1.3</td>
+        </tr>
+        <tr>
+            <td>H4 (Card Title)</td>
+            <td>20px</td>
+            <td>18px</td>
+            <td>600</td>
+            <td>1.4</td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td>16px</td>
+            <td>16px</td>
+            <td>400</td>
+            <td>1.6</td>
+        </tr>
+        <tr>
+            <td>Body Large</td>
+            <td>18px</td>
+            <td>16px</td>
+            <td>400</td>
+            <td>1.6</td>
+        </tr>
+        <tr>
+            <td>Caption</td>
+            <td>14px</td>
+            <td>14px</td>
+            <td>400</td>
+            <td>1.5</td>
+        </tr>
+        <tr>
+            <td>Button Text</td>
+            <td>16px</td>
+            <td>16px</td>
+            <td>600</td>
+            <td>1.0</td>
+        </tr>
+    </table>
+
+    <h3>Headline Formula</h3>
+    <div class="code-block">[Service Type] + [Location] + [Unique Value/Urgency]
+
+Examples:
+"24/7 Emergency Plumbing in Austin - 30-Minute Response"
+"Phoenix's #1 Rated HVAC Repair - Same Day Service"
+"Licensed Electricians in Dallas - Available Now"</div>
+</section>
+
+<!-- CTA BUTTONS -->
+<section id="cta">
+    <h2><span class="icon">👆</span> CTA Button Specifications</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ CONVERSION IMPACT</div>
+        <p style="margin:0">Well-designed CTAs can increase conversions by 42%+. First-person language ("Get MY Quote") outperforms second-person.</p>
+    </div>
+
+    <h3>Primary CTA Button</h3>
+    <div class="spec-grid">
+        <div class="spec-card critical">
+            <h4>Desktop Dimensions</h4>
+            <div class="spec-value">56px height</div>
+            <div class="spec-label">Min-width: 200px | Padding: 16px 32px</div>
+        </div>
+        <div class="spec-card critical">
+            <h4>Mobile Dimensions</h4>
+            <div class="spec-value">56px height</div>
+            <div class="spec-label">Full-width with 16px margin | Thumb-friendly</div>
+        </div>
+        <div class="spec-card">
+            <h4>Background Color</h4>
+            <div class="spec-value">#3b82f6</div>
+            <div class="spec-label">Primary Blue - High contrast on dark</div>
+        </div>
+        <div class="spec-card">
+            <h4>Border Radius</h4>
+            <div class="spec-value">12px</div>
+            <div class="spec-label">Matches ComCreate brand style</div>
+        </div>
+    </div>
+
+    <h3>Button States</h3>
+    <table>
+        <tr>
+            <th>State</th>
+            <th>Background</th>
+            <th>Text Color</th>
+            <th>Other</th>
+        </tr>
+        <tr>
+            <td>Default</td>
+            <td>#3b82f6</td>
+            <td>#ffffff</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Hover</td>
+            <td>#2563eb</td>
+            <td>#ffffff</td>
+            <td>transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4)</td>
+        </tr>
+        <tr>
+            <td>Active</td>
+            <td>#1d4ed8</td>
+            <td>#ffffff</td>
+            <td>transform: translateY(0)</td>
+        </tr>
+        <tr>
+            <td>Disabled</td>
+            <td>#374151</td>
+            <td>#9ca3af</td>
+            <td>cursor: not-allowed; opacity: 0.6</td>
+        </tr>
+    </table>
+
+    <h3>CTA Copy That Converts</h3>
+    <table>
+        <tr>
+            <th>❌ Weak</th>
+            <th>✅ Strong</th>
+            <th>Why It Works</th>
+        </tr>
+        <tr>
+            <td>Submit</td>
+            <td>Get My Free Quote</td>
+            <td>First-person, specific outcome</td>
+        </tr>
+        <tr>
+            <td>Contact Us</td>
+            <td>Schedule My Service</td>
+            <td>Action-oriented, ownership</td>
+        </tr>
+        <tr>
+            <td>Learn More</td>
+            <td>Fix My [Problem] Today</td>
+            <td>Urgent, problem-solving</td>
+        </tr>
+        <tr>
+            <td>Get Started</td>
+            <td>Get Emergency Help Now</td>
+            <td>Urgency + specific action</td>
+        </tr>
+    </table>
+
+    <h3>CTA Placement Rule</h3>
+    <p><strong>Include primary CTA at least 3 times on page:</strong></p>
+    <ol style="color: var(--cc-text-muted); margin-left: 24px;">
+        <li>Above the fold (in hero or form)</li>
+        <li>After testimonials/social proof</li>
+        <li>Final section before footer</li>
+    </ol>
+</section>
+
+<!-- LEAD FORMS -->
+<section id="forms">
+    <h2><span class="icon">📝</span> Lead Form Specifications</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ CRITICAL STAT</div>
+        <p style="margin:0">Reducing from 11 to 4 fields produced a 120% increase in conversions. Every extra field costs you leads.</p>
+    </div>
+
+    <h3>Optimal Field Count</h3>
+    <table>
+        <tr>
+            <th>Service Type</th>
+            <th>Fields</th>
+            <th>Recommended Fields</th>
+        </tr>
+        <tr>
+            <td>Emergency Services</td>
+            <td><strong>2-3</strong></td>
+            <td>Name, Phone, (Optional: Issue)</td>
+        </tr>
+        <tr>
+            <td>Quote Requests</td>
+            <td><strong>3-4</strong></td>
+            <td>Name, Phone, Service Type, (Optional: Email)</td>
+        </tr>
+        <tr>
+            <td>Appointment Booking</td>
+            <td><strong>4-5</strong></td>
+            <td>Name, Phone, Email, Service, Preferred Time</td>
+        </tr>
+    </table>
+
+    <h3>Form Field Specifications</h3>
+    <div class="spec-grid">
+        <div class="spec-card critical">
+            <h4>Field Height</h4>
+            <div class="spec-value">48px min</div>
+            <div class="spec-label">Prevents iOS zoom, thumb-friendly</div>
+        </div>
+        <div class="spec-card critical">
+            <h4>Font Size</h4>
+            <div class="spec-value">16px min</div>
+            <div class="spec-label">Required to prevent mobile zoom</div>
+        </div>
+        <div class="spec-card">
+            <h4>Border Radius</h4>
+            <div class="spec-value">8px</div>
+            <div class="spec-label">Softer than buttons</div>
+        </div>
+        <div class="spec-card">
+            <h4>Padding</h4>
+            <div class="spec-value">14px 16px</div>
+            <div class="spec-label">Comfortable touch target</td>
+        </div>
+    </div>
+
+    <h3>Form Container Design</h3>
+    <div class="code-block">.lead-form-container {
+    background: #181626;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 400px;
+}
+
+.form-field {
+    height: 48px;
+    font-size: 16px;
+    padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: #ffffff;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.form-field:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}</div>
+
+    <h3>Trust Elements Near Form</h3>
+    <p>Add these directly below the submit button:</p>
+    <ul class="checklist">
+        <li><input type="checkbox" checked disabled> "🔒 Your information is secure and never shared"</li>
+        <li><input type="checkbox" checked disabled> "⚡ Response within 15 minutes"</li>
+        <li><input type="checkbox" checked disabled> "✓ No obligation - Free estimate"</li>
+    </ul>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social-proof">
+    <h2><span class="icon">⭐</span> Social Proof Specifications</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ CONVERSION IMPACT</div>
+        <p style="margin:0">Displaying 5+ reviews can boost conversion rates by up to 270%. Trust badges near forms increase conversions by 42%.</p>
+    </div>
+
+    <h3>Review Display Format</h3>
+    <div class="code-block">┌─────────────────────────────────────────────────────────┐
+│  ★★★★★                                                   │
+│                                                          │
+│  "Our AC died on the hottest day of the year. Mike       │
+│  arrived in 25 minutes and had us cool within an hour.   │
+│  Fair price, no upselling."                              │
+│                                                          │
+│  — Jennifer M., North Austin                             │
+│  [Emergency AC Repair]                                   │
+└─────────────────────────────────────────────────────────┘</div>
+
+    <h3>Placement Priority</h3>
+    <table>
+        <tr>
+            <th>Location</th>
+            <th>What to Show</th>
+            <th>Conversion Lift</th>
+        </tr>
+        <tr>
+            <td>Near primary CTA</td>
+            <td>1 strong testimonial quote</td>
+            <td><strong>+15-25%</strong></td>
+        </tr>
+        <tr>
+            <td>Above the fold</td>
+            <td>Star rating + review count</td>
+            <td><strong>+10-20%</strong></td>
+        </tr>
+        <tr>
+            <td>Near form fields</td>
+            <td>Trust badges (Licensed, Insured)</td>
+            <td><strong>+42%</strong></td>
+        </tr>
+        <tr>
+            <td>Mid-page</td>
+            <td>Google Reviews carousel</td>
+            <td><strong>+8-12%</strong></td>
+        </tr>
+    </table>
+
+    <h3>Trust Badge Requirements</h3>
+    <div class="spec-grid">
+        <div class="spec-card">
+            <h4>Tier 1 - Always Show</h4>
+            <ul style="color: var(--cc-text-muted); margin-left: 16px; font-size: 14px;">
+                <li>Google Verified badge</li>
+                <li>Star rating with count</li>
+                <li>"Licensed & Insured"</li>
+                <li>Years in business</li>
+            </ul>
+        </div>
+        <div class="spec-card">
+            <h4>Tier 2 - Credentials Section</h4>
+            <ul style="color: var(--cc-text-muted); margin-left: 16px; font-size: 14px;">
+                <li>BBB A+ Rating</li>
+                <li>Industry certifications (NATE, EPA)</li>
+                <li>Manufacturer authorizations</li>
+                <li>Background check verified</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- MOBILE SPECS -->
+<section id="mobile">
+    <h2><span class="icon">📱</span> Mobile Specifications</h2>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ CRITICAL REQUIREMENT</div>
+        <p style="margin:0">82.9% of landing page traffic is mobile. These specs are non-negotiable.</p>
+    </div>
+
+    <h3>Touch Target Requirements</h3>
+    <div class="spec-grid">
+        <div class="spec-card critical">
+            <h4>Minimum Touch Target</h4>
+            <div class="spec-value">48 × 48px</div>
+            <div class="spec-label">Apple & Google accessibility standard</div>
+        </div>
+        <div class="spec-card critical">
+            <h4>CTA Button Height</h4>
+            <div class="spec-value">56px</div>
+            <div class="spec-label">Full-width on mobile</div>
+        </div>
+        <div class="spec-card critical">
+            <h4>Spacing Between Targets</h4>
+            <div class="spec-value">8px min</div>
+            <div class="spec-label">Prevents mis-taps</div>
+        </div>
+        <div class="spec-card critical">
+            <h4>Form Field Height</h4>
+            <div class="spec-value">48px min</div>
+            <div class="spec-label">Font-size: 16px to prevent zoom</div>
+        </div>
+    </div>
+
+    <h3>Mobile Wireframe (375px viewport)</h3>
+    <div class="wireframe">
+┌─────────────────────────────────┐
+│  HEADER - Height: 56px          │
+│  [Logo]     [📞 Call Now btn]   │
+├─────────────────────────────────┤
+│                                 │
+│  HERO - Padding: 24px           │
+│                                 │
+│  [H1 - 36px, 2-3 lines max]     │
+│  "24/7 Emergency Plumbing       │
+│   in Austin"                    │
+│                                 │
+│  [Subhead - 16px]               │
+│  "30-minute response guaranteed"│
+│                                 │
+│  [★★★★★ 4.9 (247 reviews)]      │
+│                                 │
+│  ┌─────────────────────────┐    │
+│  │  FORM CONTAINER         │    │
+│  │  [Name - 48px]          │    │
+│  │  [Phone - 48px]         │    │
+│  │  [Service - 48px]       │    │
+│  │                         │    │
+│  │  [CTA BUTTON - 56px]    │    │
+│  │  "Get My Free Quote"    │    │
+│  │                         │    │
+│  │  🔒 Your info is secure │    │
+│  └─────────────────────────┘    │
+│                                 │
+├─────────────────────────────────┤
+│  TRUST BAR                      │
+│  ✓ Licensed ✓ Insured ✓ 24/7   │
+├─────────────────────────────────┤
+│                                 │
+│  [Services - Stacked cards]     │
+│  [Testimonials - Carousel]      │
+│  [How It Works - Vertical]      │
+│  [FAQ - Accordion]              │
+│  [Final CTA]                    │
+│  [Footer]                       │
+│                                 │
+├─────────────────────────────────┤
+│  STICKY BOTTOM CTA - 64px       │
+│  [📞 Call]  [📝 Get Quote]      │
+│  Full-width, fixed position     │
+└─────────────────────────────────┘</div>
+
+    <h3>Sticky Bottom CTA Bar</h3>
+    <div class="code-block">.sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #181626;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+    z-index: 1000;
+}
+
+.sticky-cta button {
+    flex: 1;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Conversion impact: +6-18% on mobile */</div>
+
+    <h3>Click-to-Call Implementation</h3>
+    <div class="code-block">&lt;a href="tel:+15125551234"
+   class="phone-cta"
+   data-track="phone-click"
+   data-location="header"&gt;
+  📞 (512) 555-1234
+&lt;/a&gt;
+
+/* Requirements:
+   - Must use tel: protocol
+   - Include visible phone icon
+   - "Tap to Call" label on mobile
+   - Minimum 48x48px touch target
+*/</div>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+    <h2><span class="icon">✅</span> Designer Checklist</h2>
+
+    <h3>Above the Fold</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Headline includes location + service + value prop</li>
+        <li><input type="checkbox"> Phone number prominently displayed (click-to-call on mobile)</li>
+        <li><input type="checkbox"> Primary CTA visible without scrolling</li>
+        <li><input type="checkbox"> Trust indicators visible (rating, badges, years)</li>
+        <li><input type="checkbox"> Form OR phone CTA above fold</li>
+    </ul>
+
+    <h3>CTA Design</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Primary CTA is #3b82f6 (high contrast)</li>
+        <li><input type="checkbox"> Button height: 56px</li>
+        <li><input type="checkbox"> First-person copy ("Get My Quote")</li>
+        <li><input type="checkbox"> CTA appears 3+ times on page</li>
+        <li><input type="checkbox"> Sticky mobile CTA implemented</li>
+    </ul>
+
+    <h3>Form Design</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> 3-4 fields maximum</li>
+        <li><input type="checkbox"> Field height: 48px minimum</li>
+        <li><input type="checkbox"> Font size: 16px minimum (prevents iOS zoom)</li>
+        <li><input type="checkbox"> Trust elements near form</li>
+        <li><input type="checkbox"> Clear submit button with action text</li>
+    </ul>
+
+    <h3>Mobile Requirements</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Touch targets: 48x48px minimum</li>
+        <li><input type="checkbox"> Single column layout</li>
+        <li><input type="checkbox"> No horizontal scrolling</li>
+        <li><input type="checkbox"> Sticky bottom CTA bar</li>
+        <li><input type="checkbox"> Click-to-call works</li>
+    </ul>
+
+    <h3>Social Proof</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Star rating with review count above fold</li>
+        <li><input type="checkbox"> 3+ testimonials with real names</li>
+        <li><input type="checkbox"> Trust badges near form</li>
+        <li><input type="checkbox"> Google/BBB badges visible</li>
+    </ul>
+
+    <h3>Performance</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Total page weight: &lt;1MB</li>
+        <li><input type="checkbox"> Images: WebP format, &lt;100KB each</li>
+        <li><input type="checkbox"> Hero image has width/height set (prevents CLS)</li>
+        <li><input type="checkbox"> No render-blocking resources above fold</li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    <p>ComCreate Designer Blueprint v1.0 | <a href="https://comcreate.org">comcreate.org</a></p>
+    <p style="margin-top: 8px; font-size: 14px;">Research compiled from conversion optimization studies, industry benchmarks, and platform documentation.</p>
+</footer>
+
+<script>
+// Save checklist state to localStorage
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach((checkbox, index) => {
+    const key = 'designer-checklist-' + index;
+    checkbox.checked = localStorage.getItem(key) === 'true';
+    checkbox.addEventListener('change', () => {
+        localStorage.setItem(key, checkbox.checked);
+    });
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

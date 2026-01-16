@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Blueprint | Google Tracking Implementation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cc-bg-primary: #070410;
+            --cc-bg-secondary: #181626;
+            --cc-bg-tertiary: #14121c;
+            --cc-blue: #3b82f6;
+            --cc-purple: #9333ea;
+            --cc-magenta: #d946ef;
+            --cc-green: #22c55e;
+            --cc-yellow: #facc15;
+            --cc-red: #ef4444;
+            --cc-white: #ffffff;
+            --cc-text-muted: rgba(255,255,255,0.7);
+            --cc-gradient-hero: linear-gradient(90deg, #003cc7, #700f59);
+            --cc-border: rgba(255,255,255,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--cc-bg-primary);
+            color: var(--cc-white);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--cc-gradient-hero);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .header h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; }
+        .header p { font-size: 20px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+        .badge-container { display: flex; justify-content: center; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+        .badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 500; }
+
+        .nav {
+            background: var(--cc-bg-secondary);
+            border-bottom: 1px solid var(--cc-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 40px;
+        }
+
+        .nav ul { display: flex; list-style: none; gap: 8px; overflow-x: auto; padding: 16px 0; }
+        .nav a {
+            color: var(--cc-text-muted);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .nav a:hover { background: rgba(59, 130, 246, 0.2); color: var(--cc-white); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+        section { padding: 60px 0; border-bottom: 1px solid var(--cc-border); }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        h2 .icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--cc-green), var(--cc-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        h3 { font-size: 22px; font-weight: 600; margin: 40px 0 20px; color: var(--cc-green); }
+        h4 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; color: var(--cc-blue); }
+        p { color: var(--cc-text-muted); margin-bottom: 16px; }
+
+        /* Code Blocks */
+        pre {
+            background: var(--cc-bg-tertiary);
+            border: 1px solid var(--cc-border);
+            border-radius: 12px;
+            padding: 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 16px 0;
+            color: #e5e7eb;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(59, 130, 246, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .code-title {
+            background: var(--cc-bg-secondary);
+            border: 1px solid var(--cc-border);
+            border-bottom: none;
+            border-radius: 12px 12px 0 0;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .code-title + pre { border-radius: 0 0 12px 12px; margin-top: 0; }
+
+        .file-icon { color: var(--cc-yellow); }
+        .html-icon { color: #e34c26; }
+        .js-icon { color: #f7df1e; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+        th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--cc-border); }
+        th { background: var(--cc-bg-secondary); color: var(--cc-green); font-weight: 600; font-size: 12px; text-transform: uppercase; }
+        tr:hover { background: rgba(34, 197, 94, 0.05); }
+
+        /* Cards */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0; }
+        .card {
+            background: var(--cc-bg-secondary);
+            border: 1px solid var(--cc-border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .card.critical { border-color: var(--cc-green); background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); }
+        .card h4 { margin-top: 0; color: var(--cc-white); }
+        .spec-value { font-size: 28px; font-weight: 700; color: var(--cc-green); }
+        .spec-label { font-size: 14px; color: var(--cc-text-muted); }
+
+        /* Callout */
+        .callout {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(59, 130, 246, 0.15));
+            border-left: 4px solid var(--cc-green);
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+        .callout-title { font-weight: 700; color: var(--cc-green); margin-bottom: 8px; }
+
+        /* Steps */
+        .step {
+            display: flex;
+            gap: 20px;
+            margin: 24px 0;
+            padding: 24px;
+            background: var(--cc-bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--cc-border);
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--cc-green);
+            color: var(--cc-bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-content h4 { margin-top: 0; }
+
+        /* Checklist */
+        .checklist { list-style: none; margin: 24px 0; }
+        .checklist li { padding: 12px 0; border-bottom: 1px solid var(--cc-border); display: flex; align-items: center; gap: 12px; }
+        .checklist input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--cc-green); }
+
+        footer { background: var(--cc-bg-secondary); padding: 40px; text-align: center; color: var(--cc-text-muted); }
+        footer a { color: var(--cc-blue); }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <img src="https://www.comcreate.org/wide-logo.png" alt="ComCreate" height="40" style="margin-bottom: 24px;" onerror="this.style.display='none'">
+    <h1>Developer Blueprint</h1>
+    <p>Complete Google Tracking Implementation for Local Service Landing Pages</p>
+    <div class="badge-container">
+        <span class="badge">Google Ads</span>
+        <span class="badge">GA4</span>
+        <span class="badge">GTM</span>
+        <span class="badge">Enhanced Conversions</span>
+    </div>
+</header>
+
+<nav class="nav">
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#gtm">GTM Setup</a></li>
+        <li><a href="#datalayer">Data Layer</a></li>
+        <li><a href="#ga4">GA4 Events</a></li>
+        <li><a href="#conversions">Conversions</a></li>
+        <li><a href="#phone">Phone Tracking</a></li>
+        <li><a href="#forms">Form Tracking</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+    </ul>
+</nav>
+
+<main class="container">
+
+<!-- OVERVIEW -->
+<section id="overview">
+    <h2><span class="icon">📊</span> Tracking Architecture</h2>
+
+    <div class="callout">
+        <div class="callout-title">WHY THIS MATTERS</div>
+        <p style="margin:0">Proper tracking enables Google Ads Smart Bidding to optimize for actual conversions, lowering CPA by 20-40%. Bad tracking = wasted ad spend.</p>
+    </div>
+
+    <h3>What We're Tracking</h3>
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Type</th>
+            <th>Value</th>
+            <th>Count As</th>
+        </tr>
+        <tr>
+            <td><strong>Form Submission</strong></td>
+            <td>Primary Conversion</td>
+            <td>Dynamic ($100-$500)</td>
+            <td>One per click</td>
+        </tr>
+        <tr>
+            <td><strong>Phone Click</strong></td>
+            <td>Primary Conversion</td>
+            <td>$50</td>
+            <td>One per click</td>
+        </tr>
+        <tr>
+            <td><strong>Phone Call (60s+)</strong></td>
+            <td>Primary Conversion</td>
+            <td>$75</td>
+            <td>One per click</td>
+        </tr>
+        <tr>
+            <td><strong>Form Start</strong></td>
+            <td>Micro-conversion</td>
+            <td>$0</td>
+            <td>Observation only</td>
+        </tr>
+        <tr>
+            <td><strong>Scroll Depth 75%+</strong></td>
+            <td>Engagement</td>
+            <td>$0</td>
+            <td>Observation only</td>
+        </tr>
+    </table>
+
+    <h3>Tech Stack</h3>
+    <div class="card-grid">
+        <div class="card critical">
+            <h4>Google Tag Manager</h4>
+            <div class="spec-value">GTM</div>
+            <div class="spec-label">Container manages all tags. Single source of truth.</div>
+        </div>
+        <div class="card">
+            <h4>Google Analytics 4</h4>
+            <div class="spec-value">GA4</div>
+            <div class="spec-label">Event tracking, audiences, attribution.</div>
+        </div>
+        <div class="card">
+            <h4>Google Ads</h4>
+            <div class="spec-value">Conversions</div>
+            <div class="spec-label">Conversion tracking, Enhanced Conversions, remarketing.</div>
+        </div>
+    </div>
+</section>
+
+<!-- GTM SETUP -->
+<section id="gtm">
+    <h2><span class="icon">🏷️</span> Google Tag Manager Setup</h2>
+
+    <h3>Step 1: Install GTM Container</h3>
+
+    <div class="code-title"><span class="html-icon">●</span> Add to &lt;head&gt; (as high as possible)</div>
+    <pre>&lt;!-- Google Tag Manager --&gt;
+&lt;script&gt;
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');
+&lt;/script&gt;
+&lt;!-- End Google Tag Manager --&gt;</pre>
+
+    <div class="code-title"><span class="html-icon">●</span> Add immediately after &lt;body&gt;</div>
+    <pre>&lt;!-- Google Tag Manager (noscript) --&gt;
+&lt;noscript&gt;&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+&lt;!-- End Google Tag Manager (noscript) --&gt;</pre>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ REPLACE GTM-XXXXXXX</div>
+        <p style="margin:0">Replace <code>GTM-XXXXXXX</code> with your actual GTM Container ID from tagmanager.google.com</p>
+    </div>
+
+    <h3>Step 2: Create These Triggers in GTM</h3>
+    <table>
+        <tr>
+            <th>Trigger Name</th>
+            <th>Type</th>
+            <th>Fires When</th>
+        </tr>
+        <tr>
+            <td>All Pages</td>
+            <td>Page View</td>
+            <td>All Page Views</td>
+        </tr>
+        <tr>
+            <td>Form Submission</td>
+            <td>Custom Event</td>
+            <td>Event equals <code>form_submission</code></td>
+        </tr>
+        <tr>
+            <td>Phone Click</td>
+            <td>Custom Event</td>
+            <td>Event equals <code>phone_click</code></td>
+        </tr>
+        <tr>
+            <td>Click to Call Link</td>
+            <td>Click - Just Links</td>
+            <td>Click URL starts with <code>tel:</code></td>
+        </tr>
+        <tr>
+            <td>Form Start</td>
+            <td>Custom Event</td>
+            <td>Event equals <code>form_start</code></td>
+        </tr>
+        <tr>
+            <td>Scroll 75%</td>
+            <td>Scroll Depth</td>
+            <td>Vertical 75%</td>
+        </tr>
+        <tr>
+            <td>Thank You Page</td>
+            <td>Page View</td>
+            <td>Page Path contains <code>thank-you</code></td>
+        </tr>
+    </table>
+</section>
+
+<!-- DATA LAYER -->
+<section id="datalayer">
+    <h2><span class="icon">📦</span> Data Layer Implementation</h2>
+
+    <div class="callout">
+        <div class="callout-title">CRITICAL</div>
+        <p style="margin:0">The Data Layer MUST be initialized BEFORE the GTM container code loads.</p>
+    </div>
+
+    <div class="code-title"><span class="js-icon">●</span> data-layer-init.js - Add BEFORE GTM script</div>
+    <pre>// Initialize Data Layer - MUST BE BEFORE GTM
+window.dataLayer = window.dataLayer || [];
+
+// Helper: Get URL parameters
+function getUrlParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+// Store GCLID in cookie for cross-session attribution
+(function() {
+  const gclid = getUrlParam('gclid');
+  if (gclid) {
+    const expiry = new Date();
+    expiry.setDate(expiry.getDate() + 90);
+    document.cookie = 'gclid=' + gclid + ';expires=' + expiry.toUTCString() + ';path=/;SameSite=Lax';
+  }
+})();
+
+// Push initial page data
+dataLayer.push({
+  'event': 'page_data_ready',
+  'page': {
+    'type': 'landing_page',
+    'service_category': 'plumbing', // Change per page
+    'service_type': 'emergency',    // emergency, scheduled, maintenance
+    'location': {
+      'city': 'Austin',
+      'state': 'TX'
+    }
+  },
+  'campaign': {
+    'source': getUrlParam('utm_source') || 'direct',
+    'medium': getUrlParam('utm_medium') || 'none',
+    'campaign': getUrlParam('utm_campaign') || 'none',
+    'gclid': getUrlParam('gclid') || 'none'
+  },
+  'business': {
+    'name': 'Your Business Name',
+    'phone': '+15125551234'
+  }
+});
+
+// Track page load time for engagement metrics
+window.pageLoadTime = Date.now();</pre>
+
+    <h3>Data Layer Variables to Create in GTM</h3>
+    <table>
+        <tr>
+            <th>Variable Name</th>
+            <th>Data Layer Variable Name</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td>DLV - Form ID</td>
+            <td><code>form_id</code></td>
+            <td>Identify which form converted</td>
+        </tr>
+        <tr>
+            <td>DLV - Service Requested</td>
+            <td><code>service_requested</code></td>
+            <td>Track which service they want</td>
+        </tr>
+        <tr>
+            <td>DLV - Lead Value</td>
+            <td><code>lead_value</code></td>
+            <td>Dynamic conversion value</td>
+        </tr>
+        <tr>
+            <td>DLV - Phone Number</td>
+            <td><code>phone_number</code></td>
+            <td>Track phone click events</td>
+        </tr>
+        <tr>
+            <td>DLV - User Email</td>
+            <td><code>user_data.email</code></td>
+            <td>Enhanced Conversions</td>
+        </tr>
+        <tr>
+            <td>DLV - User Phone</td>
+            <td><code>user_data.phone_number</code></td>
+            <td>Enhanced Conversions</td>
+        </tr>
+    </table>
+</section>
+
+<!-- GA4 EVENTS -->
+<section id="ga4">
+    <h2><span class="icon">📈</span> GA4 Event Tracking</h2>
+
+    <h3>GA4 Tags to Create in GTM</h3>
+
+    <h4>Tag 1: GA4 Configuration</h4>
+    <table>
+        <tr><td>Tag Type</td><td>Google Analytics: GA4 Configuration</td></tr>
+        <tr><td>Measurement ID</td><td><code>G-XXXXXXXXXX</code> (your GA4 ID)</td></tr>
+        <tr><td>Trigger</td><td>All Pages</td></tr>
+    </table>
+
+    <h4>Tag 2: GA4 - Form Submission</h4>
+    <table>
+        <tr><td>Tag Type</td><td>Google Analytics: GA4 Event</td></tr>
+        <tr><td>Event Name</td><td><code>generate_lead</code></td></tr>
+        <tr><td>Parameters</td><td>form_id, service_requested, lead_value, currency: USD</td></tr>
+        <tr><td>Trigger</td><td>Form Submission (custom event)</td></tr>
+    </table>
+
+    <h4>Tag 3: GA4 - Phone Click</h4>
+    <table>
+        <tr><td>Tag Type</td><td>Google Analytics: GA4 Event</td></tr>
+        <tr><td>Event Name</td><td><code>click_to_call</code></td></tr>
+        <tr><td>Parameters</td><td>phone_number, click_location</td></tr>
+        <tr><td>Trigger</td><td>Phone Click, Click to Call Link</td></tr>
+    </table>
+
+    <h3>Mark as Conversions in GA4</h3>
+    <p>Go to GA4 > Admin > Events and mark these as conversions:</p>
+    <ul class="checklist">
+        <li><input type="checkbox"> <code>generate_lead</code> - Primary conversion</li>
+        <li><input type="checkbox"> <code>click_to_call</code> - Primary conversion</li>
+        <li><input type="checkbox"> <code>form_start</code> - Micro-conversion (observation only)</li>
+    </ul>
+</section>
+
+<!-- CONVERSIONS -->
+<section id="conversions">
+    <h2><span class="icon">🎯</span> Google Ads Conversion Tracking</h2>
+
+    <h3>Step 1: Create Conversion Actions in Google Ads</h3>
+    <p>Go to Tools & Settings > Measurement > Conversions > + New conversion action</p>
+
+    <div class="card-grid">
+        <div class="card critical">
+            <h4>Form Submission</h4>
+            <p style="font-size: 14px;">
+                Category: Submit lead form<br>
+                Value: Use different values<br>
+                Default: $100<br>
+                Count: One per click<br>
+                Window: 30 days
+            </p>
+        </div>
+        <div class="card critical">
+            <h4>Phone Click</h4>
+            <p style="font-size: 14px;">
+                Category: Phone call leads<br>
+                Value: $50<br>
+                Count: One per click<br>
+                Window: 30 days
+            </p>
+        </div>
+        <div class="card critical">
+            <h4>Website Phone Call</h4>
+            <p style="font-size: 14px;">
+                Category: Calls to website number<br>
+                Call length: 60 seconds<br>
+                Value: $75<br>
+                Count: One per click
+            </p>
+        </div>
+    </div>
+
+    <h3>Step 2: GTM Tags for Google Ads</h3>
+
+    <h4>Tag: Conversion Linker (REQUIRED)</h4>
+    <table>
+        <tr><td>Tag Type</td><td>Conversion Linker</td></tr>
+        <tr><td>Trigger</td><td>All Pages</td></tr>
+        <tr><td>Priority</td><td>100 (fires first)</td></tr>
+    </table>
+
+    <h4>Tag: Google Ads - Form Conversion</h4>
+    <table>
+        <tr><td>Tag Type</td><td>Google Ads Conversion Tracking</td></tr>
+        <tr><td>Conversion ID</td><td><code>AW-XXXXXXXXX</code></td></tr>
+        <tr><td>Conversion Label</td><td><code>XXXXXXXXXXXXXXX</code></td></tr>
+        <tr><td>Conversion Value</td><td>{{DLV - Lead Value}}</td></tr>
+        <tr><td>Currency</td><td>USD</td></tr>
+        <tr><td>Trigger</td><td>Form Submission</td></tr>
+    </table>
+
+    <h3>Step 3: Enhanced Conversions Setup</h3>
+
+    <div class="callout">
+        <div class="callout-title">WHY ENHANCED CONVERSIONS</div>
+        <p style="margin:0">Enhanced Conversions improve conversion measurement accuracy by 5-15% by sending hashed user data to Google.</p>
+    </div>
+
+    <p>In your Google Ads conversion tag in GTM:</p>
+    <ol style="color: var(--cc-text-muted); margin-left: 24px;">
+        <li>Check "Include user-provided data from your website"</li>
+        <li>Select "Manual configuration"</li>
+        <li>Map variables:
+            <ul style="margin-top: 8px;">
+                <li>Email: {{DLV - User Email}}</li>
+                <li>Phone: {{DLV - User Phone}}</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Lead Value Calculator</h3>
+    <div class="code-title"><span class="js-icon">●</span> lead-value.js</div>
+    <pre>// Dynamic lead value based on service type and urgency
+const LeadValues = {
+  base: {
+    'emergency_plumbing': 250,
+    'drain_cleaning': 150,
+    'water_heater': 400,
+    'hvac_repair': 300,
+    'ac_installation': 2000,
+    'electrical': 200,
+    'roofing': 800
+  },
+  urgencyMultiplier: {
+    'emergency': 1.5,
+    'same_day': 1.2,
+    'this_week': 1.0,
+    'flexible': 0.8
+  }
+};
+
+function calculateLeadValue(service, urgency) {
+  const base = LeadValues.base[service] || 100;
+  const multiplier = LeadValues.urgencyMultiplier[urgency] || 1.0;
+  return Math.round(base * multiplier);
+}</pre>
+</section>
+
+<!-- PHONE TRACKING -->
+<section id="phone">
+    <h2><span class="icon">📞</span> Phone Call Tracking</h2>
+
+    <h3>Click-to-Call Tracking</h3>
+    <div class="code-title"><span class="html-icon">●</span> Phone link HTML structure</div>
+    <pre>&lt;a href="tel:+15125551234"
+   class="phone-link"
+   data-track="phone-click"
+   data-location="header"&gt;
+  (512) 555-1234
+&lt;/a&gt;</pre>
+
+    <div class="code-title"><span class="js-icon">●</span> phone-tracking.js</div>
+    <pre>// Track all phone link clicks
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      const phoneNumber = this.href.replace('tel:', '');
+      const location = this.dataset.location || 'unknown';
+
+      dataLayer.push({
+        'event': 'phone_click',
+        'phone_number': phoneNumber,
+        'click_location': location,
+        'click_text': this.innerText.trim(),
+        'time_on_page': Math.round((Date.now() - window.pageLoadTime) / 1000)
+      });
+    });
+  });
+});</pre>
+
+    <h3>Google Forwarding Number (Call Tracking)</h3>
+    <p>This tracks actual phone calls, not just clicks. Add this to track calls from Google Ads traffic:</p>
+
+    <div class="code-title"><span class="html-icon">●</span> Add to page for website call tracking</div>
+    <pre>&lt;script&gt;
+(function(a,e,c,f,g,h,b,d){
+  var k={ak:"CONVERSION_ID",cl:"CONVERSION_LABEL",autoreplace:"+1-512-555-1234"};
+  a[c]=a[c]||function(){(a[c].q=a[c].q||[]).push(arguments)};
+  a[g]||(a[g]=k.ak);b=e.createElement(f);b.async=1;
+  b.src="//www.gstatic.com/wcm/loader.js";
+  d=e.getElementsByTagName(f)[0];d.parentNode.insertBefore(b,d);
+  a[h]=function(b,d,e){a[c](2,b,k,d,null,new Date,e)};
+  a["_googWcmGet"]=function(b,d,e){a[c](3,b,k,d,null,new Date,e)}
+})(window,document,"_googWcmImpl","script","_googWcmAk","_googWcmConf");
+&lt;/script&gt;</pre>
+
+    <div class="callout">
+        <div class="callout-title">⚠️ REPLACE VALUES</div>
+        <p style="margin:0">
+            <code>CONVERSION_ID</code> = Your Google Ads conversion ID (numeric)<br>
+            <code>CONVERSION_LABEL</code> = Your conversion label<br>
+            <code>+1-512-555-1234</code> = Your actual business phone number
+        </p>
+    </div>
+</section>
+
+<!-- FORM TRACKING -->
+<section id="forms">
+    <h2><span class="icon">📝</span> Form Submission Tracking</h2>
+
+    <div class="code-title"><span class="js-icon">●</span> form-tracking.js - Complete Implementation</div>
+    <pre>const FormTracker = {
+  formStarted: false,
+
+  init: function() {
+    const form = document.querySelector('#lead-form');
+    if (!form) return;
+
+    this.trackFormStart(form);
+    this.trackSubmission(form);
+  },
+
+  trackFormStart: function(form) {
+    const self = this;
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+      field.addEventListener('focus', function() {
+        if (!self.formStarted) {
+          self.formStarted = true;
+          dataLayer.push({
+            'event': 'form_start',
+            'form_id': form.id,
+            'first_field': this.name
+          });
+        }
+      }, { once: false });
+    });
+  },
+
+  trackSubmission: function(form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // Calculate lead value
+      const leadValue = calculateLeadValue(data.service, data.urgency);
+
+      // Generate transaction ID for deduplication
+      const transactionId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+
+      // Push conversion event
+      dataLayer.push({
+        'event': 'form_submission',
+        'form_id': form.id,
+        'form_name': form.dataset.formName || 'Lead Form',
+        'service_requested': data.service,
+        'urgency': data.urgency,
+        'lead_value': leadValue,
+        'transaction_id': transactionId,
+
+        // Enhanced Conversions data
+        'user_data': {
+          'email': data.email,
+          'phone_number': this.normalizePhone(data.phone),
+          'address': {
+            'postal_code': data.zip,
+            'country': 'US'
+          }
+        }
+      });
+
+      // Submit form via AJAX
+      this.submitForm(form, data, transactionId);
+    });
+  },
+
+  normalizePhone: function(phone) {
+    if (!phone) return '';
+    const cleaned = phone.replace(/\D/g, '');
+    return cleaned.length === 10 ? '+1' + cleaned : '+' + cleaned;
+  },
+
+  submitForm: function(form, data, transactionId) {
+    fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, transaction_id: transactionId })
+    })
+    .then(response => {
+      if (response.ok) {
+        // Show success message or redirect
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      }
+    })
+    .catch(error => {
+      console.error('Form submission error:', error);
+    });
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => FormTracker.init());</pre>
+
+    <h3>Thank You Page Tracking (Alternative)</h3>
+    <p>If using redirect to thank-you page instead of AJAX:</p>
+
+    <div class="code-title"><span class="html-icon">●</span> thank-you.html - Data layer on load</div>
+    <pre>&lt;script&gt;
+// Parse URL parameters for conversion data
+const params = new URLSearchParams(window.location.search);
+
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+  'event': 'form_submission',
+  'form_id': params.get('form_id') || 'contact',
+  'service_requested': params.get('service') || 'general',
+  'lead_value': parseInt(params.get('value')) || 100,
+  'transaction_id': params.get('txn_id') || 'lead_' + Date.now()
+});
+&lt;/script&gt;</pre>
+</section>
+
+<!-- TESTING -->
+<section id="testing">
+    <h2><span class="icon">🧪</span> Testing & Validation</h2>
+
+    <h3>GTM Preview Mode Testing</h3>
+    <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+            <h4>Open GTM Preview</h4>
+            <p>In GTM, click Preview button. Enter your landing page URL.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+            <h4>Verify Tag Firing</h4>
+            <p>Check Tags Fired section. Confirm: GA4 Config, Conversion Linker fire on page load.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+            <h4>Test Form Submission</h4>
+            <p>Submit test form. Verify form_submission event fires with correct data.</p>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+            <h4>Test Phone Clicks</h4>
+            <p>Click phone number. Verify phone_click event fires.</p>
+        </div>
+    </div>
+
+    <h3>GA4 Real-Time Verification</h3>
+    <p>Go to GA4 > Reports > Realtime while testing to see events appear live.</p>
+
+    <h3>Google Ads Conversion Verification</h3>
+    <ol style="color: var(--cc-text-muted); margin-left: 24px;">
+        <li>Add <code>?gclid=test123</code> to your URL</li>
+        <li>Submit a test conversion</li>
+        <li>Check Google Ads > Conversions for "Recording conversions" status</li>
+    </ol>
+
+    <h3>Debug Mode</h3>
+    <div class="code-title"><span class="js-icon">●</span> Add to page for debugging</div>
+    <pre>// Enable debug mode with ?debug in URL
+if (new URLSearchParams(location.search).has('debug')) {
+  const originalPush = dataLayer.push;
+  dataLayer.push = function() {
+    console.log('%c[dataLayer]', 'color: #22c55e; font-weight: bold;', arguments[0]);
+    return originalPush.apply(dataLayer, arguments);
+  };
+  console.log('%c[Debug Mode Enabled]', 'color: #22c55e; font-size: 16px;');
+}</pre>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+    <h2><span class="icon">✅</span> Developer Checklist</h2>
+
+    <h3>GTM Setup</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> GTM container code in &lt;head&gt; (as high as possible)</li>
+        <li><input type="checkbox"> GTM noscript after &lt;body&gt;</li>
+        <li><input type="checkbox"> Container ID replaced (GTM-XXXXXXX)</li>
+        <li><input type="checkbox"> All triggers created</li>
+        <li><input type="checkbox"> All variables created</li>
+    </ul>
+
+    <h3>Data Layer</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Data layer initialized BEFORE GTM</li>
+        <li><input type="checkbox"> GCLID stored in cookie</li>
+        <li><input type="checkbox"> page_data_ready event fires on load</li>
+        <li><input type="checkbox"> form_submission event includes all required fields</li>
+        <li><input type="checkbox"> phone_click event includes location data</li>
+    </ul>
+
+    <h3>Google Ads Conversions</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> Conversion Linker tag fires on All Pages</li>
+        <li><input type="checkbox"> Form submission conversion tag created</li>
+        <li><input type="checkbox"> Phone click conversion tag created</li>
+        <li><input type="checkbox"> Enhanced Conversions enabled</li>
+        <li><input type="checkbox"> Conversion values pass correctly</li>
+    </ul>
+
+    <h3>Phone Tracking</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> All phone links use tel: protocol</li>
+        <li><input type="checkbox"> Phone clicks tracked with location data</li>
+        <li><input type="checkbox"> Google forwarding number snippet installed (if using call tracking)</li>
+    </ul>
+
+    <h3>Form Tracking</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> form_start fires on first field focus</li>
+        <li><input type="checkbox"> form_submission fires on submit</li>
+        <li><input type="checkbox"> Transaction ID generated for deduplication</li>
+        <li><input type="checkbox"> User data included for Enhanced Conversions</li>
+        <li><input type="checkbox"> Lead value calculated dynamically</li>
+    </ul>
+
+    <h3>Testing</h3>
+    <ul class="checklist">
+        <li><input type="checkbox"> GTM Preview shows all tags firing correctly</li>
+        <li><input type="checkbox"> GA4 Realtime shows events</li>
+        <li><input type="checkbox"> Google Ads shows "Recording conversions"</li>
+        <li><input type="checkbox"> Tested on mobile device</li>
+        <li><input type="checkbox"> No JavaScript console errors</li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    <p>ComCreate Developer Blueprint v1.0 | <a href="https://comcreate.org">comcreate.org</a></p>
+    <p style="margin-top: 8px; font-size: 14px;">Implementation guide for Google Ads, GA4, and GTM tracking.</p>
+</footer>
+
+<script>
+// Save checklist state
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach((cb, i) => {
+    const key = 'dev-checklist-' + i;
+    cb.checked = localStorage.getItem(key) === 'true';
+    cb.addEventListener('change', () => localStorage.setItem(key, cb.checked));
+});
+
+// Smooth scroll
+document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
+
+</body>
+</html>
