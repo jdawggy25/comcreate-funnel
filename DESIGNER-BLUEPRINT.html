@@ -31,6 +31,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
@@ -38,6 +44,9 @@
             background: var(--surface);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .container {
@@ -494,9 +503,147 @@
                 display: none;
             }
 
+            .container {
+                padding: 0 16px;
+            }
+
+            .top-bar {
+                padding: 12px 16px;
+            }
+
+            .top-bar-logo span {
+                font-size: 16px;
+            }
+
+            .back-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .doc-header {
+                padding: 30px 16px;
+            }
+
+            .doc-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .doc-header p {
+                font-size: 0.9rem;
+            }
+
+            .doc-meta {
+                gap: 20px;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+
+            .doc-meta-item label {
+                font-size: 0.65rem;
+            }
+
+            .doc-meta-item span {
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 20px;
+                margin-bottom: 16px;
+            }
+
+            .card h3 {
+                font-size: 1.1rem;
+            }
+
+            .card h4 {
+                font-size: 0.9rem;
+            }
+
+            .card p, .card li {
+                font-size: 0.85rem;
+            }
+
             .two-col,
             .three-col {
                 grid-template-columns: 1fr;
+            }
+
+            .copy-example {
+                padding: 16px;
+            }
+
+            .copy-example-text {
+                font-size: 1.1rem;
+            }
+
+            .copy-example-subtext {
+                font-size: 0.85rem;
+            }
+
+            .btn-example {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                margin: 4px;
+            }
+
+            .page-flow {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .flow-section {
+                padding: 16px;
+            }
+
+            .flow-section-number {
+                width: 32px;
+                height: 32px;
+                font-size: 0.85rem;
+            }
+
+            .flow-section-title {
+                font-size: 1rem;
+            }
+
+            .color-swatch {
+                height: 60px;
+            }
+
+            .font-display {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            pre, code {
+                font-size: 0.75rem;
+            }
+
+            .checklist li {
+                font-size: 0.85rem;
+                padding: 8px 0;
             }
         }
 
