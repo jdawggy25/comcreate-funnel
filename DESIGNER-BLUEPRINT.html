@@ -46,6 +46,51 @@
             padding: 0 24px;
         }
 
+        /* Top Navigation Bar */
+        .top-bar {
+            background: var(--black);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .top-bar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .top-bar-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .top-bar-logo span {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--digital-sky);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            background: rgba(63, 218, 249, 0.1);
+        }
+
         /* Document Header */
         .doc-header {
             background: var(--black);
@@ -667,6 +712,17 @@
     </style>
 </head>
 <body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <a href="https://comcreate.org" class="top-bar-logo" target="_blank">
+            <img src="https://www.comcreate.org/logo.png" alt="ComCreate">
+            <span>ComCreate</span>
+        </a>
+        <a href="index.html" class="back-link">
+            ← Back to Blueprints
+        </a>
+    </div>
+
     <!-- Document Header -->
     <header class="doc-header">
         <div class="container">
