@@ -322,46 +322,6 @@
             background: var(--neon-violet);
         }
 
-        /* Stats Section */
-        .stats-section {
-            position: relative;
-            z-index: 10;
-            padding: 60px 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 32px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 900;
-            background: var(--brand-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         /* Footer */
         footer {
             position: relative;
@@ -436,18 +396,6 @@
                 border-radius: 16px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-            }
-
-            .stat-item {
-                padding: 24px 16px;
-            }
-
-            .stat-value {
-                font-size: 28px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -462,10 +410,6 @@
 
             .hero h1 {
                 font-size: 28px;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -529,27 +473,6 @@
             </div>
         </a>
 
-    </div>
-</section>
-
-<section class="stats-section">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <div class="stat-value">743%</div>
-            <div class="stat-label">Multi-step form lift</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">4-8%</div>
-            <div class="stat-label">Target CVR</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">$749+</div>
-            <div class="stat-label">Package pricing</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value">66.7%</div>
-            <div class="stat-label">Call-to-close rate</div>
-        </div>
     </div>
 </section>
 
