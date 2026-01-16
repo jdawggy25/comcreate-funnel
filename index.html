@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#f8f9fa">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>ComCreate | B2B Sales Funnel Blueprints</title>
     <link rel="icon" type="image/png" href="https://www.comcreate.org/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,12 +21,19 @@
             --gray-400: #ced4da;
             --gray-600: #6c757d;
             --gray-800: #343a40;
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
@@ -31,10 +41,14 @@
             background: var(--gray-100);
             color: var(--black);
             min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         header {
-            padding: 24px 40px;
+            padding: 20px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,28 +59,37 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
+            padding: 8px;
+            margin: -8px;
+            border-radius: 12px;
+            min-height: 44px;
+        }
+
+        .logo:active {
+            background: var(--gray-200);
         }
 
         .logo-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             background: var(--black);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .logo-icon svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: var(--white);
         }
 
         .logo-text {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--black);
         }
@@ -74,88 +97,98 @@
         .header-badge {
             background: var(--white);
             border: 1px solid var(--gray-200);
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--gray-600);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .hero {
             text-align: center;
-            padding: 60px 24px 40px;
+            padding: 40px 20px 32px;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .hero-eyebrow {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--tech-blue);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .hero h1 {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(26px, 7vw, 42px);
             font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            line-height: 1.15;
+            margin-bottom: 16px;
             color: var(--black);
         }
 
         .hero p {
-            font-size: 17px;
+            font-size: clamp(15px, 4vw, 17px);
             color: var(--gray-600);
             line-height: 1.6;
-            max-width: 580px;
+            max-width: 540px;
             margin: 0 auto;
         }
 
         .cards-section {
-            padding: 40px 24px 80px;
+            padding: 24px 16px 60px;
             max-width: 900px;
             margin: 0 auto;
+            padding-bottom: calc(60px + var(--safe-area-inset-bottom));
         }
 
         .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .blueprint-card {
             background: var(--white);
             border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 32px;
+            border-radius: 16px;
+            padding: 24px;
             text-decoration: none;
             color: var(--black);
-            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+            display: block;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            -webkit-touch-callout: none;
         }
 
-        .blueprint-card:hover {
-            border-color: var(--tech-blue);
-            box-shadow: 0 4px 20px rgba(24, 115, 250, 0.12);
+        .blueprint-card:active {
+            transform: scale(0.98);
+        }
+
+        @media (hover: hover) {
+            .blueprint-card:hover {
+                border-color: var(--tech-blue);
+                box-shadow: 0 4px 20px rgba(24, 115, 250, 0.12);
+            }
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             background: var(--tech-blue);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .card-icon svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             fill: var(--white);
         }
 
@@ -163,39 +196,39 @@
             display: inline-block;
             background: var(--gray-100);
             color: var(--gray-600);
-            padding: 4px 10px;
+            padding: 5px 10px;
             border-radius: 4px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .blueprint-card h2 {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .blueprint-card p {
             color: var(--gray-600);
             font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 24px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
         .card-features {
             list-style: none;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .card-features li {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 0;
-            font-size: 13px;
+            padding: 10px 0;
+            font-size: 14px;
             color: var(--gray-800);
             border-bottom: 1px solid var(--gray-100);
         }
@@ -205,58 +238,58 @@
         }
 
         .card-features .check {
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             background: #e8f5e9;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
+            font-size: 12px;
             color: #2e7d32;
             flex-shrink: 0;
+            font-weight: 600;
         }
 
         .card-cta {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding-top: 20px;
+            padding: 16px 0 0;
             border-top: 1px solid var(--gray-200);
+            min-height: 56px;
         }
 
         .cta-text {
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--tech-blue);
         }
 
         .cta-arrow {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             background: var(--tech-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 14px;
-            transition: background 0.2s ease;
-        }
-
-        .blueprint-card:hover .cta-arrow {
-            background: #1565c0;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         footer {
             text-align: center;
-            padding: 40px 24px;
+            padding: 32px 20px;
+            padding-bottom: calc(32px + var(--safe-area-inset-bottom));
             border-top: 1px solid var(--gray-200);
+            background: var(--white);
         }
 
         .footer-logo {
-            height: 28px;
-            margin-bottom: 16px;
+            height: 24px;
+            margin-bottom: 12px;
             opacity: 0.7;
         }
 
@@ -268,48 +301,155 @@
         footer a {
             color: var(--tech-blue);
             text-decoration: none;
+            padding: 8px;
+            margin: -8px;
+            display: inline-block;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        footer a:active {
+            opacity: 0.7;
         }
 
-        @media (max-width: 768px) {
+        /* Tablet */
+        @media (min-width: 600px) {
             header {
-                padding: 20px;
-                flex-direction: column;
-                gap: 12px;
+                padding: 24px 32px;
             }
 
             .hero {
-                padding: 40px 20px 30px;
-            }
-
-            .hero h1 {
-                font-size: 28px;
+                padding: 48px 32px 40px;
             }
 
             .cards-section {
-                padding: 20px 16px 60px;
+                padding: 32px 24px 80px;
             }
 
             .cards-grid {
-                grid-template-columns: 1fr;
+                flex-direction: row;
+                gap: 20px;
             }
 
             .blueprint-card {
-                padding: 24px;
+                flex: 1;
+                padding: 28px;
             }
         }
 
-        @media (max-width: 480px) {
+        /* Desktop */
+        @media (min-width: 900px) {
+            header {
+                padding: 24px 40px;
+            }
+
+            .logo-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .logo-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .logo-text {
+                font-size: 22px;
+            }
+
+            .hero {
+                padding: 60px 40px 48px;
+            }
+
+            .hero-eyebrow {
+                font-size: 13px;
+            }
+
+            .cards-section {
+                padding: 40px 40px 100px;
+            }
+
+            .cards-grid {
+                gap: 24px;
+            }
+
+            .blueprint-card {
+                padding: 32px;
+                border-radius: 16px;
+            }
+
+            .card-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .card-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .blueprint-card h2 {
+                font-size: 22px;
+            }
+
+            .cta-arrow {
+                width: 36px;
+                height: 36px;
+            }
+
+            footer {
+                padding: 40px 24px;
+            }
+
+            .footer-logo {
+                height: 28px;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 374px) {
+            header {
+                padding: 16px;
+            }
+
             .logo-text {
                 font-size: 18px;
             }
 
             .header-badge {
-                font-size: 10px;
-                padding: 6px 12px;
+                font-size: 9px;
+                padding: 6px 10px;
+            }
+
+            .hero {
+                padding: 32px 16px 24px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .cards-section {
+                padding: 20px 12px 48px;
+            }
+
+            .blueprint-card {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .blueprint-card h2 {
+                font-size: 18px;
+            }
+
+            .blueprint-card p {
+                font-size: 13px;
+            }
+
+            .card-features li {
+                font-size: 13px;
+            }
+
+            .cta-text {
+                font-size: 14px;
             }
         }
     </style>
