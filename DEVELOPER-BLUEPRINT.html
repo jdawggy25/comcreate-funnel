@@ -79,12 +79,21 @@
             background: var(--gray-100);
         }
 
-        .logo-img {
+        .logo-icon {
             width: 32px;
             height: 32px;
+            background: var(--black);
             border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             flex-shrink: 0;
-            object-fit: contain;
+        }
+
+        .logo-icon span {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 700;
         }
 
         .top-bar-logo span {
@@ -783,7 +792,7 @@
 <!-- Top Navigation Bar -->
 <div class="top-bar">
     <a href="https://comcreate.org" class="top-bar-logo" target="_blank">
-        <img src="https://www.comcreate.org/logo.png" alt="ComCreate" class="logo-img">
+        <div class="logo-icon"><span>C</span></div>
         <span>ComCreate</span>
     </a>
     <a href="index.html" class="back-link">Back to Blueprints</a>
